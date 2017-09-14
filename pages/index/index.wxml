@@ -4,7 +4,7 @@
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}99999999999999999999</text>
+        <text class="userinfo-nickname">{{userInfo.nickName}}55555555555555555555</text>
     </block>
   </view>
   <view class="usermotto">
