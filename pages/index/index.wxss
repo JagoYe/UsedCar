@@ -126,6 +126,7 @@ page{
 }
 .query button{
   width: 100%;
+  letter-spacing: 3rpx;
   line-height: 80rpx;
   background-color: orange;
   color: white;

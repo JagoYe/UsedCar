@@ -1,0 +1,187 @@
+<!--pages/used/used_list/index.wxml-->
+<!-- 整个页面 -->
+<view class='all'>
+  <!-- 搜索 -->
+  <view class='nav center'>
+    <!-- 地址 -->
+    <view class='area'>
+      <text>昆明</text>
+    </view>
+    <!-- 地址图标 -->
+    <view class='locationIcon'>
+      <image src='../../../img/16.png'></image>
+    </view>
+    <!-- 搜索框 -->
+    <view class='search'>
+      <input type='search' placeholder='搜索'></input>
+    </view>
+    <!-- 搜索图标 -->
+    <view class='searchIcon'>
+      <image src='../../../img/17.png'></image>
+    </view>
+  </view>
+  <!-- 条件搜索栏目 -->
+  <view class='condition'>
+    <view style='float:left;width:100%;height:70rpx'>
+      <view class='navs center'>
+        <view class='left'>
+          <view class='conditions'><text>默认排序</text></view>
+          <view class='img'><image src='../../../img/18.png'></image></view>
+        </view>
+        <view class='middle'>
+          <view class='conditions'><text>品牌选择</text></view>
+          <view class='img'><image src='../../../img/18.png'></image></view>
+        </view>
+        <view class='right'>
+          <view class='conditions'><text>价格区间</text></view>
+          <view class='img'><image src='../../../img/18.png'></image></view>
+        </view>
+      </view>
+    </view>
+
+    <!--排序选择块定位-->
+    <view class='sort'>
+      <view class='middle center'>
+        <view class='content'><text>默认排序</text></view>
+        <view class='content'><text>价格最低</text></view>
+        <view class='content'><text>价格最高</text></view>
+        <view class='content'><text>年车最短</text></view>
+        <view class='content'><text>里程最少</text></view>
+        <view class='content'><text>最新发布</text></view>
+      </view>
+    </view>
+    <!-- 价格区间块定位 -->
+    <view class='price'>
+      <view class='block center'>
+          <view class='entry-ctn'>
+            <view class='entry'>
+              <view><text>不限</text></view>
+            </view>
+            <view class='entry'>
+              <view><text>3万以上</text></view>
+            </view>
+            <view class='entry'>
+              <view><text>3-5万</text></view>
+            </view>
+          </view>
+          <view class='entry-ctn'>
+            <view class='entry'>
+              <view><text>5-10万</text></view>
+            </view>
+            <view class='entry'>
+              <view><text>10-15万</text></view>
+            </view>
+            <view class='entry'>
+              <view><text>15-20万</text></view>
+            </view>
+          </view>
+          <view class='entry-ctn'>
+            <view class='entry'>
+              <view><text>20-25万</text></view>
+            </view>
+            <view class='entry'>
+              <view><text>25-30万</text></view>
+            </view>
+            <view class='entry'>
+              <view><text>30万以上</text></view>
+            </view>
+          </view>
+      </view><!--block结束-->
+    </view>
+
+  </view>
+  <!--列表页-->
+  <view class='listPage'>
+    <!-- 二手车列表页 -->
+    <view class='list'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='../../../img/15.png'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+          <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
+          <view class='details'><text>24.80万</text></view>
+        </view>
+      </view>
+    </view>
+    <!-- 二手车列表页 -->
+    <view class='list'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='../../../img/15.png'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+          <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
+          <view class='details'><text>24.80万</text></view>
+        </view>
+      </view>
+    </view>
+    <!-- 二手车列表页 -->
+    <view class='list'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='../../../img/15.png'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+          <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
+          <view class='details'><text>24.80万</text></view>
+        </view>
+      </view>
+    </view>
+    <!-- 二手车列表页 -->
+    <view class='list'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='../../../img/15.png'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+          <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
+          <view class='details'><text>24.80万</text></view>
+        </view>
+      </view>
+    </view>
+    <!-- 二手车列表页 -->
+    <view class='list'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='../../../img/15.png'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+          <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
+          <view class='details'><text>24.80万</text></view>
+        </view>
+      </view>
+    </view>
+    <!-- 二手车列表页 -->
+    <view class='list'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='../../../img/15.png'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+          <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
+          <view class='details'><text>24.80万</text></view>
+        </view>
+      </view>
+    </view>
+    <!-- 二手车列表页 -->
+    <view class='list'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='../../../img/15.png'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+          <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
+          <view class='details'><text>24.80万</text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -165,7 +165,7 @@
       </view>
       <view class='right'>
         <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
-        <view class='details'><text>昆明/2016年/1.1公里</text></view>
+        <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
         <view class='details'><text>24.80万</text></view>
       </view>
     </view>
