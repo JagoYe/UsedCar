@@ -10,3 +10,7 @@
 } 
 
 .color-gray { color: gray; }
+/*居中*/
+.center{
+  margin: 0px auto;
+}
