@@ -1,118 +1,131 @@
 <!--pages/used/used_details/index.wxml-->
-<view class='all'>
-  <view style='width:100%'>
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{imgUrls}}">
-        <swiper-item>
-          <image src="{{item}}" class="slide-image" style='width:100%'/>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-  <!-- 汽车描述 -->
-  <view class='depict center'>
-    <view class='upper'>
-      <text>宝马 途观 12款 2.0TSI 手自一体 四驱 尊荣版</text>
+<!--整个页面-->
+<view class='whole'>
+  <view class='all'>
+    <view style='width:100%'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imgUrls}}">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" style='width:100%'/>
+          </swiper-item>
+        </block>
+      </swiper>
     </view>
-    <view class='lower'>
-      <text>2012-11上牌丨8.66万公里丨手自一体丨2.0L</text>
-    </view>
-  </view>
-  <!-- 二手车参考价格 -->
-  <view class='price center'>
-    <view class='left'><text>24.80万</text></view>
-    <view class='right'>
-      <!-- 二手车参考价 -->
-      <view class=' reference'>
-        <text>参考估价：22.45-26.32万</text>
+    <!-- 汽车描述 -->
+    <view class='depict center'>
+      <view class='upper'>
+        <text>宝马 途观 12款 2.0TSI 手自一体 四驱 尊荣版</text>
       </view>
-      <!-- 二手车总价 -->
-      <view class='total'>
-        <text>新车总价：48.86万</text>
+      <view class='lower'>
+        <text>2012-11上牌丨8.66万公里丨手自一体丨2.0L</text>
       </view>
     </view>
-  </view>
-</view>
-<!-- 车辆档案 -->
-<view class='archives'>
-  <view style='border-bottom:gainsboro solid 3rpx'>
-    <view class='archivesTop center'>
-      <view class='archivesIcon'><image src='../../../img/19.png'></image></view>
-      <view class='archivesText'><text>车辆档案</text></view>
-    </view>
-  </view>
-  <view class='detailsCar'>
-    <view class='middle'>
-      <view class='subset margin'>
-        <view class='img'><image src='../../../img/20.png'></image></view>
-        <view class='text'>8.66万公里</view>
-        <view class='text'>表现里程</view>
-      </view>
-      <view class='subset'>
-        <view class='img'><image src='../../../img/21.png'></image></view>
-        <view class='text'>2012-11-18</view>
-        <view class='text'>上牌时间</view>
-      </view>
-      <view class='subset'>
-        <view class='img'><image src='../../../img/22.png'></image></view>
-        <view class='text'>2.0L</view>
-        <view class='text'>车辆排量</view>
+    <!-- 二手车参考价格 -->
+    <view class='price center'>
+      <view class='left'><text>24.80万</text></view>
+      <view class='right'>
+        <!-- 二手车参考价 -->
+        <view class=' reference'>
+          <text>参考估价：22.45-26.32万</text>
+        </view>
+        <!-- 二手车总价 -->
+        <view class='total'>
+          <text>新车总价：48.86万</text>
+        </view>
       </view>
     </view>
-    <!-- 上架时间 -->
-    <view class='time'>
-      <view class='times'><text>上架时间</text></view>
-      <view class='date'><text>今天</text></view>
+  </view>
+  <!-- 车辆档案 -->
+  <view class='archives'>
+    <view style='border-bottom:gainsboro solid 3rpx'>
+      <view class='archivesTop center'>
+        <view class='archivesIcon'><image src='../../../img/19.png'></image></view>
+        <view class='archivesText'><text>车辆档案</text></view>
+      </view>
     </view>
-    <view class='time'>
-      <view class='times'><text>车辆颜色</text></view>
-      <view class='date'><text>宝蓝</text></view>
-    </view>
-    <view class='time'>
-      <view class='times'><text>保养情况</text></view>
-      <view class='date'><text>4s店非定期</text></view>
-    </view>
-    <view class='time'>
-      <view class='times'><text>生产厂商</text></view>
-      <view class='date'><text>花城宝马</text></view>
+    <view class='detailsCar'>
+      <view class='middle'>
+        <view class='subset margin'>
+          <view class='img'><image src='../../../img/20.png'></image></view>
+          <view class='text'>8.66万公里</view>
+          <view class='text'>表现里程</view>
+        </view>
+        <view class='subset'>
+          <view class='img'><image src='../../../img/21.png'></image></view>
+          <view class='text'>2012-11-18</view>
+          <view class='text'>上牌时间</view>
+        </view>
+        <view class='subset'>
+          <view class='img'><image src='../../../img/22.png'></image></view>
+          <view class='text'>2.0L</view>
+          <view class='text'>车辆排量</view>
+        </view>
+      </view>
+      <!-- 上架时间 -->
+      <view class='time'>
+        <view class='times'><text>上架时间</text></view>
+        <view class='date'><text>今天</text></view>
+      </view>
+      <view class='time'>
+        <view class='times'><text>车辆颜色</text></view>
+        <view class='date'><text>宝蓝</text></view>
+      </view>
+      <view class='time'>
+        <view class='times'><text>保养情况</text></view>
+        <view class='date'><text>4s店非定期</text></view>
+      </view>
+      <view class='time'>
+        <view class='times'><text>生产厂商</text></view>
+        <view class='date'><text>花城宝马</text></view>
+      </view>
     </view>
   </view>
-</view>
-<!-- 车辆档案 -->
-<view class='archives'>
-  <view style='border-bottom:gainsboro solid 3rpx'>
-    <view class='archivesTop center'>
-      <view class='archivesIcon'><image src='../../../img/23.png'></image></view>
-      <view class='archivesText'><text>车辆档案</text></view>
+  <!-- 车辆档案 -->
+  <view class='archives'>
+    <view style='border-bottom:gainsboro solid 3rpx'>
+      <view class='archivesTop center'>
+        <view class='archivesIcon'><image src='../../../img/23.png'></image></view>
+        <view class='archivesText'><text>车辆档案</text></view>
+      </view>
+    </view>
+    <view class='detailsCar'>
+      <!-- 无钥匙启动块 -->
+      <view class='key'><text>无钥匙启动</text></view>
+      <view class='key'><text>胎压监测系统</text></view>
+      <view class='key'><text>发动机启动停技术</text></view>
     </view>
   </view>
-  <view class='detailsCar'>
-    <!-- 无钥匙启动块 -->
-    <view class='key'><text>无钥匙启动</text></view>
-    <view class='key'><text>胎压监测系统</text></view>
-    <view class='key'><text>发动机启动停技术</text></view>
-  </view>
-</view>
-<!-- 购车流程 -->
-<view class='archives'>
-  <view style='border-bottom:gainsboro solid 3rpx'>
-    <view class='archivesTop center'>
-      <view class='archivesIcon'><image src='../../../img/24.png'></image></view>
-      <view class='archivesText'><text>购车流程</text></view>
+  <!-- 购车流程 -->
+  <view class='archives'>
+    <view style='border-bottom:gainsboro solid 3rpx'>
+      <view class='archivesTop center'>
+        <view class='archivesIcon'><image src='../../../img/24.png'></image></view>
+        <view class='archivesText'><text>购车流程</text></view>
+      </view>
+    </view>
+    <view class='detailsCar'>
+      <!-- 电话咨询块 -->
+      <view class='key'><text>1.7*24小时专业电话咨询服务</text></view>
+      <view class='key'><text>2.预约专业顾问实地看车</text></view>
+      <view class='key'><text>3.现场介绍车况、试乘试驾</text></view>
+      <view class='key'><text>4.爱车成交确认</text></view>
+      <view class='key'><text>5.签订《购车协议》</text></view>
+      <view class='key'><text>6好车放心开回家</text></view>
     </view>
   </view>
-  <view class='detailsCar'>
-    <!-- 电话咨询块 -->
-    <view class='key'><text>1.7*24小时专业电话咨询服务</text></view>
-    <view class='key'><text>2.预约专业顾问实地看车</text></view>
-    <view class='key'><text>3.现场介绍车况、试乘试驾</text></view>
-    <view class='key'><text>4.爱车成交确认</text></view>
-    <view class='key'><text>5.签订《购车协议》</text></view>
-    <view class='key'><text>6好车放心开回家</text></view>
-  </view>
-</view>
-<!-- 底部 -->
-<view class='bottom'>
-  <view class='source'><text>收藏车源</text></view>
-  <view class='phone'><text>电话咨询</text></view>
-</view>
+  <!-- 遮罩层 -->
+  <view class='mask {{masks}}'></view>
+</view>   
+  <!-- 底部 -->
+  <view class='bottom'>
+    <view style='width:100%; height:85rpx;position:absolute;top:0px; z-index:4' >
+      <view class='source'><text>收藏车源</text></view>
+      <view class='phone' bindtap='phone' data-display='{{display}}'><text>电话咨询</text></view>
+    </view>
+    <!--定位弹出块-->
+    <view class='mobilePhone {{show}}'>
+      <view class='phones center'><text>400-813-0755</text></view>
+      <view style='width:100%;background:white'><view class='gradient center'></view></view>
+      <view class='call center' bindtap='clickCall'><text>呼叫</text></view>
+    </view>
+  </view> 

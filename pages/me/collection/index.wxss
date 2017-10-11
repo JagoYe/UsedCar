@@ -1,1 +1,72 @@
 /* pages/me/collection/index.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  font-family: 微软雅黑;
+  font-size: 28rpx;
+}
+.all{
+  width: 100%;
+  height: 100%;
+}
+/*第一块*/
+.main1{
+  width: 100%;
+  height: 80rpx;
+  border-top: solid gray 1rpx;
+  border-bottom: solid gray 1rpx;
+}
+.usedCar{
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  float: left;
+}
+.newCar{
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  float: left;
+  background-color: black;
+  color: white;
+}
+/*二手车列表页*/
+.list{
+  width: 100%;
+  height: 155rpx;
+  margin-top: 30rpx;}
+.listCars{
+  width: 90%;
+  height: 100%;
+  border-bottom: 2rpx solid gray;}   
+.listCar{
+  width: 90%;
+  height: 125rpx;}
+.listCar .left{
+  width: 30%;
+  height: 125rpx;
+  float: left;}
+.listCar .left image{
+  width: 100%;
+  height: 100%;}          
+.listCar .right{
+  width: 58%;
+  height: 125rpx;
+  margin-left: 2%;
+  float: left;}  
+.listCar .right .details{
+  width: 100%;
+  height: 41rpx;
+  line-height: 41rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;}
+.heart{
+  width: 10%;
+  height: 125rpx;
+  float: left;
+  background-color: red;
+}  

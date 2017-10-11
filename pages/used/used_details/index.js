@@ -13,9 +13,33 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 2000,
-    duration: 1000
+    duration: 1000,
+    display:false
   },
-
+  //显示联系电话块
+  phone: function(e){
+    var that = this;
+    var display = e.currentTarget.dataset.display;
+    if(display==false){
+      that.setData({
+        show:'show',
+        display:true,
+        masks:'masks'
+      })
+    }else{
+      that.setData({
+        show: '',
+        display: false,
+        masks: ''
+      })
+    }
+  },
+  //点击拨打电话
+  clickCall: function(){
+    wx.makePhoneCall({
+      phoneNumber: '18787312252' //仅为示例，并非真实的电话号码
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,2 +1,17 @@
 <!--pages/me/history/index.wxml-->
-<text>pages/me/history/index.wxml</text>
+<view class='all'></view>
+<!-- 二手车列表页 -->
+<view class='list'>
+  <view class='listCars center'>
+    <view class='listCar center'>
+      <view class='left'>
+        <image src='../../../img/15.png'></image>
+      </view>
+      <view class='right'>
+        <view class='details'><text>宝马H6</text></view>
+        <view class='details color-gray'><text>厂商指导价：22.48-28.64万</text></view>
+        <view class='details'><text>24.80万</text></view>
+      </view>
+    </view>
+  </view>
+</view>

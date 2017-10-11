@@ -1,19 +1,19 @@
 {
   "pages":[
+    "pages/me/collection/index",
+    "pages/me/phone_update/index",
+    "pages/me/index/index",
+    "pages/me/history/index",
+    "pages/find/find_details/index",
+    "pages/find/index/index",
     "pages/used/used_list/index",
     "pages/index/index",
     "pages/used/used_details/index",
-    
     "pages/used/sort/index",
     "pages/newCar/new_list/index",
     "pages/newCar/index/index",
     "pages/newCar/sort/index",
     "pages/newCar/new_details/index",
-    "pages/find/index/index",
-    "pages/find/find_details/index",
-    "pages/me/index/index",
-    "pages/me/collection/index",
-    "pages/me/history/index",
     "pages/logs/logs"
   ],
   "window":{

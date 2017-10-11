@@ -1,2 +1,43 @@
 <!--pages/find/index/index.wxml-->
-<text>pages/find/index/index.wxml</text>
+<view class='all'>
+  <!-- 汽车服务 -->
+  <view class='service'>
+    <view style='width:90%;margin-left:10%;'>
+      <view class='carWash' bindtap='clickJump'>
+        <view class='carWashimg'><image src='../../../img/29'></image></view>
+        <view class='carWashtext'><text>洗车服务</text></view>
+        <view class='carWashicon'><image src='../../../img/29'></image></view>
+      </view>
+      <view class='repair' bindtap='clickJump'>
+        <view class='carWashimg'><image src='../../../img/29'></image></view>
+        <view class='carWashtext'><text>修车服务</text></view>
+        <view class='carWashicon'><image src='../../../img/29'></image></view>
+      </view>
+    </view>
+  </view>
+  <!-- 汽车保险金融 -->
+  <view class='service'>
+    <view style='width:90%;margin-left:10%;'>
+      <view class='carWash' bindtap='clickJump'>
+        <view class='carWashimg'><image src='../../../img/29'></image></view>
+        <view class='carWashtext'><text>洗车保险</text></view>
+        <view class='carWashicon'><image src='../../../img/29'></image></view>
+      </view>
+      <view class='repair' bindtap='clickJump'>
+        <view class='carWashimg'><image src='../../../img/29'></image></view>
+        <view class='carWashtext'><text>洗车金融</text></view>
+        <view class='carWashicon'><image src='../../../img/29'></image></view>
+      </view>
+    </view>
+  </view>
+  <!-- 车辆拍卖 -->
+  <view class='service'>
+    <view style='width:90%;margin-left:10%;'>
+      <view class='carWash' bindtap='clickJump'>
+        <view class='carWashimg'><image src='../../../img/29'></image></view>
+        <view class='carWashtext'><text>车辆拍卖</text></view>
+        <view class='carWashicon'><image src='../../../img/29'></image></view>
+      </view>
+    </view>
+  </view>
+</view>

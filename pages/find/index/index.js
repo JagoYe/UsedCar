@@ -1,4 +1,5 @@
 // pages/find/index/index.js
+var app = getApp();
 Page({
 
   /**
@@ -7,7 +8,11 @@ Page({
   data: {
   
   },
-
+  clickJump: function(){
+    wx.navigateTo({
+      url: '../find_details/index'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
