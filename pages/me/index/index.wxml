@@ -1,2 +1,26 @@
 <!--pages/me/index/index.wxml-->
-<text>pages/me/index/index.wxml</text>
+<view class='all'>
+  <view class='header center'>
+    <image src='../../../img/44.png'></image>
+    <view class='head'></view>
+  </view>
+  <view class='phone center'>18787312252</view>
+  <view class='line center'></view>
+  <view class='slot center'>
+    <view class='left'>
+      <view class='img'><image src='../../../img/37.png'></image></view>
+      <view class='text'><text>收藏</text></view>
+    </view>
+    <view class='middle'>
+      <view class='img'><image src='../../../img/38.png'></image></view>
+      <view class='text'><text>信息</text></view>
+    </view>
+    <view class='right'>
+      <view class='img'><image src='../../../img/39.png'></image></view>
+      <view class='text'><text>足迹</text></view>
+    </view>
+  </view>
+</view>
+<view class='but center'>
+    <button>更换手机号</button>
+</view>

@@ -4,10 +4,13 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    
+  },
+  //点击查看全部车源
+  clickSee: function(){
+    wx.navigateTo({
+      url: '../used/used_list/index',
+    })
   },
   //事件处理函数
   bindViewTap: function() {

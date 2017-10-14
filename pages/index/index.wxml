@@ -17,7 +17,7 @@
     </view>
     <!-- 搜索框 -->
     <view class='search'>
-      <input type='search' placeholder='搜索'></input>
+      <input type='text' placeholder='搜索'></input>
     </view>
     <!-- 搜索图标 -->
     <view class='searchIcon'>
@@ -124,8 +124,8 @@
     </view>
   </view>
   <!-- 查询按钮 -->
-  <view class='query center'>
-    <button>查看全部车源</button>
+  <view class='query center' bindtap='clickSee'>
+    <button class='bg-color'>查看全部车源</button>
   </view>
   <!--收藏-->
   <view class='collection center'>

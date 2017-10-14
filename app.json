@@ -1,15 +1,19 @@
 {
   "pages":[
-    "pages/me/collection/index",
-    "pages/me/phone_update/index",
-    "pages/me/index/index",
-    "pages/me/history/index",
-    "pages/find/find_details/index",
-    "pages/find/index/index",
-    "pages/used/used_list/index",
     "pages/index/index",
-    "pages/used/used_details/index",
+    "pages/me/index/index",
+    
+    "pages/used/used_list/index",
     "pages/used/sort/index",
+    "pages/used/used_details/index",
+    "pages/me/info/publish_info/index",
+    "pages/me/info/photo/index",
+    "pages/me/info/index/index",
+    "pages/me/history/index",
+    "pages/me/collection/index",
+    "pages/find/index/index",
+    "pages/find/find_details/index",
+    "pages/me/phone_update/index",
     "pages/newCar/new_list/index",
     "pages/newCar/index/index",
     "pages/newCar/sort/index",
@@ -19,7 +23,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "二手车",
+    "navigationBarTitleText": "云南二手车交易平台",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
@@ -31,26 +35,26 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "img/25.png",
+        "iconPath": "img/usedCar.png",
         "selectedIconPath": "img/25.png",
         "text": "二手车"
       },
       {
         "pagePath": "pages/newCar/index/index",
-        "iconPath": "img/26.png",
+        "iconPath": "img/newCar.png",
         "selectedIconPath": "img/26.png",
         "text": "新车"
       },
       {
         "pagePath": "pages/find/index/index",
-        "iconPath": "img/27.png",
+        "iconPath": "img/find.png",
         "selectedIconPath": "img/27.png",
         "text": "发现"
       },
       {
         "pagePath": "pages/me/index/index",
-        "iconPath": "img/28.png",
-        "selectedIconPath": "img/28.png",
+        "iconPath": "img/me.png",
+        "selectedIconPath": "img/me2.png",
         "text": "我的"
       }
     ]

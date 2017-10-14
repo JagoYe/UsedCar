@@ -14,3 +14,6 @@
 .center{
   margin: 0px auto;
 }
+.bg-color{
+  background-color: #a16dee;
+}

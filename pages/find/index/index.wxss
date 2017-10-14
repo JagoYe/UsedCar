@@ -35,10 +35,7 @@ page{
   width: 15%;
   height: 80rpx;
   float: left;
-}
-.carWashimg image{
-  width: 15%;
-  height: 80rpx;
+  text-align: center;
 }
 .carWashtext{
   width: 70%;
@@ -50,8 +47,11 @@ page{
   width: 10%;
   height: 80rpx;
   float: left;
+  text-align: center;
 }
 .carWashicon image{
-  width: 15%;
-  height: 80rpx;
+  width: 30%;
+  height: 14rpx;
+  margin-top: 33rpx;
+  transform: rotate(-90deg);
 }

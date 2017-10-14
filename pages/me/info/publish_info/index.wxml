@@ -1,0 +1,105 @@
+<!--pages/me/info/publish_info/index.wxml-->
+<view class='all'>
+  <!-- 头部图片 -->
+  <view class='header'>
+    <view><image src='../../../../img/41.png'></image></view>
+    <view class='head'></view>
+    <view class='head1' bindtap='upload'>
+      <view class='img center'>
+        <image src='../../../../img/42.png'></image>
+      </view>
+      <view class='text center'><text>上传照片</text></view>    
+    </view>
+  </view>
+  <!-- 输入信息块 -->
+  <view class='main'>
+    <view class='input center' bindtap='clickPop' data-input='title'>
+      <view class='left'><text>标题：</text></view>
+      <view class='middle'>
+        <input type='text' placeholder='请输入标题' value='{{car.title}}'></input>
+      </view>
+      <view class='right'><image src='../../../../img/43.png'></image></view>
+    </view>
+    <view class='input center' bindtap='clickPop' data-input='brand'>
+      <view class='left'><text>品牌：</text></view>
+      <view class='middle'>
+        <input type='text' placeholder='请输入车辆品牌' value='{{car.brand}}'></input>
+      </view>
+      <view class='right'><image src='../../../../img/43.png'></image></view>
+    </view>
+    <view class='input center'>
+      <view class='left'><text>价格：</text></view>
+      <view class='middle'>
+        <input type='text' placeholder='请输入车辆价格'></input>
+      </view>
+      <view class='right'><text>万元</text></view>
+    </view>
+    <view class='input center'>
+      <view class='left'><text>排量：</text></view>
+      <view class='middle'>
+        <input type='number' placeholder='请输入车辆排量'></input>
+      </view>
+      <view class='right'><text>L</text></view>
+    </view>
+    <view class='input center'>
+      <view class='left'><text>颜色：</text></view>
+      <view class='middle'>
+        <input type='text' placeholder='请输入车辆颜色'></input>
+      </view>
+      <view class='right'></view>
+    </view>
+    <view class='input center'>
+      <view class='left'><text>里程数：</text></view>
+      <view class='middle'>
+        <input type='number' placeholder='请输入车辆里程'></input>
+      </view>
+      <view class='right'><text>万公里</text></view>
+    </view>
+    <view class='input center'>
+      <view class='left'><text>变速箱：</text></view>
+      <view class='middle'>
+        <input type='text' placeholder='请输入'></input>
+      </view>
+      <view class='right'></view>
+    </view>
+    <view class='input center' bindtap='clickPop' data-input="time">
+      <view class='left'><text>上牌时间：</text></view>
+      <view class='middle'>
+        <input type='text' placeholder='请输入车辆上牌时间' value='{{car.time}}'></input>
+      </view>
+      <view class='right'><image src='../../../../img/43.png'></image></view>
+    </view>
+    <view class='input center'>
+      <view class='left'><text>保养情况：</text></view>
+      <view class='middle'>
+        <input type='text' placeholder='请输入车辆保养情况'></input>
+      </view>
+      <view class='right'></view>
+    </view>
+    <view class='input center'>
+      <view class='left'><text>生产厂商：</text></view>
+      <view class='middle'>
+        <input type='text' placeholder='请输入车辆的生产厂商'></input>
+      </view>
+      <view class='right'></view>
+    </view>
+    <view class='input center' style='margin-bottom:100rpx'>
+      <view class='left'><text>配置亮点：</text></view>
+      <view class='middle'>
+        <input type='text' placeholder='请输入车辆配置亮点'></input>
+      </view>
+      <view class='right'></view>
+    </view>
+  </view>
+  <view class='bottom'><text>确认发布</text></view>
+</view>
+<!-- 弹出块 -->
+<view class='eject {{active}}'>
+  <view class='inputs'>
+  <textarea placeholder="输入内容" maxlength='200' class='center' name='inputText' bindinput='inputText' value='{{values}}'/>
+  </view>
+  <view class='main1 center'>
+    <view class='length center'><text style='color:gray'>{{length}}</text><text>/200</text></view>
+  </view>
+  <view class='bottoms' bindtap='confirm'><text>确定</text></view>
+</view>

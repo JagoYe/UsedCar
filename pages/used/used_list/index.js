@@ -8,7 +8,12 @@ Page({
     display: false,
     searchHandle: '0',
   },
-
+  //点击选择品牌
+  clickJump: function(){
+    wx.navigateTo({
+      url: '../sort/index',
+    })
+  },
   tabChange: function (e) {
     var that = this;
     var searchHandle = that.data.searchHandle;

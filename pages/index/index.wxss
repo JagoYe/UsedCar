@@ -2,7 +2,7 @@
 /*整个网页*/
 page{
   font-family: 微软雅黑;
-  font-size: 28rpx;
+  font-size: 26rpx;
   background-color: #F2F2F2;
 }
 /* 居中 */
@@ -53,7 +53,7 @@ page{
   border-radius: 12rpx;}
 .search input{
   width: 100%;
-   height: 50rpx; 
+  /* height: 50rpx;  */
   line-height: 50rpx;}  
 /*搜索图标*/
 .searchIcon{
@@ -89,29 +89,37 @@ page{
   text-align: center;
   line-height: 50rpx;}  
 .img1{
-  width: 48%;
-  height: 100%;} 
+  width:75rpx;
+  height:75rpx;
+  margin-top: 5rpx;}   
 .img2{
-  width: 48%;
-  height: 100%;} 
+  width:75rpx;
+  height:75rpx;
+  margin-top: 5rpx;} 
 .img3{
-  width: 48%;
-  height: 100%;} 
+  width:75rpx;
+  height: 75rpx;
+  margin-top: 5rpx;} 
 .img4{
-  width: 48%;
-  height: 100%;} 
+  width:75rpx;
+  height: 75rpx;
+  margin-top: 5rpx;} 
 .img5{
-  width: 48%;
-  height: 100%;} 
+  width:75rpx;
+  height: 75rpx;
+  margin-top: 5rpx;} 
 .img6{
-  width: 48%;
-  height: 100%;} 
+  width:75rpx;
+  height: 75rpx;
+  margin-top: 5rpx;} 
 .img7{
-  width: 48%;
-  height: 100%;} 
+  width:75rpx;
+  height: 75rpx;
+  margin-top: 5rpx;}
 .img8{
-  width: 48%;
-  height: 100%;} 
+  width:75rpx;
+  height: 75rpx;
+  margin-top: 5rpx;} 
 .total .price{
   width: 25%;
   height: 80rpx;
@@ -128,7 +136,7 @@ page{
   width: 100%;
   letter-spacing: 3rpx;
   line-height: 80rpx;
-  background-color: orange;
+  box-shadow: 0rpx 3rpx 4rpx #A39E9D;
   color: white;
   font-size: 28rpx;}
 /* 车源收藏*/
@@ -150,8 +158,8 @@ page{
   float: left;
   text-align: center;}
 .houseIcon image{
-  width: 50%;
-  height: 50%;
+  width: 30rpx;
+  height: 30rpx;
   margin-top: 15rpx;}    
 .house .content{
   width: auto;
@@ -170,9 +178,9 @@ page{
   float: left;
   text-align: center;}
 .historyIcon image{
-  width: 50%;
-  height: 60%;
-  margin-top: 12rpx;}    
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 15rpx;}    
 .history .content{
   width: auto;
   height: 60rpx;

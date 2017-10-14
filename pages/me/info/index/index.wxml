@@ -1,0 +1,18 @@
+<!--pages/me/history/index.wxml-->
+<view class='all'></view>
+<!-- 二手车列表页 -->
+<view class='list'>
+  <view class='listCars center'>
+    <view class='listCar center'>
+      <view class='left'>
+        <image src='../../../../img/15.png'></image>
+      </view>
+      <view class='right'>
+        <view class='details'><text>大众 途观 12款 2.0TSI 手自一体 四驱 尊容版</text></view>
+        <view class='details color-gray'><text>昆明/2016年/1.1万公里</text></view>
+        <view class='details' style='margin-top:5rpx'><text>24.80万</text></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='bottom'>确认发布</view>

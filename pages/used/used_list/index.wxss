@@ -96,12 +96,7 @@ page{
   height: 60rpx;
   float: left;}
 .img{
-  width: 60rpx;
-  height: 60rpx;
-  float: left;
-  text-align: center;}
-.img image{
-  width: 25rpx;
+  width: 20rpx;
   height: 20rpx;
   margin-top: 20rpx;
   transform: rotate(-90deg);
@@ -125,7 +120,7 @@ page{
 .navs >view:nth-child(3).change3{color: black;}
 /* 图标旋转 */
 .navs >view:nth-child(1) image.change1{transform: rotate(90deg);}
-.navs >view:nth-child(3) image.change2{transform: rotate(90deg);}
+.navs >view:nth-child(3) image.change3{transform: rotate(90deg);}
 /* 显示隐藏定位块 */
 .position >view:nth-child(1).active1{left: 0;transition: all 0.5s ease-in-out;}
 .position >view:nth-child(2).active3{left: 0;transition: all 0.5s ease-in-out;}

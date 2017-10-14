@@ -104,6 +104,7 @@ page{
   height: auto;
   margin-left: 13%;
   background-color: white;
+  padding-bottom: 90rpx;
 }
 .middle{
   width: 100%;
@@ -227,7 +228,7 @@ page{
 /* 遮罩层 */
 .mask{
   width: 0;
-  height: 150%;
+  height: 172%;
   position: absolute;
   background-color: black;
   top: 0;
