@@ -15,4 +15,4 @@
     </view>
   </view>
 </view>
-<view class='bottom'>确认发布</view>
+<view class='bottom' bindtap='publishInfo'>发布车辆信息</view>

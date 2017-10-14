@@ -91,14 +91,12 @@
         </view><!--block结束-->
       </view>
     </view>
-    <!-- 遮罩层 -->
-    <view class='mask {{show}}'></view>
 
   </view>
   <!--列表页-->
   <view class='listPage'>
     <!-- 二手车列表页 -->
-    <view class='list'>
+    <view class='list' bindtap='clickJump'>
       <view class='listCar center'>
         <view class='left'>
           <image src='../../../img/15.png'></image>
@@ -189,4 +187,6 @@
       </view>
     </view>
   </view>
+  <!-- 遮罩层 -->
+    <view class='mask {{show}}'></view>
 </view>

@@ -14,6 +14,7 @@ Page({
       url: '../sort/index',
     })
   },
+  /**按条件选择 */
   tabChange: function (e) {
     var that = this;
     var searchHandle = that.data.searchHandle;
@@ -39,6 +40,11 @@ Page({
         searchHandle: index
       });
     }
+  },
+  clickJump: function(){
+    wx.navigateTo({
+      url: '../used_details/index',
+    })
   },
   /**
    * 生命周期函数--监听页面加载

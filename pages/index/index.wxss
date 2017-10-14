@@ -30,6 +30,7 @@ page{
   width: 20%;
   height: 50rpx;
   float: left;
+  text-align: center;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
@@ -40,31 +41,32 @@ page{
   height: 50rpx;
   float: left;}
 .locationIcon image{
-  width: 22rpx;
-  height: 32rpx;
-  margin-top: 9rpx;}  
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 5rpx;}  
 /*搜索框*/
 .search{
   width: 64%;
   height: 50rpx;
-  float: left;
-  box-sizing: border-box;
-  border: 1rpx solid gray;
-  border-radius: 12rpx;}
+  float: left;}
 .search input{
   width: 100%;
+  height: 100%;
+   border: 1rpx solid gray; 
+  border-radius: 12rpx;
+  box-sizing: border-box;
   /* height: 50rpx;  */
-  line-height: 50rpx;}  
+  /* line-height: 50rpx;*/}
 /*搜索图标*/
 .searchIcon{
   width: 10%;
   height: 50rpx;
-  float: left;}
+  float: right;
+  text-align: center;}
 .searchIcon image{
-  width: 34rpx;
-  height: 38rpx;
-  margin-top: 6rpx;
-  margin-left: 10rpx;}  
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 5rpx;}  
 /*按条件查询车辆*/
 .total{
   width: 90%;
@@ -87,7 +89,7 @@ page{
 .text{
   width: 100%;
   text-align: center;
-  line-height: 50rpx;}  
+  line-height: 42rpx;}  
 .img1{
   width:75rpx;
   height:75rpx;
@@ -142,50 +144,50 @@ page{
 /* 车源收藏*/
 .collection{
   width: 80%;
-  height: 60rpx;
+  height: 80rpx;
   border-top: 4rpx solid #999;
   margin-top: 25rpx;}
 .collections{
   width: 80%;
-  height: 60rpx;}
+  height: 80rpx;}
 .house{
   width: 50%;
-  height: 60rpx;
+  height: 80rpx;
   float: left;}
 .houseIcon{
   width: 30%;
-  height: 60rpx;
+  height: 80rpx;
   float: left;
   text-align: center;}
 .houseIcon image{
-  width: 30rpx;
-  height: 30rpx;
-  margin-top: 15rpx;}    
+  width: 35rpx;
+  height: 35rpx;
+  margin-top: 23rpx;}    
 .house .content{
   width: auto;
-  height: 60rpx;
+  height: 80rpx;
   float: left;
-  line-height: 60rpx;
+  line-height: 80rpx;
   color: #FF7952;}  
 
 .history{
   width: 50%;
-  height: 60rpx;
+  height: 80rpx;
   float: left;}      
 .historyIcon{
   width: 30%;
-  height: 60rpx;
+  height: 80rpx;
   float: left;
   text-align: center;}
 .historyIcon image{
-  width: 30rpx;
-  height: 30rpx;
-  margin-top: 15rpx;}    
+  width: 35rpx;
+  height: 35rpx;
+  margin-top: 23rpx;}    
 .history .content{
   width: auto;
-  height: 60rpx;
+  height: 80rpx;
   float: left;
-  line-height: 60rpx;
+  line-height: 80rpx;
   color: #FF7952;} 
 
 /*热门推荐二手车列表页*/   
@@ -193,7 +195,7 @@ page{
   width: 100%;
   height: auto;
   background-color: white;
-  margin-top: 25rpx;
+  margin-top: 20rpx;
 }
 /* 热门推荐 */
 .hot{
@@ -209,7 +211,7 @@ page{
   float: left;
   text-align: center;}
 .hotsIcon image{
-  width: 50%;
+  width: 60%;
   height: 58%;
   margin-top: 16.5rpx;}   
 .hotsContent{

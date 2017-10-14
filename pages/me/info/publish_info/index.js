@@ -11,6 +11,11 @@ Page({
 
     }
   },
+  // form表单
+  formSubmit: function (e) {
+    console.log(e.detail.value);
+  },
+
   //多行文本框
   inputText: function (e) {
     var that = this;
@@ -61,6 +66,12 @@ Page({
   upload: function(){
     wx.navigateTo({
       url: '../photo/index',
+    })
+  },
+  //确认发布
+  release: function(){
+    wx.navigateBack({
+      data: 1
     })
   },
   /**

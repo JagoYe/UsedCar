@@ -18,7 +18,7 @@ page{
   background-color: white;}
 /*地区*/
 .area{
-  width: 20%;
+  width: 10%;
   height: 60rpx;
   float: left;
   overflow: hidden;
@@ -37,7 +37,7 @@ page{
   margin-top: 9rpx;}  
 /*搜索框*/
 .search{
-  width: 64%;
+  width: 74%;
   height: 60rpx;
   float: left;
   box-sizing: border-box;
@@ -124,7 +124,7 @@ page{
 /* 显示隐藏定位块 */
 .position >view:nth-child(1).active1{left: 0;transition: all 0.5s ease-in-out;}
 .position >view:nth-child(2).active3{left: 0;transition: all 0.5s ease-in-out;}
-/*排序选择定位块*/
+/* 排序选择定位块 */
 .sort{
   width: 100%;
   background-color: white;
@@ -132,7 +132,7 @@ page{
   }
 .sort .middle{
   width: 90%;
-  height: auto;}  
+  height: auto;}
 .sort .middle .content{
   width: 100%;
   height: 80rpx;
@@ -157,13 +157,13 @@ page{
 /* 遮罩层 */
 .mask{
   width: 0;
-  height: 1100rpx;
+  height: 88%;
   background-color: black;
   float: left;
   position: absolute;
   opacity: 0.4;
   z-index: 2;
-  top: 72rpx;
+  top: 150rpx;
   /* transition: all 0.5s ease-in-out; */
 }
 .show{

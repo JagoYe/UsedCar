@@ -90,8 +90,8 @@
       </view>
       <view class='right'></view>
     </view>
+    <view class='bottom bg-color' bindtap='release'><text>确认发布</text></view>
   </view>
-  <view class='bottom'><text>确认发布</text></view>
 </view>
 <!-- 弹出块 -->
 <view class='eject {{active}}'>
@@ -101,5 +101,5 @@
   <view class='main1 center'>
     <view class='length center'><text style='color:gray'>{{length}}</text><text>/200</text></view>
   </view>
-  <view class='bottoms' bindtap='confirm'><text>确定</text></view>
+  <view class='bottoms bg-color' bindtap='confirm'><text>确定</text></view>
 </view>

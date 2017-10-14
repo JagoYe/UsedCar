@@ -7,13 +7,13 @@
   </view>
   <!-- 搜索 -->
   <view class='nav center'>
-    <!-- 地址 -->
-    <view class='area'>
-      <text>昆明</text>
-    </view>
     <!-- 地址图标 -->
     <view class='locationIcon'>
       <image src='../../img/2.png'></image>
+    </view>
+    <!-- 地址 -->
+    <view class='area'>
+      <text>昆明</text>
     </view>
     <!-- 搜索框 -->
     <view class='search'>

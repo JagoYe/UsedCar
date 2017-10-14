@@ -1,2 +1,197 @@
-<!--pages/newCar/index/index.wxml-->
-<text>pages/newCar/index/index.wxml</text>
+<!--index.wxml-->
+<!-- 整个页面 -->
+<view class='all'>
+  <!-- 轮播图 -->
+  <view class='carousel'>
+    <image src='../../../img/1.png'></image>
+  </view>
+  <!-- 搜索 -->
+  <view class='nav center'>
+    <!-- 地址图标 -->
+    <view class='locationIcon'>
+      <image src='../../../img/2.png'></image>
+    </view>
+    <!-- 地址 -->
+    <view class='area'>
+      <text>昆明</text>
+    </view>
+    <!-- 搜索框 -->
+    <view class='search'>
+      <input type='text' placeholder='搜索'></input>
+    </view>
+    <!-- 搜索图标 -->
+    <view class='searchIcon'>
+      <image src='../../../img/3.png'></image>
+    </view>
+  </view>
+  <!-- 按条件查询车辆 -->
+  <view class='total center'>
+    <view class='type'>
+      <!-- 品牌分类 -->
+      <view class='block'>
+        <view class='picture'>
+          <image src='../../../img/4.png' class='img1'></image>
+        </view>
+        <view class='text'><text>大众</text></view>
+      </view>
+    </view>
+    <view class='type'>
+      <!-- 品牌分类 -->
+      <view class='block'>
+        <view class='picture'>
+          <image src='../../../img/5.png' class='img2'></image>
+        </view>
+        <view class='text'><text>丰田</text></view>
+      </view>
+    </view>
+    <view class='type'>
+      <!-- 品牌分类 -->
+      <view class='block'>
+        <view class='picture'>
+          <image src='../../../img/6.png' class='img3'></image>
+        </view>
+        <view class='text'><text>本田</text></view>
+      </view>
+    </view>
+    <view class='type'>
+      <!-- 品牌分类 -->
+      <view class='block'>
+        <view class='picture'>
+          <image src='../../../img/7.png' class='img4'></image>
+        </view>
+        <view class='text'><text>奥迪</text></view>
+      </view>
+    </view>
+    <view class='type'>
+      <!-- 品牌分类 -->
+      <view class='block'>
+        <view class='picture'>
+          <image src='../../../img/8.png' class='img5'></image>
+        </view>
+        <view class='text'><text>宝马</text></view>
+      </view>
+    </view>
+    <view class='type'>
+      <!-- 品牌分类 -->
+      <view class='block'>
+        <view class='picture'>
+          <image src='../../../img/9.png' class='img6'></image>
+        </view>
+        <view class='text'><text>奔驰</text></view>
+      </view>
+    </view>
+    <view class='type'>
+      <!-- 品牌分类 -->
+      <view class='block'>
+        <view class='picture'>
+          <image src='../../../img/10.png' class='img7'></image>
+        </view>
+        <view class='text'><text>现代</text></view>
+      </view>
+    </view>
+    <view class='type'>
+      <!-- 品牌分类 -->
+      <view class='block'>
+        <view class='picture'>
+          <image src='../../../img/11.png' class='img8'></image>
+        </view>
+        <view class='text'><text>别克</text></view>
+      </view>
+    </view>
+    <view class='price'>
+      <text>3万以下</text>
+    </view>
+    <view class='price'>
+      <text>3-5万</text>
+    </view>
+    <view class='price'>
+      <text>5-10万</text>
+    </view>
+    <view class='price'>
+      <text>10-15万</text>
+    </view>
+    <view class='price'>
+      <text>15-20万</text>
+    </view>
+    <view class='price'>
+      <text>20-25万</text>
+    </view>
+    <view class='price'>
+      <text>25-30万</text>
+    </view>
+    <view class='price'>
+      <text>30万以上</text>
+    </view>
+  </view>
+  <!-- 查询按钮 -->
+  <view class='query center' bindtap='clickSee'>
+    <button class='bg-color'>查看全部车源</button>
+  </view>
+  <!--收藏-->
+  <view class='collection center'>
+    <view class='collections center'>
+      <view class='house'>
+        <view class='houseIcon'>
+          <image src='../../../img/12.png'></image>
+        </view>
+        <view class='content'><text>车源收藏</text></view>
+      </view>
+      <view class='history'>
+        <view class='historyIcon'>
+          <image src='../../../img/13.png'></image>
+        </view>
+        <view class='content'><text>游览足迹</text></view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 热门推荐二手车列表展示 -->
+<view class='recommend'>
+  <!-- 热门推荐 -->
+  <view class='hot'>
+    <view class='hots center'>
+      <view class='hotsIcon'>
+        <image src='../../../img/14.png'></image>
+      </view>
+      <view class='hotsContent'>热门推荐</view>
+    </view>
+  </view>
+  <!-- 二手车列表页 -->
+  <view class='list'>
+    <view class='listCar center'>
+      <view class='left'>
+        <image src='../../../img/15.png'></image>
+      </view>
+      <view class='right'>
+        <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+        <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
+        <view class='details'><text>24.80万</text></view>
+      </view>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='listCar center'>
+      <view class='left'>
+        <image src='../../../img/15.png'></image>
+      </view>
+      <view class='right'>
+        <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+        <view class='details'><text>昆明/2016年/1.1公里</text></view>
+        <view class='details'><text>24.80万</text></view>
+      </view>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='listCar center'>
+      <view class='left'>
+        <image src='../../../img/15.png'></image>
+      </view>
+      <view class='right'>
+        <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+        <view class='details'><text>昆明/2016年/1.1公里</text></view>
+        <view class='details'><text>24.80万</text></view>
+      </view>
+    </view>
+  </view>
+</view>
