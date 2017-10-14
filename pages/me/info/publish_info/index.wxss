@@ -121,6 +121,11 @@ page{
   bottom: 0px;
   z-index: 4;
 }
+.buttom button{
+  width: 100%;
+  line-height: 85rpx;
+  border-radius: 0px;
+}
 
 
 
