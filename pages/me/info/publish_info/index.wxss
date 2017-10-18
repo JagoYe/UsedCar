@@ -121,10 +121,14 @@ page{
   bottom: 0px;
   z-index: 4;
 }
-.buttom button{
+.affirm{
   width: 100%;
   line-height: 85rpx;
   border-radius: 0px;
+  color: white;
+  font-size: 28rpx;
+  letter-spacing: 4rpx;
+  border-radius: 0;
 }
 
 
@@ -133,24 +137,27 @@ page{
 /*弹出块*/
 .eject{
   width: 100%;
-  height: 0;
+  height: 100%;
   position: absolute;
-  top: 0px;
+  top: -100%;
   background-color: #F9F9F9;
-  z-index: 6;
+  z-index: 10;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
 }
-
 .inputs{
   width: 100%;
   height: auto;
   margin-top: 5%;
   background-color: white;
 }
-.inputs textarea{
+.multilineText{
   width: 90%;
   font-size: 30rpx;
+  height: 0px;
+  margin: 0px auto;
+  padding-top: 30rpx;
+  box-sizing: border-box;
 }
 .bottoms{
   width: 100%;
@@ -174,6 +181,21 @@ page{
 }
 
 /*动作*/
-.active{
-  height: 100%;
+.eject.active{
+  /* height: 100%; */
+  top:0px;
 }
+.height{
+  height: 150px;
+} 
+
+
+/* input{
+  color: black;
+  opacity: 1;
+} */
+
+/* input:disabled, input[disabled]{ 
+-webkit-text-fill-color:black;  
+-webkit-opacity:1;
+}  */

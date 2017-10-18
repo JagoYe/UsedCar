@@ -17,14 +17,14 @@
     <view class='input center' bindtap='clickPop' data-input='title'>
       <view class='left'><text>标题：</text></view>
       <view class='middle'>
-        <input type='text' name='usedTitle' placeholder='请输入标题' value='{{car.title}}'></input>
+        <input type='text' style='color: #000;' name='usedTitle' placeholder='请输入标题' value='{{car.title}}'></input>
       </view>
       <view class='right'><image src='../../../../img/43.png'></image></view>
     </view>
     <view class='input center' bindtap='clickPop' data-input='brand'>
       <view class='left'><text>品牌：</text></view>
       <view class='middle'>
-        <input type='text' name='usedBrand' placeholder='请输入车辆品牌' value='{{car.brand}}'></input>
+        <input type='text' name='usedBrand' placeholder='请输入车辆品牌' value='{{car.brand}}' disabled='disabled'></input>
       </view>
       <view class='right'><image src='../../../../img/43.png'></image></view>
     </view>
@@ -38,7 +38,7 @@
     <view class='input center'>
       <view class='left'><text>排量：</text></view>
       <view class='middle'>
-        <input type='number' name='displacement' placeholder='请输入车辆排量'></input>
+        <input type='text' name='displacement' placeholder='请输入车辆排量'></input>
       </view>
       <view class='right'><text>L</text></view>
     </view>
@@ -66,7 +66,7 @@
     <view class='input center' bindtap='clickPop' data-input="time">
       <view class='left'><text>上牌时间：</text></view>
       <view class='middle'>
-        <input type='text' name='cardTime' placeholder='请输入车辆上牌时间' value='{{car.time}}'></input>
+        <input type='text' name='cardTime' placeholder='请输入车辆上牌时间' disabled='disabled' value='{{car.time}}'></input>
       </view>
       <view class='right'><image src='../../../../img/43.png'></image></view>
     </view>
@@ -92,7 +92,7 @@
       <view class='right'></view>
     </view>
     <view class='bottom' bindtap='release'>
-      <button form-type='submit' class='bg-color'><text>确认发布</text></button>
+      <button form-type='submit' class='affirm bg-color'>确认发布</button> 
     </view>
   </view>
   </form>
@@ -100,7 +100,7 @@
 <!-- 弹出块 -->
 <view class='eject {{active}}'>
   <view class='inputs'>
-  <textarea placeholder="输入内容" maxlength='200' class='center' name='inputText' bindinput='inputText' value='{{values}}'/>
+  <textarea placeholder="输入内容" maxlength='200' class='multilineText {{height}}' name='inputText' bindinput='inputText' value='{{values}}'/>
   </view>
   <view class='main1 center'>
     <view class='length center'><text style='color:gray'>{{length}}</text><text>/200</text></view>

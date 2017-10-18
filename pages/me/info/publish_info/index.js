@@ -7,8 +7,9 @@ Page({
   data: {
     length: '0',
     carHandle: '',
+    disabled: 'disabled',
     car: {
-
+      
     }
   },
   // form表单
@@ -30,6 +31,7 @@ Page({
     var input = e.currentTarget.dataset.input;
     that.setData({
       active:'active',
+      height:'height',
       carHandle: input
     });
   },
@@ -43,22 +45,28 @@ Page({
       car.title = value;
       that.setData({
         active: '',
+        height:'',
         car: car,
-        values:''
+        values:'',
+        disabled:''
       });
     }else if(input == 'brand') {
       car.brand = value;
       that.setData({
         active: '',
+        height: '',
         car: car,
-        values: ''
+        values: '',
+        disabled: ''
       });
     }else if(input == 'time') {
       car.time = value;
       that.setData({
         active: '',
+        height: '',
         car: car,
-        values: ''
+        values: '',
+        disabled: ''
       });
     }
   },
