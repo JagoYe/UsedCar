@@ -5,9 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    condition: '0',
+    bgColor: 'bgColor'
   },
-
+  tabChange: function(e){
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    var condition = that.data.condition;
+    if (index == condition){
+      that.setData({
+        active: 'active',
+        bgColor: 'bgColor',
+        bgColors: '',
+        active1: ''
+      })
+    }else{
+      that.setData({
+        active: 'active1',
+        bgColor: '',
+        bgColors: 'bgColor',
+        active1: 'active'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

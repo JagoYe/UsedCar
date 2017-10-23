@@ -30,7 +30,7 @@
   <view class='total center'>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='大众'>
         <view class='picture'>
           <image src='../../img/4.png' class='img1'></image>
         </view>
@@ -39,7 +39,7 @@
     </view>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='丰田'>
         <view class='picture'>
           <image src='../../img/5.png' class='img2'></image>
         </view>
@@ -48,7 +48,7 @@
     </view>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='本田'>
         <view class='picture'>
           <image src='../../img/6.png' class='img3'></image>
         </view>
@@ -57,7 +57,7 @@
     </view>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='奥迪'>
         <view class='picture'>
           <image src='../../img/7.png' class='img4'></image>
         </view>
@@ -67,7 +67,7 @@
     <view class='type'>
       <!-- 品牌分类 -->
       <view class='block'>
-        <view class='picture'>
+        <view class='picture' bindtap='vehicleQuery' data-brandName='宝马'>
           <image src='../../img/8.png' class='img5'></image>
         </view>
         <view class='text'><text>宝马</text></view>
@@ -75,7 +75,7 @@
     </view>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='奔驰'>
         <view class='picture'>
           <image src='../../img/9.png' class='img6'></image>
         </view>
@@ -85,7 +85,7 @@
     <view class='type'>
       <!-- 品牌分类 -->
       <view class='block'>
-        <view class='picture'>
+        <view class='picture' bindtap='vehicleQuery' data-brandName='现代'>
           <image src='../../img/10.png' class='img7'></image>
         </view>
         <view class='text'><text>现代</text></view>
@@ -93,7 +93,7 @@
     </view>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='别克'>
         <view class='picture'>
           <image src='../../img/11.png' class='img8'></image>
         </view>

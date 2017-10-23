@@ -7,6 +7,7 @@ page{
   /* background: linear-gradient(to top,#6DBAEE,#E16DEE); */
   color: white;
   font-size: 26rpx;
+  background-color: burlywood;
 }
 .all{
   width: 100%;
@@ -103,5 +104,5 @@ page{
   font-size: 26rpx;
   border: solid 4rpx white;
   border-radius: 24rpx;
-  background-color: black;
+  background-color: burlywood;
 }

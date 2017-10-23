@@ -59,10 +59,14 @@ Page({
   confirm: function(e){
     var that = this;
     var city = e.currentTarget.dataset.index;
-    console.log(city);
     that.setData({
       active: '',
       city: city
     })
+  },
+  vehicleQuery: function(e){
+    var that = this;
+    var brandName = e.currentTarget.dataset.brandname
+    console.log(brandName);
   }
 })
