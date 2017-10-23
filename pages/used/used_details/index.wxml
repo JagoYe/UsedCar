@@ -2,14 +2,15 @@
 <!--整个页面-->
 <view class='whole'>
   <view class='all'>
-    <view style='width:100%'>
-      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for="{{imgUrls}}">
+    <view style='width: 100%;position: relative;'>
+      <swiper indicator-dots="{{indicatorDots}}" bindchange='subscript' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:key='' wx:for="{{imgUrls}}">
           <swiper-item>
-            <image src="{{item}}" class="slide-image" style='width:100%'/>
+            <image src="{{item}}" class="slide-image" data-src='{{item}}' bindtap='clickPreview' style='width:100%'/>
           </swiper-item>
         </block>
       </swiper>
+      <view class='subscript'>{{subscript}}/{{length}}</view>
     </view>
     <!-- 汽车描述 -->
     <view class='depict center'>

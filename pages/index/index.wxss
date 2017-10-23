@@ -52,9 +52,10 @@ page{
 .search input{
   width: 100%;
   height: 100%;
-   border: 1rpx solid gray; 
+  border: 1rpx solid gray; 
   border-radius: 12rpx;
   box-sizing: border-box;
+  padding-left: 10rpx;
   /* height: 50rpx;  */
   /* line-height: 50rpx;*/}
 /*搜索图标*/
@@ -66,7 +67,7 @@ page{
 .searchIcon image{
   width: 40rpx;
   height: 40rpx;
-  margin-top: 5rpx;}  
+  margin-top: 8rpx;}  
 /*按条件查询车辆*/
 .total{
   width: 90%;
@@ -247,3 +248,37 @@ page{
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;}
+
+
+
+/* 弹出地区选择块 */
+.position{
+  width: 80%;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  border: 0;
+  z-index: 2;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+.position .city{
+  width: 80%;
+  height: 100%;
+  overflow-y: auto;
+}
+.position .citys{
+  width: 100%;
+  height: 85rpx;
+  background-color: white;
+  border-bottom: 1rpx #A16DEE solid;
+  line-height: 85rpx;
+  box-sizing: border-box;
+  padding-left: 30rpx;
+}
+.position.active{
+  height: 600rpx;
+  border: 2rpx solid #A16DEE;
+}

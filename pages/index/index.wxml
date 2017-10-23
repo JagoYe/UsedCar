@@ -7,13 +7,15 @@
   </view>
   <!-- 搜索 -->
   <view class='nav center'>
-    <!-- 地址图标 -->
-    <view class='locationIcon'>
-      <image src='../../img/2.png'></image>
-    </view>
-    <!-- 地址 -->
-    <view class='area'>
-      <text>昆明</text>
+    <view bindtap='clickCity'>
+      <!-- 地址图标 -->
+      <view class='locationIcon'>
+        <image src='../../img/2.png'></image>
+      </view>
+      <!-- 地址 -->
+      <view class='area'>
+        <text>{{city}}</text>
+      </view>
     </view>
     <!-- 搜索框 -->
     <view class='search'>
@@ -195,3 +197,14 @@
     </view>
   </view>
 </view>
+
+
+<!-- 地址选择块 -->
+<view class='position {{active}}'>
+  <view class='city center'>
+    <block wx:key="" wx:for="{{citys}}" wx:for-item="item" wx:for-index="index">
+      <view class='citys' bindtap='confirm' data-index='{{item.fullname}}'><text>{{item.fullname}}</text></view>
+    </block>  
+  </view>
+</view>
+

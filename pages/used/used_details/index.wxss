@@ -6,6 +6,20 @@ page{
   font-size: 26rpx;
   background-color: #F2F2F2;
 }
+/*页数显示*/
+.subscript{
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #00546C;
+  color: white;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 25rpx;
+  position: absolute;
+  top: 200rpx;
+  right: 1%;
+  border-radius:64rpx; 
+}
 /* 整个页面 */
 .whole{
   width: 100%;
