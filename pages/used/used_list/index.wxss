@@ -1,0 +1,208 @@
+/* pages/used/used_list/index.wxss */
+/*整个页面*/
+page{
+  width: 100%;
+  height: 100%;
+  font-family: 微软雅黑;
+  font-size: 26rpx;}
+/*居中*/
+.center{
+  margin: 0px auto;}  
+.all{
+  width: 100%;
+  height: 100%;}
+/*搜索*/
+.nav{
+  width: 90%;
+  height: 60rpx;
+  background-color: white;}
+/*地区*/
+.area{
+  width: 10%;
+  height: 60rpx;
+  float: left;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  line-height: 60rpx;}
+/*定位图标*/
+.locationIcon{
+  width: 6%;
+  height: 60rpx;
+  float: left;
+  text-align: center;}
+.locationIcon image{
+  width: 26rpx;
+  height: 40rpx;
+  margin-top: 9rpx;}  
+/*搜索框*/
+.search{
+  width: 74%;
+  height: 60rpx;
+  float: left;
+  box-sizing: border-box;
+  border: 1rpx solid gray;
+  border-radius: 12rpx;}
+.search input{
+  width: 100%;
+  height: 100%;
+  line-height: 60rpx;}  
+/*搜索图标*/
+.searchIcon{
+  width: 10%;
+  height: 60rpx;
+  float: left;}
+.searchIcon image{
+  width: 34rpx;
+  height: 38rpx;
+  margin-top: 12rpx;
+  margin-left: 10rpx;} 
+
+/*条件搜索栏目*/   
+.condition{
+  width: 100%;
+  height: 70rpx;
+  background-color: #F2F2F2;
+  margin-top: 20rpx;
+  box-shadow: 0rpx 5rpx 2rpx gray;
+  position: relative;}
+.condition .navs{
+  width: 700rpx;
+  height: 60rpx;
+  margin-top: 6rpx;
+  color: gray;
+  transition: all 0.5s ease-in-out;}
+/* 导航栏左边 */
+.condition .navs .left{
+  width: 230.5rpx;
+  height: 60rpx;
+  float: left;}
+/* 导航栏中间 */
+.condition .navs .middle{
+  width: 230.5rpx;
+  height: 60rpx;
+  border-left: 4rpx solid gainsboro;
+  border-right: 4rpx solid gainsboro;
+  float: left;}
+.condition .navs .right{
+  width: 230.5rpx;
+  height: 60rpx;
+  float: left;}  
+/*具体条件*/
+.conditions{
+  width: 140rpx;
+  text-align: center;
+  line-height: 60rpx;
+  height: 60rpx;
+  float: left;}
+.img{
+  width: 20rpx;
+  height: 20rpx;
+  margin-top: 20rpx;
+  transform: rotate(-90deg);
+  transition: all 0.5s ease-in-out;}
+
+
+
+/* 定位块       */
+.position >view{
+  position: absolute;
+  left: -100%;
+  top: 72rpx;
+  transition: all 0.5s ease-in-out;
+}
+.position >view:nth-child(1){z-index: 3;}
+.position >view:nth-child(2){z-index: 4;}
+/*添加样式*/
+/* 改变颜色 */
+.navs >view:nth-child(1).change1{color: black;}
+.navs >view:nth-child(2).change2{color: black;}
+.navs >view:nth-child(3).change3{color: black;}
+/* 图标旋转 */
+.navs >view:nth-child(1) image.change1{transform: rotate(90deg);}
+.navs >view:nth-child(3) image.change3{transform: rotate(90deg);}
+/* 显示隐藏定位块 */
+.position >view:nth-child(1).active1{left: 0;transition: all 0.5s ease-in-out;}
+.position >view:nth-child(2).active3{left: 0;transition: all 0.5s ease-in-out;}
+/* 排序选择定位块 */
+.sort{
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+  }
+.sort .middle{
+  width: 90%;
+  height: auto;}
+.sort .middle .content{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 2rpx solid gray;}  
+/* 价格区间选择定位块 */
+.price{
+  width: 100%;
+  height: 240rpx;
+  background-color: white;} 
+.price .block{
+  width: 90%;
+  height: auto;
+  background-color: white;}
+  .price .block .entry{width:33.3%; float:left; text-align: center; box-sizing: border-box;}  
+  .price .block .entry view { border:1px solid #D2D2D2; width: 70%;height: 50rpx; line-height: 50rpx; box-sizing: border-box; margin: 0 auto;border-radius: 12rpx; }
+  .price .block .entry-ctn { margin-top: 10px; display: inline-block; width: 100%; }
+  .price .block .entry-ctn .entry:nth-child(1) view{ margin-left: 0; }
+  .price .block .entry-ctn .entry:nth-child(3) view{ margin-right: 0; } 
+
+
+/* 遮罩层 */
+.mask{
+  width: 0;
+  height: 88%;
+  background-color: black;
+  float: left;
+  position: absolute;
+  opacity: 0.4;
+  z-index: 2;
+  top: 150rpx;
+  /* transition: all 0.5s ease-in-out; */
+}
+.show{
+  width: 100%;
+  /* height: 600px; */
+}
+
+
+/*二手车列表*/
+.listPage{
+  width: 100%;
+  height: 1020rpx;
+  overflow-y:auto;} 
+/*二手车列表页*/
+.list{
+  width: 100%;
+  height: 150rpx;
+  margin-top: 25rpx;
+  border-bottom: 2rpx solid gray;} 
+.listCar{
+  width: 90%;
+  height: 125rpx;}
+.listCar .left{
+  width: 30%;
+  height: 125rpx;
+  float: left;}
+.listCar .left image{
+  width: 100%;
+  height: 100%;}          
+.listCar .right{
+  width: 68%;
+  height: 125rpx;
+  margin-left: 2%;
+  float: left;}  
+.listCar .right .details{
+  width: 100%;
+  height: 41rpx;
+  line-height: 41rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;}
+    

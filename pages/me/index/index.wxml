@@ -1,0 +1,28 @@
+<!--pages/me/index/index.wxml-->
+<view class='all'>
+  <view class='header center'>
+    <!-- <image src='../../../img/44.png'></image> -->
+    <view class='head'>
+      <image src='{{userImage}}'></image>
+    </view>
+  </view>
+  <view class='phone center'>18787312252</view>
+  <view class='line center'></view>
+  <view class='slot center'>
+    <view class='left' bindtap='clickCollection'>
+      <view class='img'><image src='../../../img/37.png'></image></view>
+      <view class='text'><text>收藏</text></view>
+    </view>
+    <view class='middle' bindtap='clickNews'>
+      <view class='img'><image src='../../../img/38.png'></image></view>
+      <view class='text'><text>信息</text></view>
+    </view>
+    <view class='right' bindtap='clickHistory'>
+      <view class='img'><image src='../../../img/39.png'></image></view>
+      <view class='text'><text>足迹</text></view>
+    </view>
+  </view>
+</view>
+<view class='but center' bindtap='phoneUpdate'>
+    <button>更换手机号</button>
+</view>

@@ -1,0 +1,201 @@
+/* pages/me/info/publish_info/index.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  font-family: 微软雅黑;
+  font-size: 26rpx;
+}
+/*整个页面*/
+.all{
+  width: 100%;
+  height: auto;
+}
+/*开头*/
+.header{
+  width: 100%;
+  height: 300rpx;
+  position: relative;
+}
+.header image{
+  width: 100%;
+  height: 300rpx;
+}
+.head{
+  width: 150rpx;
+  height: 150rpx;
+  background-color: black;
+  opacity: 0.5;
+  position: absolute;
+  margin: auto;
+  top: 75rpx;
+  left: 0;
+  right: 0;
+  border-radius: 80rpx;
+  z-index: 2;
+}
+.head1{
+  width: 150rpx;
+  height: 150rpx;
+  position: absolute;
+  margin: auto;
+  top: 75rpx;
+  left: 0;
+  right: 0;
+  border-radius: 80rpx;
+  z-index: 3;
+}
+.img{
+  width: 90rpx;
+  height: 75rpx;
+  text-align: center;
+}
+.img image{
+  width: 70rpx;
+  height: 60rpx;
+  margin-top: 15rpx;
+}
+.text{
+  width: 150rpx;
+  height: 50rpx;
+  color: white;
+  line-height: 50rpx;
+  text-align: center;
+}
+/*主题部分*/
+.main{
+  width: 100%;
+  height: 820rpx;
+  overflow-y: auto;
+  margin-top: 40rpx;
+  border-top: solid orange 2rpx;
+}
+/*主体内容输入块*/
+.input{
+  width: 90%;
+  height: 70rpx;
+  margin-top: 20rpx;
+  border-radius:12rpx;
+  border: solid 2rpx gray; 
+}
+.input .left{
+  width: auto;
+  height: 70rpx;
+  float: left;
+  margin-left: 20rpx;
+  line-height: 70rpx;
+  text-align: center;
+}
+.input .middle{
+  width: 60%;
+  height: 70rpx;
+  float: left;
+}
+.input .middle input{
+  width: 100%;
+  height: 100%;
+  line-height: 70rpx;
+}
+.input .right{
+  width: 14%;
+  height: 70rpx;
+  float: right;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+.input .right image{
+  width: 24rpx;
+  height: 24rpx;
+  margin-top: 23rpx;
+}
+/*去人发布*/
+.bottom{
+  width: 100%;
+  height: 85rpx;
+  color: white;
+  line-height: 85rpx;
+  text-align: center;
+  letter-spacing: 3rpx;
+  position: absolute;
+  bottom: 0px;
+  z-index: 4;
+}
+.affirm{
+  width: 100%;
+  line-height: 85rpx;
+  border-radius: 0px;
+  color: white;
+  font-size: 28rpx;
+  letter-spacing: 4rpx;
+  border-radius: 0;
+}
+
+
+
+
+/*弹出块*/
+.eject{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -100%;
+  background-color: #F9F9F9;
+  z-index: 10;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+.inputs{
+  width: 100%;
+  height: auto;
+  margin-top: 5%;
+  background-color: white;
+}
+.multilineText{
+  width: 90%;
+  font-size: 30rpx;
+  height: 0px;
+  margin: 0px auto;
+  padding-top: 30rpx;
+  box-sizing: border-box;
+}
+.bottoms{
+  width: 100%;
+  height: 85rpx;
+  color: white;
+  line-height: 85rpx;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+.main1{
+  width: 100%;
+  height: auto;
+  background-color: white;
+}
+.length{
+  width: 90%;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: right;
+}
+
+/*动作*/
+.eject.active{
+  /* height: 100%; */
+  top:0px;
+}
+.height{
+  height: 150px;
+} 
+
+
+/* input{
+  color: black;
+  opacity: 1;
+} */
+
+/* input:disabled, input[disabled]{ 
+-webkit-text-fill-color:black;  
+-webkit-opacity:1;
+}  */

@@ -1,0 +1,9 @@
+<!--pages/me/info/photo/index.wxml-->
+<view class='all center'>
+  <view class='photo'>
+    <image src='../../../../img/40.png'></image>
+    <view class='delete'>x</view>
+  </view>
+  <view class='add' bindtap='clickUpload'><text>+</text></view>
+</view>
+<view class='bottom'><text>确定</text></view>

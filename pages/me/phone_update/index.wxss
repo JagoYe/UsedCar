@@ -1,0 +1,14 @@
+/* pages/me/phone_update/index.wxss */
+.phone_update{height:auto;width:93.9%;background: #f2f2f2;padding:25rpx;font-size: 32rpx;font-family: "微软雅黑";position: relative;}
+.phone_update input{background: #fff;height:77rpx;line-height: 77rpx;border-radius: 10rpx;padding-left:50rpx;box-shadow: 0px 2px 1px #ddd;}
+.phone_update .check{position: relative;height:100rpx;line-height: 100rpx;padding-top:50rpx;}
+.phone_update .check input{width:60%;display: inline-block;}
+.phone_update .check button{display: inline-block;font-size: 26rpx;color: #fff;position: absolute;right:0;height:77rpx;line-height: 77rpx;width:31%;box-shadow: 0px 2px 1px #777;}
+.phone_update .code{background: #fff;}
+.bottomBox{height:88rpx;font-size:32rpx;width:100%;position: absolute;bottom:0;color: #fff;line-height: 88rpx;text-align: center; box-shadow: 0 -2px 0 #d7d7d7;}
+.model1{width:100%;position:absolute;top:0;bottom:0;left:0;right:0;background:#000;opacity:0.4;z-index: 4;}
+.shows{width: 100%;position: absolute;top:25%;z-index: 10;}
+.show{width:600rpx;height: 250rpx;background: #fff;margin: 0px auto;border-radius: 8px;display: flex;text-align: center;color:#ff8300;display: none;line-height: 250rpx; padding-top:30px;box-shadow: 0px 2px 1px #777;}
+.on{display: block;}
+.show text{display:block;height:30px;line-height: 30px;color:#3ab3ff;}
+.phone_update .mt30{padding-top:0px;}

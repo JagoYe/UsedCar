@@ -3,13 +3,13 @@
 <view class='all'>
   <!-- 轮播图 -->
   <view class='carousel'>
-    <image src='../../img/1.png'></image>
+    <image src='../../../img/1.png'></image>
   </view>
   <!-- 搜索 -->
   <view class='nav center'>
     <!-- 地址图标 -->
     <view class='locationIcon'>
-      <image src='../../img/2.png'></image>
+      <image src='../../../img/2.png'></image>
     </view>
     <!-- 地址 -->
     <view class='area'>
@@ -21,7 +21,7 @@
     </view>
     <!-- 搜索图标 -->
     <view class='searchIcon'>
-      <image src='../../img/3.png'></image>
+      <image src='../../../img/3.png'></image>
     </view>
   </view>
   <!-- 按条件查询车辆 -->
@@ -30,7 +30,7 @@
       <!-- 品牌分类 -->
       <view class='block'>
         <view class='picture'>
-          <image src='../../img/4.png' class='img1'></image>
+          <image src='../../../img/4.png' class='img1'></image>
         </view>
         <view class='text'><text>大众</text></view>
       </view>
@@ -39,7 +39,7 @@
       <!-- 品牌分类 -->
       <view class='block'>
         <view class='picture'>
-          <image src='../../img/5.png' class='img2'></image>
+          <image src='../../../img/5.png' class='img2'></image>
         </view>
         <view class='text'><text>丰田</text></view>
       </view>
@@ -48,7 +48,7 @@
       <!-- 品牌分类 -->
       <view class='block'>
         <view class='picture'>
-          <image src='../../img/6.png' class='img3'></image>
+          <image src='../../../img/6.png' class='img3'></image>
         </view>
         <view class='text'><text>本田</text></view>
       </view>
@@ -57,7 +57,7 @@
       <!-- 品牌分类 -->
       <view class='block'>
         <view class='picture'>
-          <image src='../../img/7.png' class='img4'></image>
+          <image src='../../../img/7.png' class='img4'></image>
         </view>
         <view class='text'><text>奥迪</text></view>
       </view>
@@ -66,7 +66,7 @@
       <!-- 品牌分类 -->
       <view class='block'>
         <view class='picture'>
-          <image src='../../img/8.png' class='img5'></image>
+          <image src='../../../img/8.png' class='img5'></image>
         </view>
         <view class='text'><text>宝马</text></view>
       </view>
@@ -75,7 +75,7 @@
       <!-- 品牌分类 -->
       <view class='block'>
         <view class='picture'>
-          <image src='../../img/9.png' class='img6'></image>
+          <image src='../../../img/9.png' class='img6'></image>
         </view>
         <view class='text'><text>奔驰</text></view>
       </view>
@@ -84,7 +84,7 @@
       <!-- 品牌分类 -->
       <view class='block'>
         <view class='picture'>
-          <image src='../../img/10.png' class='img7'></image>
+          <image src='../../../img/10.png' class='img7'></image>
         </view>
         <view class='text'><text>现代</text></view>
       </view>
@@ -93,7 +93,7 @@
       <!-- 品牌分类 -->
       <view class='block'>
         <view class='picture'>
-          <image src='../../img/11.png' class='img8'></image>
+          <image src='../../../img/11.png' class='img8'></image>
         </view>
         <view class='text'><text>别克</text></view>
       </view>
@@ -132,13 +132,13 @@
     <view class='collections center'>
       <view class='house'>
         <view class='houseIcon'>
-          <image src='../../img/12.png'></image>
+          <image src='../../../img/12.png'></image>
         </view>
         <view class='content'><text>车源收藏</text></view>
       </view>
       <view class='history'>
         <view class='historyIcon'>
-          <image src='../../img/13.png'></image>
+          <image src='../../../img/13.png'></image>
         </view>
         <view class='content'><text>游览足迹</text></view>
       </view>
@@ -152,7 +152,7 @@
   <view class='hot'>
     <view class='hots center'>
       <view class='hotsIcon'>
-        <image src='../../img/14.png'></image>
+        <image src='../../../img/14.png'></image>
       </view>
       <view class='hotsContent'>热门推荐</view>
     </view>
@@ -161,7 +161,7 @@
   <view class='list'>
     <view class='listCar center'>
       <view class='left'>
-        <image src='../../img/15.png'></image>
+        <image src='../../../img/15.png'></image>
       </view>
       <view class='right'>
         <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
@@ -173,7 +173,7 @@
   <view class='list'>
     <view class='listCar center'>
       <view class='left'>
-        <image src='../../img/15.png'></image>
+        <image src='../../../img/15.png'></image>
       </view>
       <view class='right'>
         <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
@@ -185,7 +185,7 @@
   <view class='list'>
     <view class='listCar center'>
       <view class='left'>
-        <image src='../../img/15.png'></image>
+        <image src='../../../img/15.png'></image>
       </view>
       <view class='right'>
         <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>

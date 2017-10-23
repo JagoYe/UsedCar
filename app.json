@@ -1,12 +1,61 @@
 {
   "pages":[
+    "pages/me/info/publish_info/index",
     "pages/index/index",
+    "pages/me/index/index",
+    "pages/used/used_list/index",
+    "pages/used/sort/index",
+    "pages/used/used_details/index",
+    "pages/me/info/photo/index",
+    "pages/me/info/index/index",
+    "pages/me/history/index",
+    "pages/me/collection/index",
+    "pages/find/index/index",
+    "pages/find/find_details/index",
+    "pages/me/phone_update/index",
+    "pages/newCar/new_list/index",
+    "pages/newCar/index/index",
+    "pages/newCar/sort/index",
+    "pages/newCar/new_details/index",
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "云南二手车交易平台",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#AE85F1",
+    "selectedColor": "#AE85F1",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "img/usedCar.png",
+        "selectedIconPath": "img/usedCar2.png",
+        "text": "二手车"
+      },
+      {
+        "pagePath": "pages/newCar/index/index",
+        "iconPath": "img/newCar.png",
+        "selectedIconPath": "img/newCar2.png",
+        "text": "新车"
+      },
+      {
+        "pagePath": "pages/find/index/index",
+        "iconPath": "img/find.png",
+        "selectedIconPath": "img/find2.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/me/index/index",
+        "iconPath": "img/me.png",
+        "selectedIconPath": "img/me2.png",
+        "text": "我的"
+      }
+    ]
   }
 }
