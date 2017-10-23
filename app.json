@@ -1,11 +1,11 @@
 {
   "pages":[
-    "pages/me/info/publish_info/index",
     "pages/index/index",
-    "pages/me/index/index",
     "pages/used/used_list/index",
-    "pages/used/sort/index",
     "pages/used/used_details/index",
+    "pages/me/info/publish_info/index",
+    "pages/me/index/index",
+    "pages/used/sort/index",
     "pages/me/info/photo/index",
     "pages/me/info/index/index",
     "pages/me/history/index",

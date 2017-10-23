@@ -18,13 +18,14 @@ page{
   background-color: white;}
 /*地区*/
 .area{
-  width: 10%;
+  width: 20%;
   height: 60rpx;
   float: left;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
-  line-height: 60rpx;}
+  line-height: 60rpx;
+  text-align: center;}
 /*定位图标*/
 .locationIcon{
   width: 6%;
@@ -32,12 +33,12 @@ page{
   float: left;
   text-align: center;}
 .locationIcon image{
-  width: 26rpx;
+  width: 40rpx;
   height: 40rpx;
-  margin-top: 9rpx;}  
+  margin-top: 10rpx;}  
 /*搜索框*/
 .search{
-  width: 74%;
+  width: 64%;
   height: 60rpx;
   float: left;
   box-sizing: border-box;
@@ -46,7 +47,9 @@ page{
 .search input{
   width: 100%;
   height: 100%;
-  line-height: 60rpx;}  
+  line-height: 60rpx;
+  box-sizing: border-box;
+  padding-left: 10rpx;}  
 /*搜索图标*/
 .searchIcon{
   width: 10%;
@@ -55,7 +58,7 @@ page{
 .searchIcon image{
   width: 34rpx;
   height: 38rpx;
-  margin-top: 12rpx;
+  margin-top: 10rpx;
   margin-left: 10rpx;} 
 
 /*条件搜索栏目*/   
@@ -157,13 +160,13 @@ page{
 /* 遮罩层 */
 .mask{
   width: 0;
-  height: 88%;
+  height: 87.5%;
   background-color: black;
   float: left;
   position: absolute;
   opacity: 0.4;
   z-index: 2;
-  top: 150rpx;
+  top: 12.5%;
   /* transition: all 0.5s ease-in-out; */
 }
 .show{
@@ -205,4 +208,37 @@ page{
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;}
-    
+
+
+
+/* 弹出地区选择块 */
+.positions{
+  width: 80%;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  border: 0;
+  z-index: 2;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+.positions .city{
+  width: 80%;
+  height: 100%;
+  overflow-y: auto;
+}
+.positions .citys{
+  width: 100%;
+  height: 85rpx;
+  background-color: white;
+  border-bottom: 1rpx #A16DEE solid;
+  line-height: 85rpx;
+  box-sizing: border-box;
+  padding-left: 30rpx;
+}
+.positions.active{
+  height: 600rpx;
+  border: 2rpx solid #A16DEE;
+}

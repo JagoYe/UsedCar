@@ -14,7 +14,27 @@ Page({
     autoplay: true,
     interval: 2000,
     duration: 1000,
-    display:false
+    subscript:"1",
+    display:false,
+  },
+  //页数显示
+  subscript: function (e) {
+    var that = this;
+    var current = e.detail.current;
+    var subscript = parseInt(current + 1);
+    that.setData({
+      subscript: subscript
+    })
+  },
+  //点击预览图片
+  clickPreview:function(e){
+    var that = this;
+    var Img = that.data.imgUrls;
+    var current = e.target.dataset.src;  
+    wx.previewImage({
+      current: current, // 当前显示图片的http链接
+      urls: Img // 需要预览的图片http链接列表
+    })
   },
   //显示联系电话块
   phone: function(e){
@@ -44,7 +64,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    var length = that.data.imgUrls.length;
+    that.setData({
+      length: length
+    })
   },
 
   /**

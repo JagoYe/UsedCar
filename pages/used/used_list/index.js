@@ -1,4 +1,6 @@
 // pages/used/used_list/index.js
+var qqmapsdk;
+var QQMapWX = require('../../../libs/qqmap-wx-jssdk.min.js');
 Page({
 
   /**
@@ -9,7 +11,7 @@ Page({
     searchHandle: '0',
   },
   //点击选择品牌
-  clickJump: function(){
+  clickBrand: function(){
     wx.navigateTo({
       url: '../sort/index',
     })
@@ -46,11 +48,41 @@ Page({
       url: '../used_details/index',
     })
   },
+  //点击弹出选择城市
+  clickCity: function () {
+    var that = this;
+    that.setData({
+      active: 'active'
+    })
+  },
+  //点击确认
+  confirm: function (e) {
+    var that = this;
+    var city = e.currentTarget.dataset.index;
+    console.log(city);
+    that.setData({
+      active: '',
+      city: city
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    //调用腾讯地图
+    qqmapsdk = new QQMapWX({
+      key: 'WS7BZ-NDZK4-52HUV-XTWAH-QJPP6-NBFEA',
+    });
+    qqmapsdk.getDistrictByCityId({
+      id: '530000',
+      success: function (res) {
+        var citys = res.result[0];
+        that.setData({
+          citys: citys
+        })
+      },
+    });
   },
 
   /**
