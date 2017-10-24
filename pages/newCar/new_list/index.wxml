@@ -1,2 +1,126 @@
-<!--pages/newCar/new_list/index.wxml-->
-<text>pages/newCar/new_list/index.wxml</text>
+<!--pages/used/used_list/index.wxml-->
+<!-- 整个页面 -->
+<view class='all'>
+  <!-- 搜索 -->
+  <view class='nav center'>
+    <view bindtap='clickCity'>
+      <!-- 地址图标 -->
+      <view class='locationIcon'>
+        <image src='../../../img/2.png'></image>
+      </view>
+      <!-- 地址 -->
+      <view class='area'>
+        <text>{{city}}</text>
+      </view>
+    </view>
+    <!-- 搜索框 -->
+    <view class='search'>
+      <input type='search' placeholder='搜索'></input>
+    </view>
+    <!-- 搜索图标 -->
+    <view class='searchIcon'>
+      <image src='../../../img/3.png'></image>
+    </view>
+  </view>
+  <!-- 条件搜索栏目 -->
+  <view class='condition'>
+    <view style='float:left;width:100%;height:70rpx'>
+      <view class='navs center'>
+        <view class='left {{color}}' bindtap='tabChange' data-active='1' data-display='{{display}}'>
+          <view class='conditions'><text>默认排序</text></view>
+          <image class='img {{color}}' src='../../../img/18.png'></image>
+        </view>
+        <view class='middle {{color}}' bindtap='clickBrand'>
+          <view class='conditions'><text>品牌选择</text></view>
+          <image class='img {{color}}' src='../../../img/18.png'></image>
+        </view>
+        <view class='right {{color}}' data-display='{{display}}' data-active='3' bindtap='tabChange'>
+          <view class='conditions'><text>价格区间</text></view>
+          <image class='img {{color}}' src='../../../img/18.png'></image>
+        </view>
+      </view>
+    </view>
+
+    <!-- 定位块 -->
+    <view class='position'>
+      <!--排序选择块定位-->
+      <view class='sort {{searchStyle}}'>
+        <view class='middle center'>
+          <view class='content'><text>默认排序</text></view>
+          <view class='content'><text>价格最低</text></view>
+          <view class='content'><text>价格最高</text></view>
+          <view class='content'><text>年车最短</text></view>
+          <view class='content'><text>里程最少</text></view>
+          <view class='content'><text>最新发布</text></view>
+        </view>
+      </view>
+      <!-- 价格区间块定位 -->
+      <view class='price {{searchStyle}}'>
+        <view class='block center'>
+            <view class='entry-ctn'>
+              <view class='entry'>
+                <view><text>不限</text></view>
+              </view>
+              <view class='entry'>
+                <view><text>3万以上</text></view>
+              </view>
+              <view class='entry'>
+                <view><text>3-5万</text></view>
+              </view>
+            </view>
+            <view class='entry-ctn'>
+              <view class='entry'>
+                <view><text>5-10万</text></view>
+              </view>
+              <view class='entry'>
+                <view><text>10-15万</text></view>
+              </view>
+              <view class='entry'>
+                <view><text>15-20万</text></view>
+              </view>
+            </view>
+            <view class='entry-ctn'>
+              <view class='entry'>
+                <view><text>20-25万</text></view>
+              </view>
+              <view class='entry'>
+                <view><text>25-30万</text></view>
+              </view>
+              <view class='entry'>
+                <view><text>30万以上</text></view>
+              </view>
+            </view>
+        </view><!--block结束-->
+      </view>
+    </view>
+
+  </view>
+  <!--列表页-->
+  <view class='listPage'>
+    <!-- 二手车列表页 -->
+    <view class='list' bindtap='clickJump'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='../../../img/15.png'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
+          <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
+          <view class='details'><text>24.80万</text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 遮罩层 -->
+    <view class='mask {{show}}'></view>
+</view>
+
+
+<!-- 地址选择块 -->
+<view class='positions {{active}}'>
+  <view class='city center'>
+    <block wx:key="" wx:for="{{citys}}" wx:for-item="item" wx:for-index="index">
+      <view class='citys' bindtap='confirm' data-index='{{item.fullname}}'><text>{{item.fullname}}</text></view>
+    </block>
+  </view>
+</view>

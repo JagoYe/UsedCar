@@ -1,6 +1,7 @@
 // pages/used/used_list/index.js
 var qqmapsdk;
 var QQMapWX = require('../../../libs/qqmap-wx-jssdk.min.js');
+var app = getApp();
 Page({
 
   /**
@@ -9,8 +10,16 @@ Page({
   data: {
     display: false,
     searchHandle: '0',
+    webSite: app.globalData.webSite,
+    area: ['宝马', '丰田', '奥迪','本田']
   },
-  //点击选择品牌
+  //选择品牌
+  bindPickerChange: function (e) {
+    this.setData({
+      areaIndex: e.detail.value
+    })
+  },
+  //点击跳转品牌选择页
   clickBrand: function(){
     wx.navigateTo({
       url: '../sort/index',
@@ -43,26 +52,26 @@ Page({
       });
     }
   },
-  clickJump: function(){
-    wx.navigateTo({
-      url: '../used_details/index',
+  //点击跳转到详情页
+  clickJump: function(e){
+    var that = this;
+    var carDetails = e.currentTarget.dataset.usedcar;
+    wx.setStorage({
+      key: 'used_details',
+      data: carDetails,
+      success: function(res){
+        wx.navigateTo({
+          url: '../used_details/index',
+        })
+      }
     })
   },
-  //点击弹出选择城市
-  clickCity: function () {
+  //点击选择城市
+  clickCity: function (e) {
     var that = this;
     that.setData({
-      active: 'active'
-    })
-  },
-  //点击确认
-  confirm: function (e) {
-    var that = this;
-    var city = e.currentTarget.dataset.index;
-    console.log(city);
-    that.setData({
-      active: '',
-      city: city
+      cityIndex: e.detail.value,
+      city_name: ''
     })
   },
   /**
@@ -77,12 +86,29 @@ Page({
     qqmapsdk.getDistrictByCityId({
       id: '530000',
       success: function (res) {
-        var citys = res.result[0];
+        var citys = [];
+        res.result[0].forEach(function (val, key) {
+          citys.push(val.fullname)
+        })
         that.setData({
           citys: citys
         })
       },
     });
+    //取出上一页的数据缓存
+    wx.getStorage({
+      key: 'usedCar',
+      success: function(res) {
+        res.data.forEach(function(val,key){
+          var imageArr = val.images.split(' | ');
+          res.data[key]['first_image'] = imageArr[0];
+        });
+        that.setData({
+          usedCar: res.data,
+          city_name: res.data[0].city_name
+        })
+      },
+    }) 
   },
 
   /**

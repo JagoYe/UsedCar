@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
-const app = getApp()
+var app = getApp();
+var qqmapsdk;
+var QQMapWX = require('../../../libs/qqmap-wx-jssdk.min.js');
 
 Page({
   data: {
@@ -9,49 +11,62 @@ Page({
   //点击查看全部车源
   clickSee: function () {
     wx.navigateTo({
-      url: '../used/used_list/index',
-    })
-  },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
+      url: '../new_list/index',
     })
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+    var that = this;
+    //调用腾讯地图
+    qqmapsdk = new QQMapWX({
+      key: 'WS7BZ-NDZK4-52HUV-XTWAH-QJPP6-NBFEA',
+    });
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        //2、根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析
+        qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function (addressRes) {
+            var city = addressRes.result.address_component.city;
+            that.setData({
+              city: city
+            })
+          }
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    });
+    qqmapsdk.getDistrictByCityId({
+      id: '530000',
+      success: function (res) {
+        var citys = res.result[0];
+        that.setData({
+          citys: citys
+        })
+      },
+    });
   },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  //点击弹出选择城市
+  clickCity: function () {
+    var that = this;
+    that.setData({
+      active: 'active'
     })
+  },
+  //点击确认
+  confirm: function (e) {
+    var that = this;
+    var city = e.currentTarget.dataset.index;
+    that.setData({
+      active: '',
+      city: city
+    })
+  },
+  vehicleQuery: function (e) {
+    var that = this;
+    var brandName = e.currentTarget.dataset.brandname
+    console.log(brandName);
   }
 })

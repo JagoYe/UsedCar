@@ -191,7 +191,7 @@ page{
   height: 84rpx;
   line-height: 84rpx;
   background-color: white;
-  border-top:solid black 1rpx;
+  border-top:solid #a16dee 1rpx;
   float: left;
   text-align: center;
   letter-spacing: 3rpx;
@@ -200,7 +200,6 @@ page{
   width: 70%;
   height: 85rpx;
   line-height: 85rpx;
-  background-color: black;
   float: left;
   text-align: center;
   color: white;

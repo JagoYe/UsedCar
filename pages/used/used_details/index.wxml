@@ -6,7 +6,7 @@
       <swiper indicator-dots="{{indicatorDots}}" bindchange='subscript' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:key='' wx:for="{{imgUrls}}">
           <swiper-item>
-            <image src="{{item}}" class="slide-image" data-src='{{item}}' bindtap='clickPreview' style='width:100%'/>
+            <image src="{{webSite}}{{item}}" class="slide-image" data-src='{{webSite}}{{item}}' bindtap='clickPreview' style='width:100%'/>
           </swiper-item>
         </block>
       </swiper>
@@ -15,15 +15,15 @@
     <!-- 汽车描述 -->
     <view class='depict center'>
       <view class='upper'>
-        <text>宝马 途观 12款 2.0TSI 手自一体 四驱 尊荣版</text>
+        <text>{{usedDetails.brand_name}} {{usedDetails.style_name}} {{usedDetails.detail}}</text>
       </view>
       <view class='lower'>
-        <text>2012-11上牌丨8.66万公里丨手自一体丨2.0L</text>
+        <text>{{usedDetails.spec}}上牌丨{{usedDetails.mileage}}万公里丨{{usedDetails.detail}}</text>
       </view>
     </view>
-    <!-- 二手车参考价格 -->
+    <!-- 二手车参考价 -->
     <view class='price center'>
-      <view class='left'><text>24.80万</text></view>
+      <view class='left'><text>{{usedDetails.price}}万</text></view>
       <view class='right'>
         <!-- 二手车参考价 -->
         <view class=' reference'>
@@ -48,12 +48,12 @@
       <view class='middle'>
         <view class='subset margin'>
           <view class='img'><image src='../../../img/20.png'></image></view>
-          <view class='text'>8.66万公里</view>
+          <view class='text'>{{usedDetails.mileage}}万公里</view>
           <view class='text'>表现里程</view>
         </view>
         <view class='subset'>
           <view class='img'><image src='../../../img/21.png'></image></view>
-          <view class='text'>2012-11-18</view>
+          <view class='text'>{{usedDetails.spec}}</view>
           <view class='text'>上牌时间</view>
         </view>
         <view class='subset'>
@@ -121,7 +121,7 @@
 <view class='bottom'>
   <view style='width:100%; height:85rpx;position:absolute;top:0px; z-index:4' >
     <view class='source'><text>收藏车源</text></view>
-    <view class='phone' bindtap='phone' data-display='{{display}}'><text>电话咨询</text></view>
+    <view class='phone bg-color' bindtap='phone' data-display='{{display}}'><text>电话咨询</text></view>
   </view>
   <!--定位弹出块-->
   <view class='mobilePhone {{show}}'>

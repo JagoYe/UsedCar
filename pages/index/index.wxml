@@ -5,25 +5,26 @@
   <view class='carousel'>
     <image src='../../img/1.png'></image>
   </view>
+  <view class='usedCar'><text>二手车</text></view>
   <!-- 搜索 -->
   <view class='nav center'>
-    <view bindtap='clickCity'>
+    <picker bindchange="clickCity" value="{{cityIndex}}" range="{{citys}}">
       <!-- 地址图标 -->
       <view class='locationIcon'>
         <image src='../../img/2.png'></image>
       </view>
       <!-- 地址 -->
-      <view class='area'>
-        <text>{{city}}</text>
+      <view class='area'>    
+        <text>{{city}}{{citys[cityIndex]}}</text> 
       </view>
-    </view>
+    </picker>
     <!-- 搜索框 -->
     <view class='search'>
-      <input type='text' placeholder='搜索'></input>
-    </view>
-    <!-- 搜索图标 -->
-    <view class='searchIcon'>
-      <image src='../../img/3.png'></image>
+      <picker bindchange="bindPickerChange" value="{{areaIndex}}" range="{{area}}">  
+        <view class="picker">
+          <text>当前选择 → {{area[areaIndex]}}</text>  
+        </view>  
+      </picker>  
     </view>
   </view>
   <!-- 按条件查询车辆 -->
@@ -100,28 +101,28 @@
         <view class='text'><text>别克</text></view>
       </view>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='0' data-B='3'>
       <text>3万以下</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='3' data-B='5'>
       <text>3-5万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='5' data-B='10'>
       <text>5-10万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='10' data-B='15'>
       <text>10-15万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='15' data-B='20'>
       <text>15-20万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='20' data-B='25'>
       <text>20-25万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='25' data-B='30'>
       <text>25-30万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='30' data-B='100000'>
       <text>30万以上</text>
     </view>
   </view>

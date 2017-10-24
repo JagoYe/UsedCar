@@ -1,5 +1,4 @@
-// pages/find/index/index.js
-var app = getApp();
+// pages/find/carWash_details/index.js
 Page({
 
   /**
@@ -8,12 +7,7 @@ Page({
   data: {
   
   },
-  clickJump: function(e){
-    var carUrl = e.currentTarget.dataset.url;
-    wx.navigateTo({
-      url: carUrl
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

@@ -3,23 +3,23 @@
 <view class='all'>
   <!-- 搜索 -->
   <view class='nav center'>
-    <view bindtap='clickCity'>
+    <picker bindchange="clickCity" value="{{cityIndex}}" range="{{citys}}">
       <!-- 地址图标 -->
       <view class='locationIcon'>
         <image src='../../../img/2.png'></image>
       </view>
       <!-- 地址 -->
       <view class='area'>
-        <text>{{city}}</text>
+        <text>{{city_name}}</text>
       </view>
-    </view>
+    </picker> 
     <!-- 搜索框 -->
     <view class='search'>
-      <input type='search' placeholder='搜索'></input>
-    </view>
-    <!-- 搜索图标 -->
-    <view class='searchIcon'>
-      <image src='../../../img/3.png'></image>
+      <picker bindchange="bindPickerChange" value="{{areaIndex}}" range="{{area}}">  
+        <view class="picker">  
+          <text>当前选择 → {{area[areaIndex]}}</text>  
+        </view>  
+      </picker>  
     </view>
   </view>
   <!-- 条件搜索栏目 -->
@@ -98,29 +98,21 @@
   <!--列表页-->
   <view class='listPage'>
     <!-- 二手车列表页 -->
-    <view class='list' bindtap='clickJump'>
-      <view class='listCar center'>
-        <view class='left'>
-          <image src='../../../img/15.png'></image>
-        </view>
-        <view class='right'>
-          <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
-          <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
-          <view class='details'><text>24.80万</text></view>
+    <block  wx:key="" wx:for="{{usedCar}}" wx:for-item="item">
+      <view class='list' bindtap='clickJump' data-usedcar='{{item}}'>
+        <view class='listCar center'>
+          <view class='left'>
+            <image src='{{webSite}}{{item.first_image}}'></image>
+          </view>
+          <view class='right'>
+            <view class='details'><text>{{item.brand_name}}{{item.style_name}}{{item.detail}}</text></view>
+            <view class='details color-gray'><text>{{item.city_name}}/{{item.spec}}年/{{item.mileage}}万公里</text></view>
+            <view class='details'><text>24.80万</text></view>
+          </view>
         </view>
       </view>
-    </view>
+    </block>
   </view>
   <!-- 遮罩层 -->
     <view class='mask {{show}}'></view>
-</view>
-
-
-<!-- 地址选择块 -->
-<view class='positions {{active}}'>
-  <view class='city center'>
-    <block wx:key="" wx:for="{{citys}}" wx:for-item="item" wx:for-index="index">
-      <view class='citys' bindtap='confirm' data-index='{{item.fullname}}'><text>{{item.fullname}}</text></view>
-    </block>
-  </view>
 </view>

@@ -3,12 +3,12 @@
   <!-- 汽车服务 -->
   <view class='service'>
     <view style='width:90%;margin-left:10%;'>
-      <view class='carWash' bindtap='clickJump'>
+      <view class='carWash' bindtap='clickJump' data-url='../carWash_details/index'>
         <view class='carWashimg'><image src='../../../img/29.png' style='width:40rpx;height:40rpx;margin-top:20rpx;'></image></view>
         <view class='carWashtext'><text>洗车服务</text></view>
         <view class='carWashicon'><image src='../../../img/18.png'></image></view>
       </view>
-      <view class='repair' bindtap='clickJump'>
+      <view class='repair' bindtap='clickJump' data-url='../repair_details/index'>
         <view class='carWashimg'><image src='../../../img/33.png' style='width:36rpx;height:30rpx;margin-top:25rpx;'></image></view>
         <view class='carWashtext'><text>修车服务</text></view>
         <view class='carWashicon'><image src='../../../img/18.png'></image></view>
@@ -18,14 +18,14 @@
   <!-- 汽车保险金融 -->
   <view class='service'>
     <view style='width:90%;margin-left:10%;'>
-      <view class='carWash' bindtap='clickJump'>
+      <view class='carWash' bindtap='clickJump' data-url='../safe_details/index'>
         <view class='carWashimg'><image src='../../../img/34.png' style='width:40rpx;height:40rpx;margin-top:20rpx;'></image></view>
-        <view class='carWashtext'><text>洗车保险</text></view>
+        <view class='carWashtext'><text>汽车保险</text></view>
         <view class='carWashicon'><image src='../../../img/18.png'></image></view>
       </view>
-      <view class='repair' bindtap='clickJump'>
+      <view class='repair' bindtap='clickJump' data-url='../finance_details/index'>
         <view class='carWashimg'><image src='../../../img/35.png' style='width:40rpx;height:40rpx;margin-top:20rpx;'></image></view>
-        <view class='carWashtext'><text>洗车金融</text></view>
+        <view class='carWashtext'><text>汽车金融</text></view>
         <view class='carWashicon'><image src='../../../img/18.png'></image></view>
       </view>
     </view>
@@ -33,7 +33,7 @@
   <!-- 车辆拍卖 -->
   <view class='service'>
     <view style='width:90%;margin-left:10%;'>
-      <view class='carWash' bindtap='clickJump'>
+      <view class='carWash' bindtap='clickJump' data-url='../auction_details/index'>
         <view class='carWashimg'><image src='../../../img/36.png' style='width:40rpx;height:40rpx;margin-top:20rpx;'></image></view>
         <view class='carWashtext'><text>车辆拍卖</text></view>
         <view class='carWashicon'><image src='../../../img/18.png'></image></view>
