@@ -6,14 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // imgUrls: [
-    //   'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-    //   'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-    //   'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-    //   'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-    //   'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-    //   'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'
-    // ],
     webSite: app.globalData.webSite,
     indicatorDots: false,
     autoplay: true,
@@ -37,10 +29,9 @@ Page({
     var Img = that.data.imgUrls;
     var current = e.target.dataset.src;
     Img.forEach(function(val,key){
-      console.log(val)
-    }) 
-    console.log(current); 
-    console.log(Img);
+      val = that.data.webSite + val;
+      Img.push(val)
+    })
     wx.previewImage({
       current: current, // 当前显示图片的http链接
       urls: Img // 需要预览的图片http链接列表
@@ -65,9 +56,9 @@ Page({
     }
   },
   //点击拨打电话
-  clickCall: function(){
+  dialDhone: function(){
     wx.makePhoneCall({
-      phoneNumber: '13987397897', //仅为示例，并非真实的电话号码
+      phoneNumber: '18787312252', //仅为示例，并非真实的电话号码
     })
   },
   /**
@@ -80,11 +71,14 @@ Page({
       key: 'used_details',
       success: function(res) {
         var imgUrls = res.data.images.split(' | ');
+        var archives = res.data.advantage.split('、');
         var length = imgUrls.length;
+        console.log(res.data);
         that.setData({
           length: length,
           usedDetails: res.data,
-          imgUrls: imgUrls
+          imgUrls: imgUrls,
+          archives: archives
         })
       },
     })

@@ -10,7 +10,7 @@
       </view>
       <!-- 地址 -->
       <view class='area'>
-        <text>{{city_name}}</text>
+        <text>{{city_name}}{{citys[cityIndex]}}</text>
       </view>
     </picker> 
     <!-- 搜索框 -->
@@ -19,7 +19,7 @@
         <view class="picker">  
           <text>当前选择 → {{area[areaIndex]}}</text>  
         </view>  
-      </picker>  
+      </picker>
     </view>
   </view>
   <!-- 条件搜索栏目 -->
@@ -46,50 +46,27 @@
       <!--排序选择块定位-->
       <view class='sort {{searchStyle}}'>
         <view class='middle center'>
-          <view class='content'><text>默认排序</text></view>
-          <view class='content'><text>价格最低</text></view>
-          <view class='content'><text>价格最高</text></view>
-          <view class='content'><text>年车最短</text></view>
-          <view class='content'><text>里程最少</text></view>
-          <view class='content'><text>最新发布</text></view>
+          <view class='content' bindtap='sort'><text>默认排序(清除所有选择)</text></view>
+          <view class='content' bindtap='term' data-term='price_up'><text>价格最高</text></view>
+          <view class='content' bindtap='term' data-term='price_down'><text>价格最低</text></view>
+          <view class='content' bindtap='term' data-term='mileage_down'><text>里程最少</text></view>
+          <view class='content' bindtap='term' data-term='buy_time_up'><text>车年最短</text></view>
+          <view class='content' bindtap='term' data-term='publish_time_up'><text>最新发布</text></view>
         </view>
       </view>
       <!-- 价格区间块定位 -->
       <view class='price {{searchStyle}}'>
         <view class='block center'>
-            <view class='entry-ctn'>
-              <view class='entry'>
-                <view><text>不限</text></view>
+            <block wx:key='' wx:for='{{priceArr}}' wx:for-item='item'>
+              <view class='entry-ctn'>
+                <block wx:key='' wx:for='{{item}}' wx:for-item='item1'>
+                  <view class='entry'>
+                    <view wx:if="{{item1.active == 1}}" data-id='{{item1.id}}' data-a='{{item1.price_a}}' data-b='{{item1.price_b}}' bindtap='PriceRange' class='BgColor'><text>{{item1.name}}</text></view>
+                    <view wx:else data-id='{{item1.id}}' data-a='{{item1.price_a}}' data-b='{{item1.price_b}}' bindtap='PriceRange'><text>{{item1.name}}</text></view>
+                  </view>
+                </block>
               </view>
-              <view class='entry'>
-                <view><text>3万以上</text></view>
-              </view>
-              <view class='entry'>
-                <view><text>3-5万</text></view>
-              </view>
-            </view>
-            <view class='entry-ctn'>
-              <view class='entry'>
-                <view><text>5-10万</text></view>
-              </view>
-              <view class='entry'>
-                <view><text>10-15万</text></view>
-              </view>
-              <view class='entry'>
-                <view><text>15-20万</text></view>
-              </view>
-            </view>
-            <view class='entry-ctn'>
-              <view class='entry'>
-                <view><text>20-25万</text></view>
-              </view>
-              <view class='entry'>
-                <view><text>25-30万</text></view>
-              </view>
-              <view class='entry'>
-                <view><text>30万以上</text></view>
-              </view>
-            </view>
+            </block>
         </view><!--block结束-->
       </view>
     </view>
@@ -99,20 +76,20 @@
   <view class='listPage'>
     <!-- 二手车列表页 -->
     <block  wx:key="" wx:for="{{usedCar}}" wx:for-item="item">
-      <view class='list' bindtap='clickJump' data-usedcar='{{item}}'>
+      <view class='list' bindtap='clickJump' data-id='{{item.id}}' data-item='{{item}}'>
         <view class='listCar center'>
           <view class='left'>
             <image src='{{webSite}}{{item.first_image}}'></image>
           </view>
           <view class='right'>
             <view class='details'><text>{{item.brand_name}}{{item.style_name}}{{item.detail}}</text></view>
-            <view class='details color-gray'><text>{{item.city_name}}/{{item.spec}}年/{{item.mileage}}万公里</text></view>
-            <view class='details'><text>24.80万</text></view>
+            <view class='details color-gray'><text>{{item.city_name}}/{{item.publish_time}}/{{item.mileage}}万公里</text></view>
+            <view class='details'><text>{{item.price}}万</text></view>
           </view>
         </view>
       </view>
     </block>
   </view>
   <!-- 遮罩层 -->
-    <view class='mask {{show}}'></view>
+  <view class='mask {{show}}'></view>
 </view>

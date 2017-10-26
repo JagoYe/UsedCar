@@ -56,7 +56,7 @@ page{
   margin-top: 10rpx;
 }
 .left{
-  width: 29%;
+  width: 20%;
   height: 60rpx;
   margin-top: 15rpx;
   font-size: 50rpx;
@@ -68,19 +68,9 @@ page{
   width: 70%;
   height: 100%;
   float: left;
-}
-/*参考价格*/
-.reference{
-  width: 95%;
-  line-height: 45rpx;
-  margin-left: 5%;
-  height: 45rpx;
-}
-.total{
-  width: 95%;
-  line-height: 45rpx;
-  margin-left: 5%;
-  height: 45rpx;
+  line-height: 90rpx;
+  box-sizing: border-box;
+  padding-left: 30rpx;
 }
 /*车辆档案*/
 .archives{
@@ -118,7 +108,7 @@ page{
   height: auto;
   margin-left: 13%;
   background-color: white;
-  padding-bottom: 90rpx;
+  padding-bottom: 50rpx;
 }
 .middle{
   width: 100%;
@@ -226,14 +216,13 @@ page{
   height: 85rpx;
   text-align: center;
   line-height: 85rpx;
-} 
+}
 .gradient{
   height: 1rpx;
   width: 80%;
   background-color: white;
   background: linear-gradient(to right,white,gray,white);
 }
-
 .show{
   top:-168rpx;
 }

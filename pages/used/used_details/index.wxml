@@ -18,21 +18,14 @@
         <text>{{usedDetails.brand_name}} {{usedDetails.style_name}} {{usedDetails.detail}}</text>
       </view>
       <view class='lower'>
-        <text>{{usedDetails.spec}}上牌丨{{usedDetails.mileage}}万公里丨{{usedDetails.detail}}</text>
+        <text>{{usedDetails.buy_time}}上牌丨{{usedDetails.mileage}}万公里丨{{usedDetails.detail}}</text>
       </view>
     </view>
     <!-- 二手车参考价 -->
     <view class='price center'>
       <view class='left'><text>{{usedDetails.price}}万</text></view>
       <view class='right'>
-        <!-- 二手车参考价 -->
-        <view class=' reference'>
-          <text>参考估价：22.45-26.32万</text>
-        </view>
-        <!-- 二手车总价 -->
-        <view class='total'>
-          <text>新车总价：48.86万</text>
-        </view>
+        <text>新车总价：{{usedDetails.cost_price}}万</text>
       </view>
     </view>
   </view>
@@ -53,7 +46,7 @@
         </view>
         <view class='subset'>
           <view class='img'><image src='../../../img/21.png'></image></view>
-          <view class='text'>{{usedDetails.spec}}</view>
+          <view class='text'>{{usedDetails.buy_time}}</view>
           <view class='text'>上牌时间</view>
         </view>
         <view class='subset'>
@@ -65,19 +58,19 @@
       <!-- 上架时间 -->
       <view class='time'>
         <view class='times'><text>上架时间</text></view>
-        <view class='date'><text>今天</text></view>
+        <view class='date'><text>{{usedDetails.publish_time}}</text></view>
       </view>
       <view class='time'>
         <view class='times'><text>车辆颜色</text></view>
-        <view class='date'><text>宝蓝</text></view>
+        <view class='date'><text>{{usedDetails.color}}</text></view>
       </view>
       <view class='time'>
         <view class='times'><text>保养情况</text></view>
-        <view class='date'><text>4s店非定期</text></view>
+        <view class='date'><text>{{usedDetails.situation}}</text></view>
       </view>
       <view class='time'>
         <view class='times'><text>生产厂商</text></view>
-        <view class='date'><text>花城宝马</text></view>
+        <view class='date'><text>{{usedDetails.factory}}</text></view>
       </view>
     </view>
   </view>
@@ -91,9 +84,9 @@
     </view>
     <view class='detailsCar'>
       <!-- 无钥匙启动块 -->
-      <view class='key'><text>无钥匙启动</text></view>
-      <view class='key'><text>胎压监测系统</text></view>
-      <view class='key'><text>发动机启动停技术</text></view>
+      <block wx:key='' wx:for="{{archives}}" wx:for-item='item'>
+        <view class='key'><text>{{item}}</text></view>
+      </block>
     </view>
   </view>
   <!-- 购车流程 -->
@@ -104,7 +97,7 @@
         <view class='archivesText'><text>购车流程</text></view>
       </view>
     </view>
-    <view class='detailsCar'>
+    <view class='detailsCar' style='padding-bottom:90rpx'>
       <!-- 电话咨询块 -->
       <view class='key'><text>1. 7*24小时专业电话咨询服务</text></view>
       <view class='key'><text>2. 预约专业顾问实地看车</text></view>
@@ -127,6 +120,6 @@
   <view class='mobilePhone {{show}}'>
     <view class='phones center'><text>400-813-0755</text></view>
     <view style='width:100%;background:white'><view class='gradient center'></view></view>
-    <view class='call center' bindtap='clickCall'><text>呼叫</text></view>
+    <view class='call center' bindtap='dialDhone'><text>呼叫</text></view>
   </view>
 </view> 
