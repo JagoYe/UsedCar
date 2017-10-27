@@ -1,27 +1,20 @@
 <!--pages/used/sort/index.wxml-->
-<view class='all'>
-  <view class='main1'>
-    <view class='limit center'><text>不限</text></view>
-  </view>
-  <view class='main2'>
-    <view style='width:100%; background-color: #F5F5F5;'><view class='letter center'><text>A</text></view></view>
-    <view class='brand center'><text>宝马</text></view>
-    <view class='brand center'><text>阿尔法·罗密欧</text></view>
-    <view class='brand center'><text>阿斯顿·马丁</text></view>
-    <view class='brand center'><text>奥迪</text></view>
-  </view>
-  <view class='choice'>
-    <view class='word'><text>#</text></view>
-    <view class='word'><text>A</text></view>
-    <view class='word'><text>B</text></view>
-    <view class='word'><text>C</text></view>
-    <view class='word'><text>D</text></view>
-    <view class='word'><text>F</text></view>
-    <view class='word'><text>E</text></view>
-    <view class='word'><text>G</text></view>
-    <view class='word'><text>H</text></view>
-    <view class='word'><text>I</text></view>
-    <view class='word'><text>J</text></view>
-    <view class='word'><text>K</text></view>
-  </view>
+<scroll-view scroll-y style="height: 100%;" scroll-into-view="{{toView}}">
+  <block wx:key="" wx:for="{{brand}}" wx:for-item="item">
+    <view class='scroll-view-item' id='{{item.initial}}'>
+      <view style='width:100%; background-color: #F5F5F5;'>
+        <view class='letter center'>
+          <text>{{item.initial}}</text>
+        </view>
+      </view>
+      <block wx:key='' wx:for='{{item.name}}' wx:for-item='item1'>
+        <view class='brand center' data-brand_name='{{item1}}' bindtap='BrandChoice'><text>{{item1}}</text></view>
+      </block>
+    </view>  
+  </block>
+</scroll-view>
+<view class='choice'>
+  <block wx:key='' wx:for='{{letterArr}}' wx:for-item='item'>
+    <view class='word' bindtap='cliclLetter' data-letter='{{item}}'><text>{{item}}</text></view>
+  </block>
 </view>

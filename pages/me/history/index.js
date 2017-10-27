@@ -1,4 +1,5 @@
 // pages/me/history/index.js
+var app =getApp();
 Page({
 
   /**
@@ -12,7 +13,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.webSite + '/Home/Wechat/footprintSelectByPhone',
+      data: {
+        user_phone: '18787312252',
+      },
+      success: function(res){
+        that.setData({
+          footprintCar: res.data.data
+        })
+      }
+    })  
   },
 
   /**

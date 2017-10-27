@@ -56,7 +56,7 @@ Page({
     }
   },
   //点击拨打电话
-  dialDhone: function(){
+  dialDhone: function(e){
     wx.makePhoneCall({
       phoneNumber: '18787312252', //仅为示例，并非真实的电话号码
     })

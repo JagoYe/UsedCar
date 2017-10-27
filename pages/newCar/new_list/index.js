@@ -93,7 +93,7 @@ Page({
       },
       url: app.globalData.webSite + '/Home/Wechat/carSelectByCityAndBrand',
       data: {
-        category: '2',
+        category: '1',
         city_name: city_name,
         brand_name: brand_name
       },
@@ -167,7 +167,7 @@ Page({
           data: res.data.data[0],
           success: function (res1) {
             wx.navigateTo({
-              url: '../used_details/index',
+              url: '../new_details/index',
             })
           }
         })
@@ -307,7 +307,7 @@ Page({
       },
       url: app.globalData.webSite + '/Home/Wechat/carSelectByPriceVarious',
       data: {
-        category: '2',
+        category: '1',
         city_name: city_name,
         price_a: '0',
         price_b: '100000',
@@ -349,7 +349,7 @@ Page({
       var city_name = that.data.city_name
     }
     var requestCondition = {
-      category: '2',
+      category: '1',
       city_name: city_name,
       price_a: price_a,
       price_b: price_b,
@@ -413,7 +413,7 @@ Page({
             },
             url: app.globalData.webSite + '/Home/Wechat/carSelectByPrice',
             data: {
-              category: '2',
+              category: '1',
               city_name: city_name,
               price_a: price_a,
               price_b: price_b

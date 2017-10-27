@@ -32,7 +32,7 @@ Page({
               },
               url: app.globalData.webSite + '/Home/Wechat/carSelectByCityAndBrand',
               data: {
-                category: '2',
+                category: '1',
                 city_name: city_name,
                 brand_name: brand_name
               },
@@ -42,7 +42,7 @@ Page({
                   data: res.data.data,
                   success: function (car) {
                     wx.navigateTo({
-                      url: '../used/used_list/index',
+                      url: '../new_list/index',
                     })
                   }
                 })
@@ -77,7 +77,7 @@ Page({
           },
           url: app.globalData.webSite + '/Home/Wechat/carSelectByPriceVarious',
           data: {
-            category: '2',
+            category: '1',
             city_name: city_name,
             price_a: price_a,
             price_b: price_b,
@@ -89,7 +89,7 @@ Page({
               data: res.data.data,
               success: function (car) {
                 wx.navigateTo({
-                  url: '../used/used_list/index',
+                  url: '../new_list/index',
                 })
               }
             })
@@ -180,7 +180,7 @@ Page({
           },
           url: app.globalData.webSite + '/Home/Wechat/carSelectByCityAndBrand',
           data: {
-            category: '2',
+            category: '1',
             city_name: city_name,
             brand_name: brand_name
           },
@@ -190,7 +190,7 @@ Page({
               data: res.data.data,
               success: function (car) {
                 wx.navigateTo({
-                  url: '../used/used_list/index',
+                  url: '../new_list/index',
                 })
               }
             })
@@ -224,7 +224,7 @@ Page({
               },
               url: app.globalData.webSite + '/Home/Wechat/carSelectByPrice',
               data: {
-                category: '2',
+                category: '1',
                 city_name: city_name,
                 price_a: price_a,
                 price_b: price_b
@@ -235,7 +235,7 @@ Page({
                   data: res.data.data,
                   success: function (car) {
                     wx.navigateTo({
-                      url: '../used/used_list/index',
+                      url: '../new_list/index',
                     })
                   }
                 })
@@ -244,6 +244,20 @@ Page({
           }
         })
       }
+    })
+  },
+  //收藏车源
+  Collection: function () {
+    var that = this;
+    wx.navigateTo({
+      url: '../../me/collection/index',
+    })
+  },
+  //浏览足迹
+  footprint: function () {
+    var that = this;
+    wx.navigateTo({
+      url: '../../me/history/index',
     })
   }
 })

@@ -1,4 +1,5 @@
 // pages/me/collection/index.js
+var app = getApp();
 Page({
 
   /**
@@ -32,7 +33,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.webSite + '/Home/Wechat/collectionSelectByPhone',
+      data: {
+        user_phone: '18787312252',
+      },
+      success: function(res){
+        var usedCar = [];
+        var newCar = [];
+        res.data.data.forEach(function(val,key){
+          if(val.category == '2'){
+            usedCar.push(val);
+          }else{
+            newCar.push(val)
+          }
+        });
+        that.setData({
+          newCar: newCar,
+          usedCar: usedCar
+        });
+      }
+    });
   },
 
   /**

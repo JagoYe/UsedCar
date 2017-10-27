@@ -137,13 +137,13 @@
         <view class='houseIcon'>
           <image src='../../img/12.png'></image>
         </view>
-        <view class='content'><text>车源收藏</text></view>
+        <view class='content' bindtap='Collection'><text>车源收藏</text></view>
       </view>
       <view class='history'>
         <view class='historyIcon'>
           <image src='../../img/13.png'></image>
         </view>
-        <view class='content'><text>游览足迹</text></view>
+        <view class='content' bindtap='footprint'><text>游览足迹</text></view>
       </view>
     </view>
   </view>

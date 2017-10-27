@@ -245,5 +245,19 @@ Page({
         })
       }
     })
+  },
+  //收藏车源
+  Collection: function(){
+    var that = this;
+    wx.navigateTo({
+      url: '../me/collection/index',
+    })
+  },
+  //浏览足迹
+  footprint: function(){
+    var that = this;
+    wx.navigateTo({
+      url: '../me/history/index',
+    })
   }
 })
