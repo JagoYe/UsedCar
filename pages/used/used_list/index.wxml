@@ -82,8 +82,8 @@
             <image src='{{webSite}}{{item.first_image}}'></image>
           </view>
           <view class='right'>
-            <view class='details'><text>{{item.brand_name}}{{item.style_name}}{{item.detail}}</text></view>
-            <view class='details color-gray'><text>{{item.city_name}}/{{item.publish_time}}/{{item.mileage}}万公里</text></view>
+            <view class='details'><text>{{item.brand_name}} {{item.style_name}} {{item.output}} {{item.detail}}</text></view>
+            <view class='details color-gray'><text>{{item.city_name}}/{{item.buy_year}}年{{item.buy_month}}月/{{item.mileage}}万公里</text></view>
             <view class='details'><text>{{item.price}}万</text></view>
           </view>
         </view>

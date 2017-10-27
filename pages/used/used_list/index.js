@@ -101,6 +101,10 @@ Page({
         res.data.data.forEach(function (val, key) {
           var imageArr = val.images.split(' | ');
           res.data.data[key]['first_image'] = imageArr[0];
+          var buy_year = val.buy_time.substring(0, 4);
+          var buy_month = val.buy_time.substring(4, 6);
+          res.data.data[key]['buy_year'] = buy_year;
+          res.data.data[key]['buy_month'] = buy_month;
         });
         that.setData({
           brand_name: brand_name,
@@ -257,10 +261,14 @@ Page({
       success: function(res) {
         res.data.forEach(function(val,key){
           var imageArr = val.images.split(' | ');
+          var buy_year = val.buy_time.substring(0,4);
+          var buy_month = val.buy_time.substring(4,6);
+          res.data[key]['buy_year'] = buy_year;
+          res.data[key]['buy_month'] = buy_month;
           res.data[key]['first_image'] = imageArr[0];
         });
         that.setData({
-          usedCar: res.data,
+          usedCar: res.data
         })
       },
     });
@@ -309,6 +317,10 @@ Page({
         res.data.data.forEach(function (val, key) {
           var imageArr = val.images.split(' | ');
           res.data.data[key]['first_image'] = imageArr[0];
+          var buy_year = val.buy_time.substring(0, 4);
+          var buy_month = val.buy_time.substring(4, 6);
+          res.data.data[key]['buy_year'] = buy_year;
+          res.data.data[key]['buy_month'] = buy_month;
         });
         that.setData({
           usedCar: res.data.data,
@@ -357,6 +369,10 @@ Page({
         res.data.data.forEach(function (val, key) {
           var imageArr = val.images.split(' | ');
           res.data.data[key]['first_image'] = imageArr[0];
+          var buy_year = val.buy_time.substring(0, 4);
+          var buy_month = val.buy_time.substring(4, 6);
+          res.data.data[key]['buy_year'] = buy_year;
+          res.data.data[key]['buy_month'] = buy_month;
         });
         that.setData({
           usedCar: res.data.data,
@@ -406,6 +422,10 @@ Page({
               res.data.data.forEach(function (val, key) {
                 var imageArr = val.images.split(' | ');
                 res.data.data[key]['first_image'] = imageArr[0];
+                var buy_year = val.buy_time.substring(0, 4);
+                var buy_month = val.buy_time.substring(4, 6);
+                res.data.data[key]['buy_year'] = buy_year;
+                res.data.data[key]['buy_month'] = buy_month;
               });
               that.setData({
                 price_a: price_a,

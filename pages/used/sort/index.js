@@ -8,6 +8,8 @@ Page({
   data: {
     letterArr: ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
     webSite: app.globalData.webSite,
+    toView: 'F',
+    scrollTop: '',
   },
 
   /**
@@ -52,12 +54,8 @@ Page({
           }
           brandHandle = 0;
         });
-
         brandObj.splice(0,1);
-
-        console.log('-----------');
         console.log(brandObj);
-
         that.setData({
           brand: brandObj
         })
@@ -109,6 +107,14 @@ Page({
     var that = this;
     var letter = e.currentTarget.dataset.letter
     console.log(letter);
+    that.data.brand.forEach(function(val,key){
+      if (letter == val.initial){
+        console.log('进入');
+        that.setData({
+          toView: letter
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
