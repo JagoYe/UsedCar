@@ -4,6 +4,7 @@
     <view class='usedCar {{bgColor}}' data-index='0' bindtap='tabChange'><text>二手车收藏</text></view>
     <view class='newCar {{bgColors}}' data-index='1' bindtap='tabChange'><text>新车收藏</text></view>
   </view>
+  <view style='width:100%;height:82rpx'></view>
   <!-- 二手车收藏页 -->
   <block wx:key='' wx:for='{{usedCar}}' wx:for-item='item'>
     <view class='list active {{active}}'>
@@ -13,11 +14,12 @@
             <image src='../../../img/15.png'></image>
           </view>
           <view class='right'>
-            <view class='details'><text>宝马H6</text></view>
+            <view class='details'><text>{{item.brand_name}}</text></view>
             <view class='details color-gray'><text>新车总价：{{item.cost_price}}万</text></view>
             <view class='details'><text>{{item.price}}万</text></view>
           </view>
-          <view class='heart'><image src='../../../img/47.png'></image></view>
+          <view wx:if="{{item.state == 1}}" class='heart' bindtap='deleteUsedCar' data-id='{{item.id}}'><image src='../../../img/32.png'></image></view>
+          <view wx:else class='heart' bindtap='deleteUsedCar' data-id='{{item.id}}'><image src='../../../img/47.png'></image></view>
         </view>
       </view> 
     </view>
@@ -31,11 +33,12 @@
             <image src='../../../img/15.png'></image>
           </view>
           <view class='right'>
-            <view class='details'><text>宝马H6</text></view>
-            <view class='details color-gray'><text>新车总价：{{item.cost_price}}</text></view>
+            <view class='details'><text>{{item.brand_name}}</text></view>
+            <view class='details color-gray'><text>新车总价：{{item.cost_price}}万</text></view>
             <view class='details'><text>{{item.price}}万</text></view>
           </view>
-          <view class='heart'><image src='../../../img/47.png'></image></view>
+          <view wx:if="{{item.state == '1'}}" class='heart' bindtap='deleteNewCar' data-id='{{item.id}}'><image class='one {{one2}}' src='../../../img/32.png'></image></view>
+          <view wx:else class='heart' bindtap='deleteNewCar' data-id='{{item.id}}'><image class='one {{one2}}' src='../../../img/47.png'></image></view>
         </view>
       </view> 
     </view>

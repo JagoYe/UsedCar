@@ -16,6 +16,9 @@ page{
   height: 80rpx;
   border-top: solid gray 1rpx;
   border-bottom: solid gray 1rpx;
+  position: fixed;
+  top: 0;
+  background-color: white;
 }
 .usedCar{
   width: 50%;
