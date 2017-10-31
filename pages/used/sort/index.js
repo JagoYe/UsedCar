@@ -39,7 +39,6 @@ Page({
           
           brandObj.forEach(function(val2, key2) {
             if (val2.initial == handleObj.initial) {
-              // console.log('相等');
               brandHandle++;
             }
           });
@@ -55,7 +54,6 @@ Page({
           brandHandle = 0;
         });
         brandObj.splice(0,1);
-        console.log(brandObj);
         that.setData({
           brand: brandObj
         })
@@ -90,9 +88,12 @@ Page({
                   key: 'usedCar',
                   data: usedCar.data,
                   success: function (car) {
-                    wx.navigateTo({
-                      url: '../used_list/index',
+                    wx.navigateBack({
+                      delta: 1
                     })
+                    // wx.navigateTo({
+                    //   url: '../used_list/index',
+                    // })
                   }
                 })
               },
@@ -106,10 +107,8 @@ Page({
   cliclLetter: function(e){
     var that = this;
     var letter = e.currentTarget.dataset.letter
-    console.log(letter);
     that.data.brand.forEach(function(val,key){
       if (letter == val.initial){
-        console.log('进入');
         that.setData({
           toView: letter
         })

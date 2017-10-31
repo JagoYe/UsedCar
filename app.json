@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/login/index",
     "pages/used/used_list/index",
     "pages/used/used_details/index",
     "pages/me/info/publish_info/index",

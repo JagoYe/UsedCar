@@ -162,6 +162,9 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carSelectById',
       data: { car_id},
       success: function(res){
+        res.data.data.forEach(function(val,key){
+          res.data.data[key]['active'] = '1'
+        })
         wx.setStorage({
           key: 'used_details',
           data: res.data.data[0],
@@ -173,16 +176,6 @@ Page({
         })
       }
     })
-    // wx.setStorage({
-    //   key: 'used_details',
-    //   data: carDetails,
-    //   success: function(res){
-    //     console.log(res);
-    //     // wx.navigateTo({
-    //     //   url: '../used_details/index',
-    //     // })
-    //   }
-    // })
   },
   //点击选择城市
   clickCity: function (e) {
@@ -195,7 +188,7 @@ Page({
             key: 'cityName',
             data: res.data,
             success: function(cityName){
-
+              
             }
           })
       },

@@ -109,17 +109,26 @@
   </view>
   <!-- 遮罩层 -->
   <view class='mask {{masks}}'></view>
-</view>   
-<!-- 底部 -->
-<view class='bottom'>
-  <view style='width:100%; height:85rpx;position:absolute;top:0px; z-index:4' >
-    <view class='source' bindtap='Collection'><text>收藏车源</text></view>
-    <view class='phone bg-color' bindtap='phone' data-display='{{display}}'><text>电话咨询</text></view>
+  <!-- 收藏弹出提示块 -->
+  <view class='confirm {{reveal}}'>
+    <view class='success'>
+      <text>{{success}}</text>
+    </view>
+    <view class='jump'>
+      <text>将在 {{num}} 秒后自动关闭</text>
+    </view>
   </view>
-  <!--定位弹出块-->
-  <view class='mobilePhone {{show}}'>
-    <view class='phones center'><text>400-813-0755</text></view>
-    <view style='width:100%;background:white'><view class='gradient center'></view></view>
-    <view class='call center' bindtap='dialDhone'><text>呼叫</text></view>
+  <!-- 底部 -->
+  <view class='bottom'>
+    <view style='width:100%; height:85rpx;position:absolute;top:0px; z-index:4' >
+      <view class='source' bindtap='Collection'><text>{{collections}}</text></view>
+      <view class='phone bg-color' bindtap='phone' data-display='{{display}}'><text>电话咨询</text></view>
+    </view>
+    <!--定位弹出块-->
+    <view class='mobilePhone {{show}}'>
+      <view class='phones center'><text>400-813-0755</text></view>
+      <view style='width:100%;background:white'><view class='gradient center'></view></view>
+      <view class='call center' bindtap='dialDhone'><text>呼叫</text></view>
+    </view>
   </view>
-</view> 
+</view>    

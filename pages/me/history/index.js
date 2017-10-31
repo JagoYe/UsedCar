@@ -24,6 +24,7 @@ Page({
         user_phone: '18787312252',
       },
       success: function(res){
+        console.log(res);
         that.setData({
           footprintCar: res.data.data
         })

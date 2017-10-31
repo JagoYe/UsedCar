@@ -95,6 +95,7 @@ Page({
         user_phone: '18787312252',
       },
       success: function(res){
+        console.log(res);
         var usedCar = [];
         var newCar = [];
         res.data.data.forEach(function(val,key){
@@ -126,10 +127,10 @@ Page({
         car_id: car_id
       },
       success: function (res) {
-        that.data.usedCar.forEach(function (val, key) {
-          console.log(val);
-          that.data.usedCar[key].state = '0';
-        });
+        // that.data.usedCar.forEach(function (val, key) {
+        //   console.log(val);
+        //   that.data.usedCar[key].state = '0';
+        // });
         that.data.usedCar.forEach(function (val, key) {
           if (val.id == car_id) {
             that.data.usedCar[key].state = '1';

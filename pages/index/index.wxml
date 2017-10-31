@@ -14,7 +14,7 @@
         <image src='../../img/2.png'></image>
       </view>
       <!-- 地址 -->
-      <view class='area'>    
+      <view class='area'>
         <text>{{city}}{{citys[cityIndex]}}</text> 
       </view>
     </picker>

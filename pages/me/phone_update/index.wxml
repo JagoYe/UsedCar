@@ -1,6 +1,6 @@
 <!--pages/me/phone_update/index.wxml-->
 <view class="phone_update">
-  <view  class="check">
+   <view  class="check">
     <input type="number" placeholder="输入新的手机号" name='mobile' bindinput='mobileInput'/>
     <button class='bg-color' hidden='{{flag}}'>重新发送({{seconds}}s)</button> 
     <button class='bg-color' bindtap='prove' hidden='{{hid}}'>发送验证码</button>
@@ -9,7 +9,7 @@
     <input type="number" placeholder="数字验证" name='numCheck' bindinput='numCheckInput'/>
     <button class='bg-color' bindtap='prove'>{{check_code}}</button>
   </view>
-  <input type="number" placeholder="输入验证码" class="code" name='getValidation' bindinput='getValidation' />     
+  <input type="number" placeholder="输入验证码" class="code" name='getValidation' bindinput='getValidation' />      
 </view><!--phone_update-->
 <view class="bottomBox bg-color" bindtap="confirm"><text>确认更换</text></view>
 <view class="{{className}}" style="width:'{{winWidth}}';height:'{{winHeight}}'"></view>

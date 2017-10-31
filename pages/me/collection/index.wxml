@@ -40,7 +40,7 @@
           <view wx:if="{{item.state == '1'}}" class='heart' bindtap='deleteNewCar' data-id='{{item.id}}'><image class='one {{one2}}' src='../../../img/32.png'></image></view>
           <view wx:else class='heart' bindtap='deleteNewCar' data-id='{{item.id}}'><image class='one {{one2}}' src='../../../img/47.png'></image></view>
         </view>
-      </view> 
+      </view>
     </view>
   </block>
 </view>

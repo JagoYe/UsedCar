@@ -9,7 +9,7 @@
           <image src='../../../img/15.png'></image>
         </view>
         <view class='right'>
-          <view class='details'><text>宝马H6</text></view>
+          <view class='details'><text>{{item.brand_name}}</text></view>
           <view class='details color-gray'><text>新车总价：{{item.cost_price}}万</text></view>
           <view class='details'><text>{{item.cost_price}}万</text></view>
         </view>
