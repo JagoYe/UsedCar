@@ -9,7 +9,7 @@ page{
 /* 整个页面 */
 .all{
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: #F2F2F2;
 }
 /*汽车服务*/
@@ -17,7 +17,8 @@ page{
   width: 100%;
   height: auto;
   background-color: white;
-  margin-top: 30rpx;
+  /* margin-top: 30rpx; */
+  display: none;
 }
 /*洗车服务*/
 .carWash{
@@ -54,4 +55,10 @@ page{
   height: 14rpx;
   margin-top: 33rpx;
   transform: rotate(-90deg);
+}
+/* //填充快 */
+.fill{
+  width: 100%;
+  height: 30rpx;
+  background-color: #F2F2F2;
 }

@@ -6,7 +6,7 @@
     <view class='listCars center' data-id='{{item.id}}' bindtap='clickJump'>
       <view class='listCar center'>
         <view class='left'>
-          <image src='../../../img/15.png'></image>
+          <image src='{{webSite}}{{item.first_image}}'></image>
         </view>
         <view class='right'>
           <view class='details'><text>{{item.brand_name}}</text></view>

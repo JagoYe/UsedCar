@@ -3,10 +3,9 @@
 var app = getApp();
 var qqmapsdk;
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.min.js');
-
 Page({
   data: {
-    // area: ['宝马','丰田','奥迪','本田'] 
+    webSite: app.globalData.webSite
   },
   //选择品牌
   bindPickerChange: function (e) {
@@ -150,7 +149,29 @@ Page({
           area: area
         })
       }
-    })    
+    });
+    //二手车热门推荐
+    wx.request({
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.webSite + '/Home/Wechat/carHotSelectByCategory',
+      data: { category: '2'},
+      success: function(res){
+        res.data.already.forEach(function(val, key){
+          var imageArr = val.images.split(' | ');
+          res.data.already[key]['first_image'] = imageArr[0];
+          var buy_year = val.buy_time.substring(0, 4);
+          var buy_month = val.buy_time.substring(4, 6);
+          res.data.already[key]['buy_year'] = buy_year;
+          res.data.already[key]['buy_month'] = buy_month;
+        })
+        that.setData({
+          usedCar: res.data.already
+        })
+      }
+    })  
   },
   //点击弹出选择城市
   clickCity: function(e){
@@ -169,33 +190,40 @@ Page({
     } else {
       var city_name = that.data.city
     }
+    
     wx.setStorage({
-      key: 'brand',
-      data: brand_name,
-      success: function(brand){
-        wx.request({
-          method: 'POST',
-          header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          url: app.globalData.webSite + '/Home/Wechat/carSelectByCityAndBrand',
-          data: {
-            category: '2',
-            city_name: city_name,
-            brand_name: brand_name
-          },
-          success: function (res) {
-            wx.setStorage({
-              key: 'usedCar',
-              data: res.data.data,
-              success: function (car) {
-                wx.navigateTo({
-                  url: '../used/used_list/index',
+      key: 'cityName',
+      data: city_name,
+      success: function(cityName){
+        wx.setStorage({
+          key: 'brand',
+          data: brand_name,
+          success: function (brand) {
+            wx.request({
+              method: 'POST',
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              url: app.globalData.webSite + '/Home/Wechat/carSelectByCityAndBrand',
+              data: {
+                category: '2',
+                city_name: city_name,
+                brand_name: brand_name
+              },
+              success: function (res) {
+                wx.setStorage({
+                  key: 'usedCar',
+                  data: res.data.data,
+                  success: function (car) {
+                    wx.navigateTo({
+                      url: '../used/used_list/index',
+                    })
+                  }
                 })
               }
-            })
+            });
           }
-        });
+        })
       }
     })
   },
@@ -259,5 +287,30 @@ Page({
     wx.navigateTo({
       url: '../me/history/index',
     })
-  }
+  },
+  //点击跳转到详情页
+  clickJump: function (e) {
+    var that = this;
+    var car_id = e.currentTarget.dataset.id;
+    // var carDetails = e.currentTarget.dataset.item
+    wx.request({
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.webSite + '/Home/Wechat/carSelectById',
+      data: { car_id },
+      success: function (res) {
+        wx.setStorage({
+          key: 'used_details',
+          data: res.data.data[0],
+          success: function (res1) {
+            wx.navigateTo({
+              url: '/pages/used/used_details/index',
+            })
+          }
+        })
+      }
+    })
+  },
 })

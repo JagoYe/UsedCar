@@ -166,9 +166,6 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carSelectById',
       data: { car_id},
       success: function(res){
-        res.data.data.forEach(function(val,key){
-          res.data.data[key]['active'] = '1'
-        })
         wx.setStorage({
           key: 'used_details',
           data: res.data.data[0],
@@ -330,16 +327,25 @@ Page({
 
     }) 
   },
-  //  排序选择
+  //  默认排序排序选择（清除所有的选择，回复默认）
   sort: function(e){
     var that = this;
     var searchHandle = that.data.searchHandle;
     var index = e.currentTarget.dataset.active;
+    var priceArr = that.data.priceArr;
     if (that.data.city_name == '') {
       var city_name = that.data.citys[that.data.cityIndex]
     } else {
       var city_name = that.data.city_name
-    }
+    };
+    priceArr.forEach(function (val, key) {
+      val.forEach(function (val1, key1) {
+        val[key1].active = '0';
+      })
+    });
+    that.setData({
+      priceArr: priceArr
+    })
     wx.request({
       method: 'POST',
       header: {
@@ -520,7 +526,6 @@ Page({
         brand_name: brand_name
       },
       success: function (res) {
-        console.log(res);
         res.data.data.forEach(function (val, key) {
           var imageArr = val.images.split(' | ');
           res.data.data[key]['first_image'] = imageArr[0];

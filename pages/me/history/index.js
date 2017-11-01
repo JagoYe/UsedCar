@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    webSite: app.globalData.webSite
   },
 
   /**
@@ -24,7 +24,10 @@ Page({
         user_phone: '18787312252',
       },
       success: function(res){
-        console.log(res);
+        res.data.data.forEach(function(val,key){
+          var imageArr = val.images.split(' | ');
+          res.data.data[key]['first_image'] = imageArr[0];
+        })
         that.setData({
           footprintCar: res.data.data
         })

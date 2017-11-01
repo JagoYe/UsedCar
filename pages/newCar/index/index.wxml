@@ -160,43 +160,21 @@
       <view class='hotsContent'>热门推荐</view>
     </view>
   </view>
-  <!-- 二手车列表页 -->
-  <view class='list'>
-    <view class='listCar center'>
-      <view class='left'>
-        <image src='../../../img/15.png'></image>
-      </view>
-      <view class='right'>
-        <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
-        <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
-        <view class='details'><text>24.80万</text></view>
-      </view>
-    </view>
-  </view>
-  <view class='list'>
-    <view class='listCar center'>
-      <view class='left'>
-        <image src='../../../img/15.png'></image>
-      </view>
-      <view class='right'>
-        <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
-        <view class='details'><text>昆明/2016年/1.1公里</text></view>
-        <view class='details'><text>24.80万</text></view>
+  <!-- 新车列表页 -->
+  <block wx:key='' wx:for='{{usedCar}}' wx:for-item='item'>
+    <view class='list' data-id='{{item.id}}' bindtap='clickJump'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='{{webSite}}{{item.first_image}}'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>{{item.brand_name}} {{item.style_name}} {{item.output}} {{item.detail}}</text></view>
+          <view class='details color-gray'><text>{{item.city_name}}/{{item.buy_year}}年{{item.buy_month}}月/{{item.mileage}}万公里</text></view>
+          <view class='details'><text>{{item.price}}万</text></view>
+        </view>
       </view>
     </view>
-  </view>
-  <view class='list'>
-    <view class='listCar center'>
-      <view class='left'>
-        <image src='../../../img/15.png'></image>
-      </view>
-      <view class='right'>
-        <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
-        <view class='details'><text>昆明/2016年/1.1公里</text></view>
-        <view class='details'><text>24.80万</text></view>
-      </view>
-    </view>
-  </view>
+  </block>
 </view>
 
 

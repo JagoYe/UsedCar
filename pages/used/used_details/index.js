@@ -13,7 +13,7 @@ Page({
     duration: 1000,
     subscript:"1",
     display:false,
-    num: 5,
+    num: 3,
     active: 1,
     collections: '收藏车源',
     success: '收藏成功'
@@ -60,10 +60,15 @@ Page({
     }
   },
   //点击拨打电话
-  dialDhone: function(e){
+  clickPhone: function(e){
     var that = this;
+    that.setData({
+      show: '',
+      display: false,
+      masks: ''
+    });
     wx.makePhoneCall({
-      phoneNumber: '18787312252', //仅为示例，并非真实的电话号码
+      phoneNumber: '18787312252'
     })
   },
   /**
@@ -161,7 +166,7 @@ Page({
               that.setData({
                 masks: '',
                 reveal: '',
-                num: '5',
+                num: '3',
                 active:0,
                 collections: '已收藏'
               })
@@ -197,7 +202,7 @@ Page({
               that.setData({
                 masks: '',
                 reveal: '',
-                num: '5',
+                num: '3',
                 active: 1,
                 collections: '收藏车源'
               })

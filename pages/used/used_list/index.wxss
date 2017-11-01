@@ -65,18 +65,21 @@ page{
 .condition .navs .left{
   width: 230.5rpx;
   height: 60rpx;
-  float: left;}
+  float: left;
+  margin-top: 5rpx;}
 /* 导航栏中间 */
 .condition .navs .middle{
   width: 230.5rpx;
   height: 60rpx;
   border-left: 4rpx solid gainsboro;
   border-right: 4rpx solid gainsboro;
-  float: left;}
+  float: left;
+  margin-top: 5rpx;}
 .condition .navs .right{
   width: 230.5rpx;
   height: 60rpx;
-  float: left;}  
+  float: left;
+  margin-top: 5rpx;}  
 /*具体条件*/
 .conditions{
   width: 140rpx;
@@ -87,7 +90,7 @@ page{
 .img{
   width: 16rpx;
   height: 16rpx;
-  margin-top: 24rpx;
+  margin-top: 22rpx;
   transform: rotate(-90deg);
   transition: all 0.5s ease-in-out;}
 

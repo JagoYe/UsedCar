@@ -128,7 +128,7 @@
     <view class='mobilePhone {{show}}'>
       <view class='phones center'><text>400-813-0755</text></view>
       <view style='width:100%;background:white'><view class='gradient center'></view></view>
-      <view class='call center' bindtap='dialDhone'><text>呼叫</text></view>
+      <view class='call center' bindtap='clickPhone'><text>呼叫</text></view>
     </view>
   </view>
 </view>    

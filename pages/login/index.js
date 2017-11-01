@@ -118,10 +118,6 @@ Page({
           prompt: '手机短信验证码有误或数字验证码有误,请重新输入'
         });
       } else {
-        //
-        // that.setData({
-        //   prompt: '进入注册'
-        // });
         wx.request({
           header: {
             "Content-Type": "application/x-www-form-urlencoded"

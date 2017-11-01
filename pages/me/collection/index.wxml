@@ -12,7 +12,7 @@
         <view class='listCar center'>
           <view data-id='{{item.id}}' bindtap='clickusedJump'>
             <view class='left'>
-              <image src='{{webSite}} + {{item.first_image}}'></image>
+              <image src='{{webSite}}{{item.first_image}}'></image>
             </view>
             <view class='right'>
               <view class='details'><text>{{item.brand_name}}</text></view>
@@ -32,7 +32,7 @@
       <view class='listCars center'>
         <view class='listCar center'>
           <view class='left'>
-            <image src='../../../img/15.png'></image>
+            <image src='{{webSite}}{{item.first_image}}'></image>
           </view>
           <view class='right'>
             <view class='details'><text>{{item.brand_name}}</text></view>

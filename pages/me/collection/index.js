@@ -28,17 +28,21 @@ Page({
         success: function (res) {
           var usedCar = [];
           var newCar = [];
-          res.data.data.forEach(function (val, key) {
-            if (val.category == '2') {
-              usedCar.push(val);
-            } else if (val.category == '1') {
-              newCar.push(val)
-            }
-          });
-          that.setData({
-            newCar: newCar,
-            usedCar: usedCar
-          });
+          if(res.data.data != ''){
+            res.data.data.forEach(function (val, key) {
+              var imageArr = val.images.split(' | ');
+              res.data.data[key]['first_image'] = imageArr[0];
+              if (val.category == '2') {
+                usedCar.push(val);
+              } else if (val.category == '1') {
+                newCar.push(val)
+              }
+            });
+            that.setData({
+              newCar: newCar,
+              usedCar: usedCar
+            });
+          }
         }
       });
       that.setData({
@@ -60,17 +64,21 @@ Page({
         success: function (res) {
           var usedCar = [];
           var newCar = [];
-          res.data.data.forEach(function (val, key) {
-            if (val.category == '2') {
-              usedCar.push(val);
-            } else if (val.category == '1') {
-              newCar.push(val)
-            }
-          });
-          that.setData({
-            newCar: newCar,
-            usedCar: usedCar
-          });
+          if(res.data.data != ''){
+            res.data.data.forEach(function (val, key) {
+              var imageArr = val.images.split(' | ');
+              res.data.data[key]['first_image'] = imageArr[0];
+              if (val.category == '2') {
+                usedCar.push(val);
+              } else if (val.category == '1') {
+                newCar.push(val)
+              }
+            });
+            that.setData({
+              newCar: newCar,
+              usedCar: usedCar
+            });
+          }
         }
       });
       that.setData({
@@ -96,23 +104,23 @@ Page({
         user_phone: '18787312252',
       },
       success: function(res){
-        console.log(res);
         var usedCar = [];
         var newCar = [];
-        res.data.data.forEach(function(val,key){
-          console.log(val.images);
-          var imageArr = val.images.split(' | ');
-          res.data.data[key]['first_image'] = imageArr[0];
-          if(val.category == '2'){
-            usedCar.push(val);
-          } else if (val.category == '1'){
-            newCar.push(val)
-          }
-        });
-        that.setData({
-          newCar: newCar,
-          usedCar: usedCar
-        });
+        if(res.data.data != ''){
+          res.data.data.forEach(function (val, key) {
+            var imageArr = val.images.split(' | ');
+            res.data.data[key]['first_image'] = imageArr[0];
+            if (val.category == '2') {
+              usedCar.push(val);
+            } else if (val.category == '1') {
+              newCar.push(val)
+            }
+          });
+          that.setData({
+            newCar: newCar,
+            usedCar: usedCar
+          });
+        }
       }
     });
   },
@@ -239,9 +247,6 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carSelectById',
       data: { car_id },
       success: function (res) {
-        res.data.data.forEach(function (val, key) {
-          res.data.data[key]['active'] = '1'
-        })
         wx.setStorage({
           key: 'used_details',
           data: res.data.data[0],
@@ -267,9 +272,6 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carSelectById',
       data: { car_id },
       success: function (res) {
-        res.data.data.forEach(function (val, key) {
-          res.data.data[key]['active'] = '1'
-        })
         wx.setStorage({
           key: 'newCar_details',
           data: res.data.data[0],
