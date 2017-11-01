@@ -73,7 +73,7 @@ Page({
     var that = this;
     //取缓存
     wx.getStorage({
-      key: 'used_details',
+      key: 'newCar_details',
       success: function (res) {
         var imgUrls = res.data.images.split(' | ');
         var archives = res.data.advantage.split('、');

@@ -3,7 +3,7 @@
 <!-- 二手车列表页 -->
 <view class='list'>
   <block wx:key='' wx:for='{{footprintCar}}' wx:for-item='item'>
-    <view class='listCars center'>
+    <view class='listCars center' data-id='{{item.id}}' bindtap='clickJump'>
       <view class='listCar center'>
         <view class='left'>
           <image src='../../../img/15.png'></image>
@@ -11,7 +11,7 @@
         <view class='right'>
           <view class='details'><text>{{item.brand_name}}</text></view>
           <view class='details color-gray'><text>新车总价：{{item.cost_price}}万</text></view>
-          <view class='details'><text>{{item.cost_price}}万</text></view>
+          <view class='details'><text>{{item.price}}万</text></view>
         </view>
       </view>
     </view>

@@ -6,7 +6,6 @@
     "pages/used/used_details/index",
     "pages/me/info/publish_info/index",
     "pages/me/index/index",
-    "pages/used/sort/index",
     "pages/me/info/photo/index",
     "pages/me/info/index/index",
     "pages/me/history/index",
@@ -20,7 +19,6 @@
     "pages/me/phone_update/index",
     "pages/newCar/new_list/index",
     "pages/newCar/index/index",
-    "pages/newCar/sort/index",
     "pages/newCar/new_details/index",
     "pages/logs/logs"
   ],

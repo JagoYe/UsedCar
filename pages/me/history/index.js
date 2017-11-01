@@ -32,6 +32,45 @@ Page({
     })  
   },
 
+  // 点击车辆足迹跳转到详情页
+  clickJump: function (e) {
+    var that = this;
+    var car_id = e.currentTarget.dataset.id;
+    // var carDetails = e.currentTarget.dataset.item
+    wx.request({
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.webSite + '/Home/Wechat/carSelectById',
+      data: { car_id },
+      success: function (res) {
+        console.log(res);
+        if (res.data.data[0].category == '1'){
+          wx.setStorage({
+            key: 'newCar_details',
+            data: res.data.data[0],
+            success: function (res1) {
+              wx.navigateTo({
+                url: '../../newCar/new_details/index',
+              })
+            }
+          })
+        }else{
+          wx.setStorage({
+            key: 'used_details',
+            data: res.data.data[0],
+            success: function (res1) {
+              wx.navigateTo({
+                url: '../../used/used_details/index',
+              })
+            }
+          })
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
