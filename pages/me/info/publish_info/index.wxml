@@ -12,86 +12,127 @@
     </view>
   </view>
   <form bindsubmit="formSubmit">
-    <!-- 输入信息块 -->
+  <!-- 输入信息块 -->
   <view class='main'>
-    <view class='input center' bindtap='clickPop' data-input='title'>
-      <view class='left'><text>标题：</text></view>
+    <!-- 城市名称 -->
+    <view class='input center'>
+      <view class='left'><text>城市名称：</text></view>
       <view class='middle'>
-        <input type='text' style='color: #000;' name='usedTitle' placeholder='请输入标题' value='{{car.title}}'></input>
+        <input type='text' name='city_name' placeholder='例: 昆明市' required="required"></input>
       </view>
-      <view class='right'><image src='../../../../img/43.png'></image></view>
+      <view class='right'><text></text></view>
     </view>
-    <view class='input center' bindtap='clickPop' data-input='brand'>
+    <!-- 类别 -->
+    <view class='input center'>
+      <view class='left'><text>类别：</text></view>
+      <view class='middle'>
+        <input type='text' name='category' placeholder='如: 新车、二手车'></input>
+      </view>
+      <view class='right'><text></text></view>
+    </view>
+    <!-- 品牌 -->
+    <view class='input center'>
       <view class='left'><text>品牌：</text></view>
       <view class='middle'>
-        <input type='text' name='usedBrand' placeholder='请输入车辆品牌' value='{{car.brand}}' disabled='disabled'></input>
+        <input type='text' name='brand_name' placeholder='如: 宝马、奔驰等' value='{{car.brand}}'></input>
       </view>
-      <view class='right'><image src='../../../../img/43.png'></image></view>
+      <view class='right'>
+        <!-- <image src='../../../../img/43.png'></image> -->
+      </view>
     </view>
+    <!-- 车型 -->
     <view class='input center'>
-      <view class='left'><text>价格：</text></view>
+      <view class='left'><text>类别：</text></view>
       <view class='middle'>
-        <input type='text' name='usedPrice' placeholder='请输入车辆价格'></input>
+        <input type='text' name='style_name' placeholder='如: 科鲁兹、卡罗拉、宝马X6'></input>
+      </view>
+      <view class='right'><text></text></view>
+    </view>
+    <!-- 购车总价 -->
+    <view class='input center'>
+      <view class='left'><text>购车原价：</text></view>
+      <view class='middle'>
+        <input type='text' name='cost_price' placeholder='如: 48'></input>
       </view>
       <view class='right'><text>万元</text></view>
     </view>
+    <!-- 售价 -->
     <view class='input center'>
-      <view class='left'><text>排量：</text></view>
+      <view class='left'><text>售价：</text></view>
       <view class='middle'>
-        <input type='text' name='displacement' placeholder='请输入车辆排量'></input>
+        <input type='text' name='price' placeholder='如: 35'></input>
       </view>
-      <view class='right'><text>L</text></view>
+      <view class='right'><text>万元</text></view>
     </view>
-    <view class='input center'>
-      <view class='left'><text>颜色：</text></view>
-      <view class='middle'>
-        <input type='text' name='usedColor' placeholder='请输入车辆颜色'></input>
-      </view>
-      <view class='right'></view>
-    </view>
+    <!-- 里程数 -->
     <view class='input center'>
       <view class='left'><text>里程数：</text></view>
       <view class='middle'>
-        <input type='number' name='mileage' placeholder='请输入车辆里程'></input>
+        <input type='number' name='mileage' placeholder='如: 15'></input>
       </view>
       <view class='right'><text>万公里</text></view>
     </view>
+    <!-- 排量 -->
     <view class='input center'>
-      <view class='left'><text>变速箱：</text></view>
+      <view class='left'><text>排量：</text></view>
       <view class='middle'>
-        <input type='text' name='shift' placeholder='请输入'></input>
+        <input type='text' name='output' placeholder='如:  2.0T'></input>
+      </view>
+      <view class='right'><text></text></view>
+    </view>
+    <!-- 购车时间 -->
+    <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+      <view class='input center' data-input="time">
+        <view class='left'><text>购车时间：</text></view>
+        <view class='middle'>
+          <input type='text' name='buy_time' placeholder='请输入购车时间' value='{{date}}'></input>
+        </view>
+        <view class='right'>
+          <!-- <image src='../../../../img/43.png'></image> -->
+        </view>
+      </view>
+    </picker>  
+    <!-- 车辆颜色 -->
+    <view class='input center'>
+      <view class='left'><text>颜色：</text></view>
+      <view class='middle'>
+        <input type='text' name='color' placeholder='如: 深灰色、蓝色、红色'></input>
       </view>
       <view class='right'></view>
     </view>
-    <view class='input center' bindtap='clickPop' data-input="time">
-      <view class='left'><text>上牌时间：</text></view>
-      <view class='middle'>
-        <input type='text' name='cardTime' placeholder='请输入车辆上牌时间' disabled='disabled' value='{{car.time}}'></input>
-      </view>
-      <view class='right'><image src='../../../../img/43.png'></image></view>
-    </view>
+    <!-- 保养情况 -->
     <view class='input center'>
       <view class='left'><text>保养情况：</text></view>
       <view class='middle'>
-        <input type='text' name='maintain' placeholder='请输入车辆保养情况'></input>
+        <input type='text' name='situation' placeholder='如: 4S店定期、4S店非定期'></input>
       </view>
       <view class='right'></view>
     </view>
+    <!-- 生产厂商 -->
     <view class='input center'>
       <view class='left'><text>生产厂商：</text></view>
       <view class='middle'>
-        <input type='text' name='vendor' placeholder='请输入车辆的生产厂商'></input>
+        <input type='text' name='factory' placeholder='如: 华晨宝马'></input>
       </view>
       <view class='right'></view>
     </view>
-    <view class='input center' style='margin-bottom:100rpx'>
+    <!-- 配置亮点 -->
+    <view class='input center' bindtap='clickPop' data-input='title'>
       <view class='left'><text>配置亮点：</text></view>
       <view class='middle'>
-        <input type='text' name='deploy' placeholder='请输入车辆配置亮点'></input>
+        <input type='text' style='color: #000;' name='advantage' placeholder='如: 发动机自动停启' value='{{car.title}}'></input>
+      </view>
+      <view class='right'><image src='../../../../img/43.png'></image></view>
+    </view>
+    <!-- 变速详情 -->
+    <view class='input center' style='margin-bottom:100rpx;'>
+      <view class='left'><text>变速箱：</text></view>
+      <view class='middle'>
+        <input type='text' name='detail' placeholder='如: 自动、手动'></input>
       </view>
       <view class='right'></view>
     </view>
-    <view class='bottom' bindtap='release'>
+    <view class='bottom'>
       <button form-type='submit' class='affirm bg-color'>确认发布</button> 
     </view>
   </view>

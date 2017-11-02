@@ -48,4 +48,9 @@ page{
   text-align: center;
   position: fixed;
   bottom: 0;
-}  
+}
+.price{
+  width: 50%;
+  height: 100%;
+  float: left;
+}

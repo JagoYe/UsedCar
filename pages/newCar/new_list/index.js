@@ -372,8 +372,8 @@ Page({
         that.setData({
           usedCar: res.data.data,
           brand_name: '',
-          pracr_a: '',
-          pracr_b: '',
+          price_a: '0',
+          price_b: '100000',
           color: "",
           display: false,
           searchStyle: '',

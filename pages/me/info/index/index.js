@@ -1,11 +1,12 @@
 // pages/me/info/index/index.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    webSite: app.globalData.webSite,
   },
   publishInfo: function(){
     wx.navigateTo({
@@ -16,7 +17,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.webSite + '/Home/Wechat/pendingVehicleSelectByPhone',
+      data: {
+        user_phone: '18787312252'
+      },
+      success: function(res){
+        console.log(res);
+        res.data.data.forEach(function(val,key){
+          console.log(val);
+        })
+        that.setData({
+          publishCar: res.data.data,
+        })
+      }
+    })
   },
 
   /**
