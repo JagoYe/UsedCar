@@ -10,10 +10,12 @@
         </view>
         <view class='right'>
           <view class='details'><text>{{item.brand_name}} {{item.style_name}} {{item.output}} {{item.detail}}</text></view>
-          <view class='details color-gray'><text>{{item.city_name}}/{{item.buy_name}}/{{item.mileage}}万公里</text></view>
+          <view class='details color-gray'><text>{{item.city_name}}/{{item.buy_time}}/{{item.mileage}}万公里</text></view>
           <view class='details' style='margin-top:5rpx'>
-            <view class='price'><text>{{item.price}}万</text></view>
-            <view class='price' style='font-size:32rpx;text-align:center'></view>
+            <view class='price'><text>当前售价：{{item.price}}万</text></view>
+            <view class='price' style='padding-left:50rpx;box-sizing: border-box;color:#A16DEE'>
+              <text>{{item.status}}</text>
+            </view>
           </view>
         </view>
       </view>

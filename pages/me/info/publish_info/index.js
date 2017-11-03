@@ -9,6 +9,7 @@ Page({
     length: '0',
     carHandle: '',
     disabled: 'disabled',
+    num: 3,
     car: {
       
     }
@@ -16,8 +17,9 @@ Page({
   // form表单提交确认发布
   formSubmit: function (e) {
     var that = this;
+    var num = that.data.num;
     var detailCar = e.detail.value;
-    console.log(e.detail.value);
+    // console.log(e.detail.value);
     wx.getUserInfo({
       success: function (user) {
         var nickName = user.userInfo.nickName
@@ -55,11 +57,26 @@ Page({
                 user_phone: '18787312252'
               },
               success: function (res) {
-                console.log('222222222222222222222222222');
-                console.log(res);
-                wx.navigateBack({
-                  delta: 2
-                });
+                that.setData({
+                  show: 'show',
+                  reveal: 'reveal'
+                })
+                var timer = setInterval(function () {
+                  num--;
+                  that.setData({
+                    num: num
+                  });
+                  if (num == 0) {
+                    clearInterval(timer);
+                    that.setData({
+                      show: '',
+                      reveal: ''
+                    });
+                    wx.navigateBack({
+                      delta: 2
+                    });
+                  }
+                }, 1000);
               }
             })
         }

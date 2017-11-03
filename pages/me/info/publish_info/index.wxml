@@ -34,7 +34,7 @@
     <view class='input center'>
       <view class='left'><text>品牌：</text></view>
       <view class='middle'>
-        <input type='text' name='brand_name' placeholder='如: 宝马、奔驰等' value='{{car.brand}}'></input>
+        <input type='text' name='brand_name' placeholder='如: 宝马、奔驰等'></input>
       </view>
       <view class='right'>
         <!-- <image src='../../../../img/43.png'></image> -->
@@ -147,4 +147,12 @@
     <view class='length center'><text style='color:gray'>{{length}}</text><text>/200</text></view>
   </view>
   <view class='bottoms bg-color' bindtap='confirm'><text>确定</text></view>
+</view>
+
+
+<!-- 遮罩层 -->
+<view class='mask {{show}}'></view>
+<view class='prompt {{reveal}}'>
+  <view class='info'><text>发布成功，请到我的信息页查看</text></view>
+  <view class='promptTime'><text>将在{{num}}秒后自动跳转</text></view>
 </view>

@@ -30,7 +30,11 @@ Page({
       success: function(res){
         console.log(res);
         res.data.data.forEach(function(val,key){
-          console.log(val);
+          if(res.data.data[key].status == 1){
+            res.data.data[key].status = '审核已通过'
+          }else{
+            res.data.data[key].status = '审核中'
+          }
         })
         that.setData({
           publishCar: res.data.data,
