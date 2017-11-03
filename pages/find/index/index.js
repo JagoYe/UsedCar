@@ -8,9 +8,10 @@ Page({
   data: {
   
   },
-  clickJump: function(){
+  clickJump: function(e){
+    var carUrl = e.currentTarget.dataset.url;
     wx.navigateTo({
-      url: '../find_details/index'
+      url: carUrl
     })
   },
   /**

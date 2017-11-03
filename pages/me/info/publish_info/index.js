@@ -1,4 +1,5 @@
 // pages/me/info/publish_info/index.js
+var app = getApp();
 Page({
 
   /**
@@ -8,13 +9,79 @@ Page({
     length: '0',
     carHandle: '',
     disabled: 'disabled',
+    num: 3,
     car: {
       
     }
   },
-  // form表单
+  // form表单提交确认发布
   formSubmit: function (e) {
-    console.log(e.detail.value);
+    var that = this;
+    var num = that.data.num;
+    var detailCar = e.detail.value;
+    // console.log(e.detail.value);
+    wx.getUserInfo({
+      success: function (user) {
+        var nickName = user.userInfo.nickName
+        if (
+          detailCar.city_name != '' && detailCar.category != '' &&
+          detailCar.brand_name != '' && detailCar.style_name != '' &&
+          detailCar.cost_price != '' && detailCar.price != '' && 
+          detailCar.mileage != '' && detailCar.output != '' &&
+          detailCar.detail != '' && detailCar.buy_time != '' &&
+          detailCar.color != '' && detailCar.situation != '' && 
+          detailCar.factory != '' && detailCar.advantage != ''){
+            wx.request({
+              method: 'POST',
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              url: app.globalData.webSite + '/Home/Wechat/pendingVehicleAdd',
+              data: {
+                city_name: detailCar.city_name,
+                category: detailCar.category,
+                brand_name: detailCar.brand_name,
+                style_name: detailCar.style_name,
+                cost_price: detailCar.cost_price,
+                price: detailCar.price,
+                mileage: detailCar.mileage,
+                output: detailCar.output,
+                detail: detailCar.detail,
+                buy_time: detailCar.buy_time,
+                images: 'test',
+                color: detailCar.color,
+                situation: detailCar.situation,
+                factory: detailCar.factory,
+                advantage: detailCar.advantage,
+                user_name: nickName,
+                user_phone: '18787312252'
+              },
+              success: function (res) {
+                that.setData({
+                  show: 'show',
+                  reveal: 'reveal'
+                })
+                var timer = setInterval(function () {
+                  num--;
+                  that.setData({
+                    num: num
+                  });
+                  if (num == 0) {
+                    clearInterval(timer);
+                    that.setData({
+                      show: '',
+                      reveal: ''
+                    });
+                    wx.navigateBack({
+                      delta: 2
+                    });
+                  }
+                }, 1000);
+              }
+            })
+        }
+      }
+    }) 
   },
 
   //多行文本框
@@ -76,10 +143,32 @@ Page({
       url: '../photo/index',
     })
   },
-  //确认发布
-  release: function(){
-    wx.navigateBack({
-      data: 1
+  // //确认发布
+  // release: function(e){
+  //   var that = this;
+  //   wx.navigateBack({
+  //     data: 1
+  //   });
+  //   console.log(that.data);
+  //   wx.request({
+  //     method: 'POST',
+  //     header: {
+  //       "Content-Type": "application/x-www-form-urlencoded"
+  //     },
+  //     url: app.globalData.webSite + '/Home/Wechat/pendingVehicleAdd',
+  //     data:{
+
+  //     }
+  //   })  
+  // },
+  //  点击日期组件确定事件  
+  bindDateChange: function (e) {
+    var year = e.detail.value.substring(0,4) + '年';
+    var month = e.detail.value.substring(5, 7) + '月';
+    var day = e.detail.value.substring(8, 10) + '日';
+    var date = year + month + day;
+    this.setData({
+      date: date,
     })
   },
   /**

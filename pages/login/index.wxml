@@ -1,0 +1,37 @@
+<!--pages/login/index.wxml-->
+<view class='all'>
+  <image src='../../img/car.jpg'></image>
+  <view class='containerd'>
+    <view class='box'>
+      <view class='inputs'>
+        <input type='number' placeholder='请输入当前微信所绑定的手机号' name='mobile' bindinput='mobileInput' class='phone' placeholder-class='color'></input>
+      </view>
+      <view class='inputs'>
+        <input type='number' placeholder='请输入验证码' class='code' name='getValidation' bindinput='getValidation' placeholder-class='color'></input>
+         <button class='codes {{showBtn}}' bindtap='prove' >获取验证码</button> 
+        <button class='codes {{showBtn1}}'>重新获取{{seconds}}</button>
+      </view>
+      <!-- 数字验证码 -->
+       <view class='inputs'>
+        <input type='number' placeholder='数字验证' class='code' name='numConfirm' bindinput='numConfirm' placeholder-class='color'></input>
+         <button class='codes' bindtap='prove' >{{numConfirm}}</button> 
+      </view>
+      <!-- <view id='border' class='inputs' bindtap='submit'>
+        <button>登录</button>
+      </view> -->
+      <view id='border' class='inputs'>
+        <button bindtap="confirm">注册</button>
+      </view>
+      <view id='border' class='inputs' style='text-align: center;'>
+        <text>{{prompt}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="{{className}}" style="width:'{{winWidth}}';height:'{{winHeight}}'"></view>
+<view class='shows'>
+  <view class="show {{on}}">
+    <text>注册成功</text>
+    <text>将在{{second}}秒后自动跳转</text>
+  </view>
+</view>

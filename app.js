@@ -34,6 +34,10 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    appid: 'wx4796405728efcfcd',
+    userInfo: null,
+    openId: '',
+    loginStatus: false,
+    webSite: 'http://byu3341290001.my3w.com'
   }
 })

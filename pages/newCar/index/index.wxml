@@ -3,32 +3,35 @@
 <view class='all'>
   <!-- 轮播图 -->
   <view class='carousel'>
-    <image src='../../../img/1.png'></image>
+    <image src='../../../img/46.png'></image>
   </view>
+  <view class='usedCar'><text>二手车</text></view>
   <!-- 搜索 -->
   <view class='nav center'>
-    <!-- 地址图标 -->
-    <view class='locationIcon'>
-      <image src='../../../img/2.png'></image>
-    </view>
-    <!-- 地址 -->
-    <view class='area'>
-      <text>昆明</text>
-    </view>
+    <picker bindchange="clickCity" value="{{cityIndex}}" range="{{citys}}">
+      <!-- 地址图标 -->
+      <view class='locationIcon'>
+        <image src='../../../img/2.png'></image>
+      </view>
+      <!-- 地址 -->
+      <view class='area'>    
+        <text>{{city}}{{citys[cityIndex]}}</text> 
+      </view>
+    </picker>
     <!-- 搜索框 -->
     <view class='search'>
-      <input type='text' placeholder='搜索'></input>
-    </view>
-    <!-- 搜索图标 -->
-    <view class='searchIcon'>
-      <image src='../../../img/3.png'></image>
+      <picker bindchange="bindPickerChange" value="{{areaIndex}}" range="{{area}}">  
+        <view class="picker">
+          <text>当前选择 → {{area[areaIndex]}}</text>  
+        </view>  
+      </picker>  
     </view>
   </view>
   <!-- 按条件查询车辆 -->
   <view class='total center'>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='大众'>
         <view class='picture'>
           <image src='../../../img/4.png' class='img1'></image>
         </view>
@@ -37,7 +40,7 @@
     </view>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='丰田'>
         <view class='picture'>
           <image src='../../../img/5.png' class='img2'></image>
         </view>
@@ -46,7 +49,7 @@
     </view>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='本田'>
         <view class='picture'>
           <image src='../../../img/6.png' class='img3'></image>
         </view>
@@ -55,7 +58,7 @@
     </view>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='奥迪'>
         <view class='picture'>
           <image src='../../../img/7.png' class='img4'></image>
         </view>
@@ -65,7 +68,7 @@
     <view class='type'>
       <!-- 品牌分类 -->
       <view class='block'>
-        <view class='picture'>
+        <view class='picture' bindtap='vehicleQuery' data-brandName='宝马'>
           <image src='../../../img/8.png' class='img5'></image>
         </view>
         <view class='text'><text>宝马</text></view>
@@ -73,7 +76,7 @@
     </view>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='奔驰'>
         <view class='picture'>
           <image src='../../../img/9.png' class='img6'></image>
         </view>
@@ -83,7 +86,7 @@
     <view class='type'>
       <!-- 品牌分类 -->
       <view class='block'>
-        <view class='picture'>
+        <view class='picture' bindtap='vehicleQuery' data-brandName='现代'>
           <image src='../../../img/10.png' class='img7'></image>
         </view>
         <view class='text'><text>现代</text></view>
@@ -91,40 +94,40 @@
     </view>
     <view class='type'>
       <!-- 品牌分类 -->
-      <view class='block'>
+      <view class='block' bindtap='vehicleQuery' data-brandName='别克'>
         <view class='picture'>
           <image src='../../../img/11.png' class='img8'></image>
         </view>
         <view class='text'><text>别克</text></view>
       </view>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='0' data-B='3'>
       <text>3万以下</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='3' data-B='5'>
       <text>3-5万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='5' data-B='10'>
       <text>5-10万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='10' data-B='15'>
       <text>10-15万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='15' data-B='20'>
       <text>15-20万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='20' data-B='25'>
       <text>20-25万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='25' data-B='30'>
       <text>25-30万</text>
     </view>
-    <view class='price'>
+    <view class='price' bindtap='priceChoice' data-A='30' data-B='100000'>
       <text>30万以上</text>
     </view>
   </view>
   <!-- 查询按钮 -->
-  <view class='query center' bindtap='clickSee'>
+  <view class='query center' bindtap='clickSee' data-A='0' data-B='100000'>
     <button class='bg-color'>查看全部车源</button>
   </view>
   <!--收藏-->
@@ -134,13 +137,13 @@
         <view class='houseIcon'>
           <image src='../../../img/12.png'></image>
         </view>
-        <view class='content'><text>车源收藏</text></view>
+        <view class='content' bindtap='Collection'><text>车源收藏</text></view>
       </view>
       <view class='history'>
         <view class='historyIcon'>
           <image src='../../../img/13.png'></image>
         </view>
-        <view class='content'><text>游览足迹</text></view>
+        <view class='content' bindtap='footprint'><text>游览足迹</text></view>
       </view>
     </view>
   </view>
@@ -157,41 +160,30 @@
       <view class='hotsContent'>热门推荐</view>
     </view>
   </view>
-  <!-- 二手车列表页 -->
-  <view class='list'>
-    <view class='listCar center'>
-      <view class='left'>
-        <image src='../../../img/15.png'></image>
-      </view>
-      <view class='right'>
-        <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
-        <view class='details color-gray'><text>昆明/2016年/1.1公里</text></view>
-        <view class='details'><text>24.80万</text></view>
-      </view>
-    </view>
-  </view>
-  <view class='list'>
-    <view class='listCar center'>
-      <view class='left'>
-        <image src='../../../img/15.png'></image>
-      </view>
-      <view class='right'>
-        <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
-        <view class='details'><text>昆明/2016年/1.1公里</text></view>
-        <view class='details'><text>24.80万</text></view>
+  <!-- 新车列表页 -->
+  <block wx:key='' wx:for='{{usedCar}}' wx:for-item='item'>
+    <view class='list' data-id='{{item.id}}' bindtap='clickJump'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='{{webSite}}{{item.first_image}}'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>{{item.brand_name}} {{item.style_name}} {{item.output}} {{item.detail}}</text></view>
+          <view class='details color-gray'><text>{{item.city_name}}/{{item.buy_year}}年{{item.buy_month}}月/{{item.mileage}}万公里</text></view>
+          <view class='details'><text>{{item.price}}万</text></view>
+        </view>
       </view>
     </view>
-  </view>
-  <view class='list'>
-    <view class='listCar center'>
-      <view class='left'>
-        <image src='../../../img/15.png'></image>
-      </view>
-      <view class='right'>
-        <view class='details'><text>大众途观12款2.0TSl手自一体 四驱 尊容版</text></view>
-        <view class='details'><text>昆明/2016年/1.1公里</text></view>
-        <view class='details'><text>24.80万</text></view>
-      </view>
-    </view>
+  </block>
+</view>
+
+
+<!-- 地址选择块 -->
+<view class='position {{active}}'>
+  <view class='city center'>
+    <block wx:key="" wx:for="{{citys}}" wx:for-item="item" wx:for-index="index">
+      <view class='citys' bindtap='confirm' data-index='{{item.fullname}}'><text>{{item.fullname}}</text></view>
+    </block>  
   </view>
 </view>
+

@@ -38,28 +38,14 @@ page{
   margin-top: 10rpx;}  
 /*搜索框*/
 .search{
-  width: 64%;
+  width: 74%;
   height: 60rpx;
   float: left;
   box-sizing: border-box;
   border: 1rpx solid gray;
-  border-radius: 12rpx;}
-.search input{
-  width: 100%;
-  height: 100%;
-  line-height: 60rpx;
-  box-sizing: border-box;
-  padding-left: 10rpx;}  
-/*搜索图标*/
-.searchIcon{
-  width: 10%;
-  height: 60rpx;
-  float: left;}
-.searchIcon image{
-  width: 34rpx;
-  height: 38rpx;
-  margin-top: 10rpx;
-  margin-left: 10rpx;} 
+  border-radius: 12rpx;
+  line-height: 58rpx;
+  padding-left: 10rpx;} 
 
 /*条件搜索栏目*/   
 .condition{
@@ -79,18 +65,21 @@ page{
 .condition .navs .left{
   width: 230.5rpx;
   height: 60rpx;
-  float: left;}
+  float: left;
+  margin-top: 5rpx;}
 /* 导航栏中间 */
 .condition .navs .middle{
   width: 230.5rpx;
   height: 60rpx;
   border-left: 4rpx solid gainsboro;
   border-right: 4rpx solid gainsboro;
-  float: left;}
+  float: left;
+  margin-top: 5rpx;}
 .condition .navs .right{
   width: 230.5rpx;
   height: 60rpx;
-  float: left;}  
+  float: left;
+  margin-top: 5rpx;}  
 /*具体条件*/
 .conditions{
   width: 140rpx;
@@ -99,9 +88,9 @@ page{
   height: 60rpx;
   float: left;}
 .img{
-  width: 20rpx;
-  height: 20rpx;
-  margin-top: 20rpx;
+  width: 16rpx;
+  height: 16rpx;
+  margin-top: 22rpx;
   transform: rotate(-90deg);
   transition: all 0.5s ease-in-out;}
 
@@ -140,7 +129,9 @@ page{
   width: 100%;
   height: 80rpx;
   line-height: 80rpx;
-  border-bottom: 2rpx solid gray;}  
+  border-bottom: 2rpx solid gray;
+  box-sizing: border-box;
+  padding-left: 25rpx;}  
 /* 价格区间选择定位块 */
 .price{
   width: 100%;
@@ -154,7 +145,8 @@ page{
   .price .block .entry view { border:1px solid #D2D2D2; width: 70%;height: 50rpx; line-height: 50rpx; box-sizing: border-box; margin: 0 auto;border-radius: 12rpx; }
   .price .block .entry-ctn { margin-top: 10px; display: inline-block; width: 100%; }
   .price .block .entry-ctn .entry:nth-child(1) view{ margin-left: 0; }
-  .price .block .entry-ctn .entry:nth-child(3) view{ margin-right: 0; } 
+  .price .block .entry-ctn .entry:nth-child(3) view{ margin-right: 0; }
+  .price .block .entry-ctn .entry .BgColor{ background-color: red; } 
 
 
 /* 遮罩层 */
@@ -217,10 +209,10 @@ page{
   height: 0;
   overflow: hidden;
   position: absolute;
-  top: 10%;
+  top: 0;
   left: 10%;
   border: 0;
-  z-index: 2;
+  z-index: 10;
   background-color: white;
   transition: all 0.3s ease-in-out;
 }
@@ -233,12 +225,64 @@ page{
   width: 100%;
   height: 85rpx;
   background-color: white;
-  border-bottom: 1rpx #A16DEE solid;
+  border-bottom: 1rpx gray solid;
   line-height: 85rpx;
   box-sizing: border-box;
   padding-left: 30rpx;
 }
 .positions.active{
   height: 600rpx;
-  border: 2rpx solid #A16DEE;
+  border: 2rpx solid gray;
+}
+
+
+
+
+
+/* pages/used/sort/index.wxss */
+.total{
+  width: 100%;
+  height: 0px;
+  font-family: 微软雅黑;
+  font-size: 26rpx;
+  background-color: #F5F5F5;
+  position: absolute;
+  z-index: 20;
+  top: 0px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.scroll-view-item{
+  width: 100%;
+  height: auto;
+  background-color: white;
+}
+.letter{
+  width: 90%;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.brand{
+  width: 90%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: solid gray 2rpx;
+}
+.choice{
+  width: 40rpx;
+  height: auto;
+  position: absolute;
+  top: 6%;
+  right: 5%;
+  background-color: white;
+}
+.word{
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  color: gray;
+}
+.popbrand{
+  height: 100%;
 }

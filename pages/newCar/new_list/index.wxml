@@ -1,2 +1,125 @@
-<!--pages/newCar/new_list/index.wxml-->
-<text>pages/newCar/new_list/index.wxml</text>
+<!--pages/used/used_list/index.wxml-->
+<!-- 整个页面 -->
+<view class='all'>
+  <!-- 搜索 -->
+  <view class='nav center'>
+    <picker bindchange="clickCity" value="{{cityIndex}}" range="{{citys}}">
+      <!-- 地址图标 -->
+      <view class='locationIcon'>
+        <image src='../../../img/2.png'></image>
+      </view>
+      <!-- 地址 -->
+      <view class='area'>
+        <text>{{city_name}}{{citys[cityIndex]}}</text>
+      </view>
+    </picker> 
+    <!-- 搜索框 -->
+    <view class='search'>
+      <picker bindchange="bindPickerChange" value="{{areaIndex}}" range="{{area}}">  
+        <view class="picker">  
+          <text>当前选择 → {{area[areaIndex]}}</text>  
+        </view>  
+      </picker>
+    </view>
+  </view>
+  <!-- 条件搜索栏目 -->
+  <view class='condition'>
+    <view style='float:left;width:100%;height:70rpx'>
+      <view class='navs center'>
+        <view class='left {{color}}' bindtap='tabChange' data-active='1' data-display='{{display}}'>
+          <view class='conditions'><text>默认排序</text></view>
+          <image class='img {{color}}' src='../../../img/18.png'></image>
+        </view>
+        <view class='middle {{color}}' bindtap='clickBrand'>
+          <view class='conditions'><text>品牌选择</text></view>
+          <image class='img {{color}}' src='../../../img/18.png'></image>
+        </view>
+        <view class='right {{color}}' data-display='{{display}}' data-active='3' bindtap='tabChange'>
+          <view class='conditions'><text>价格区间</text></view>
+          <image class='img {{color}}' src='../../../img/18.png'></image>
+        </view>
+      </view>
+    </view>
+
+    <!-- 定位块 -->
+    <view class='position'>
+      <!--排序选择块定位-->
+      <view class='sort {{searchStyle}}'>
+        <view class='middle center'>
+          <view class='content' bindtap='sort'><text>默认排序(清除所有选择)</text></view>
+          <view class='content' bindtap='term' data-term='price_up'><text>价格最高</text></view>
+          <view class='content' bindtap='term' data-term='price_down'><text>价格最低</text></view>
+          <view class='content' bindtap='term' data-term='mileage_down'><text>里程最少</text></view>
+          <view class='content' bindtap='term' data-term='buy_time_up'><text>车年最短</text></view>
+          <view class='content' bindtap='term' data-term='publish_time_up'><text>最新发布</text></view>
+        </view>
+      </view>
+      <!-- 价格区间块定位 -->
+      <view class='price {{searchStyle}}'>
+        <view class='block center'>
+            <block wx:key='' wx:for='{{priceArr}}' wx:for-item='item'>
+              <view class='entry-ctn'>
+                <block wx:key='' wx:for='{{item}}' wx:for-item='item1'>
+                  <view class='entry'>
+                    <view wx:if="{{item1.active == 1}}" data-id='{{item1.id}}' data-a='{{item1.price_a}}' data-b='{{item1.price_b}}' bindtap='PriceRange' class='BgColor'><text>{{item1.name}}</text></view>
+                    <view wx:else data-id='{{item1.id}}' data-a='{{item1.price_a}}' data-b='{{item1.price_b}}' bindtap='PriceRange'><text>{{item1.name}}</text></view>
+                  </view>
+                </block>
+              </view>
+            </block>
+        </view><!--block结束-->
+      </view>
+    </view>
+
+  </view>
+  <!--列表页-->
+  <view class='listPage'>
+    <!-- 二手车列表页 -->
+    <block  wx:key="" wx:for="{{usedCar}}" wx:for-item="item">
+      <view class='list' bindtap='clickJump' data-id='{{item.id}}' data-item='{{item}}'>
+        <view class='listCar center'>
+          <view class='left'>
+            <image src='{{webSite}}{{item.first_image}}'></image>
+          </view>
+          <view class='right'>
+            <view class='details'><text>{{item.brand_name}} {{item.style_name}} {{item.output}} {{item.detail}}</text></view>
+            <view class='details color-gray'><text>{{item.city_name}}/{{item.buy_year}}年{{item.buy_month}}月/{{item.mileage}}万公里</text></view>
+            <view class='details'><text>{{item.price}}万</text></view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 遮罩层 -->
+  <view class='mask {{show}}'></view>
+</view>
+
+
+
+
+
+
+
+
+<view class='total {{popbrand}}'>
+  <!--pages/used/sort/index.wxml-->
+  <scroll-view scroll-y style="height: 100%;" scroll-into-view="{{toView}}">
+    <block wx:key="" wx:for="{{brand}}" wx:for-item="item">
+      <view class='scroll-view-item' id='{{item.initial}}'>
+        <view style='width:100%; background-color: #F5F5F5;'>
+          <view class='letter center'>
+            <text>{{item.initial}}</text>
+          </view>
+        </view>
+        <block wx:key='' wx:for='{{item.name}}' wx:for-item='item1'>
+          <view class='brand center' data-brand_name='{{item1}}' bindtap='BrandChoice'><text>{{item1}}</text></view>
+        </block>
+      </view>  
+    </block>
+  </scroll-view>
+  <view class='choice'>
+    <block wx:key='' wx:for='{{letterArr}}' wx:for-item='item'>
+      <view class='word' bindtap='cliclLetter' data-letter='{{item}}'><text>{{item}}</text></view>
+    </block>
+  </view>
+</view>

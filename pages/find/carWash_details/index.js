@@ -1,4 +1,4 @@
-// pages/used/sort/index.js
+// pages/find/carWash_details/index.js
 Page({
 
   /**

@@ -2,16 +2,18 @@
 <view class='all'></view>
 <!-- 二手车列表页 -->
 <view class='list'>
-  <view class='listCars center'>
-    <view class='listCar center'>
-      <view class='left'>
-        <image src='../../../img/15.png'></image>
-      </view>
-      <view class='right'>
-        <view class='details'><text>宝马H6</text></view>
-        <view class='details color-gray'><text>厂商指导价：22.48-28.64万</text></view>
-        <view class='details'><text>24.80万</text></view>
+  <block wx:key='' wx:for='{{footprintCar}}' wx:for-item='item'>
+    <view class='listCars center' data-id='{{item.id}}' bindtap='clickJump'>
+      <view class='listCar center'>
+        <view class='left'>
+          <image src='{{webSite}}{{item.first_image}}'></image>
+        </view>
+        <view class='right'>
+          <view class='details'><text>{{item.brand_name}}</text></view>
+          <view class='details color-gray'><text>新车总价：{{item.cost_price}}万</text></view>
+          <view class='details'><text>{{item.price}}万</text></view>
+        </view>
       </view>
     </view>
-  </view>
+  </block>
 </view>
