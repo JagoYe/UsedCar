@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/find/auction_list/index",
     "pages/login/index",
     "pages/used/used_list/index",
     "pages/used/used_details/index",
@@ -15,7 +16,7 @@
     "pages/find/repair_details/index",
     "pages/find/safe_details/index",
     "pages/find/finance_details/index",
-    "pages/find/auction_details/index",
+    "pages/find/auction_detail/index",
     "pages/me/phone_update/index",
     "pages/newCar/new_list/index",
     "pages/newCar/index/index",
