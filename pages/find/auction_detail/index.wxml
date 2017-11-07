@@ -15,10 +15,10 @@
     <!-- 汽车描述 -->
     <view class='depict center'>
       <view class='upper'>
-        <text>{{usedDetails.brand_name}} {{usedDetails.style_name}} {{usedDetails.detail}}</text>
+        <text>{{cardetail.brand.name}} {{cardetail.brand.style}} {{cardetail.detail}}</text>
       </view>
       <view class='lower'>
-        <text>{{buy_year}}年{{buy_month}}月上牌丨{{usedDetails.mileage}}万公里丨{{usedDetails.detail}}</text>
+        <text>{{cardetail.buy_time}}上牌丨{{cardetail.mileage}}万公里丨{{cardetail.detail}}</text>
       </view>
     </view>
     <!-- 二手车参考价 -->
@@ -26,13 +26,13 @@
       <view class='left'>
         <view class='assess'><text>车辆评估价:</text></view>
         <view class='actual'>
-          <text>{{usedDetails.price}}万</text>
+          <text>{{cardetail.car_sale.evaluate_price}}万</text>
         </view>
       </view>
       <view class='right'>
         <!-- <text>新车总价：{{usedDetails.cost_price}}万</text> -->
-        <view class='rose'><text>起价: 20万\t涨幅: 50元</text></view>
-        <view class='current'><text>当前竞拍价: 2万</text></view>
+        <view class='rose'><text>起价: {{cardetail.car_sale.starting_price}}万\t涨幅: {{cardetail.car_sale.amount_of_increase}}元</text></view>
+        <view class='current'><text>当前竞拍价: {{best_price}}万</text></view>
       </view>
     </view>
   </view>
@@ -48,36 +48,36 @@
       <view class='middle'>
         <view class='subset margin'>
           <view class='img'><image src='../../../img/20.png'></image></view>
-          <view class='text'>{{usedDetails.mileage}}万公里</view>
+          <view class='text'>{{cardetail.mileage}}万公里</view>
           <view class='text'>表现里程</view>
         </view>
         <view class='subset'>
           <view class='img'><image src='../../../img/21.png'></image></view>
-          <view class='text'>{{buy_year}}年{{buy_month}}月</view>
+          <view class='text'>{{cardetail.buy_time}}</view>
           <view class='text'>上牌时间</view>
         </view>
         <view class='subset'>
           <view class='img'><image src='../../../img/22.png'></image></view>
-          <view class='text'>{{usedDetails.output}}</view>
+          <view class='text'>{{cardetail.output}}</view>
           <view class='text'>车辆排量</view>
         </view>
       </view>
       <!-- 上架时间 -->
       <view class='time'>
         <view class='times'><text>发布时间</text></view>
-        <view class='date'><text>{{publish_time[0]}}年{{publish_time[1]}}月{{publish_time[2]}}日</text></view>
+        <view class='date'><text>{{publish_time}}</text></view>
       </view>
       <view class='time'>
         <view class='times'><text>车辆颜色</text></view>
-        <view class='date'><text>{{usedDetails.color}}</text></view>
+        <view class='date'><text>{{cardetail.color}}</text></view>
       </view>
       <view class='time'>
         <view class='times'><text>保养情况</text></view>
-        <view class='date'><text>{{usedDetails.situation}}</text></view>
+        <view class='date'><text>{{cardetail.situation}}</text></view>
       </view>
       <view class='time'>
         <view class='times'><text>生产厂商</text></view>
-        <view class='date'><text>{{usedDetails.factory}}</text></view>
+        <view class='date'><text>{{cardetail.factory}}</text></view>
       </view>
     </view>
   </view>
@@ -101,7 +101,7 @@
     <view style='border-bottom:gainsboro solid 3rpx'>
       <view class='archivesTop center'>
         <view class='archivesIcon'><image src='../../../img/24.png'></image></view>
-        <view class='archivesText'><text>购车流程</text></view>
+        <view class='archivesText'><text>竞拍流程</text></view>
       </view>
     </view>
     <view class='detailsCar' style='padding-bottom:90rpx'>
@@ -119,10 +119,23 @@
   <!-- 拍车弹出提示块 -->
   <view class='confirm {{reveal}}'>
     <view class='success'>
-      <text>竞拍成功</text>
+      <text>起价: {{cardetail.car_sale.starting_price}}万</text>
+    </view>
+    <view class='success'>
+      <text>涨幅: {{cardetail.car_sale.amount_of_increase}}元</text>
+    </view>
+    <view class='success'>
+      <text>车辆评估价: {{cardetail.car_sale.evaluate_price}}万</text>
+    </view>
+    <view class='success'>
+      <text>当前竞拍价: {{best_price}}万</text>
+    </view>
+    <view class='success'>
+      <text>您的竞拍价: {{best_price}} + {{cardetail.car_sale.amount_of_increase/10000}}={{bid_price}}万</text>
     </view>
     <view class='jump'>
-      <text>将在 {{num}} 秒后自动关闭</text>
+      <view class='cancel'><text>取消</text></view>
+      <view class='determine bg-color'><text>确定</text></view>
     </view>
   </view>
   <!-- 底部 -->

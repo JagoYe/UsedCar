@@ -11,8 +11,7 @@ Page({
     autoplay: true,
     interval: 2000,
     duration: 1000,
-    subscript: "1",
-    num: '3',
+    subscript: "1"
   },
   //页数显示
   subscript: function (e) {
@@ -42,29 +41,56 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.getStorage({
+      key: 'carId',
+      success: function(carId) {
+        console.log(carId.data);
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingById',
+          data: {id: carId.data},
+          success:function(res){
+            console.log(res);
+            var imgUrls = res.data.data[0].images.split(' | ');
+            var length = imgUrls.length;
+            var archives = res.data.data[0].advantage.split('、');
+            var time = res.data.data[0].publish_time.split('/');
+            var publish_time = time[0] + '年' + time[1] + '月' + time[2] + '日';
+            if(res.data.data[0].best_price == ''){
+              var bid_price = parseFloat(res.data.data[0].car_sale.starting_price) + parseFloat(res.data.data[0].car_sale.amount_of_increase / 10000)
+              that.setData({
+                best_price: res.data.data[0].car_sale.starting_price,
+                bid_price: bid_price
+              })
+            }else{
+              var bid_price = parseFloat(res.data.data[0].best_price) + parseFloat(res.data.data[0].car_sale.amount_of_increase / 10000)
+              that.setData({
+                best_price: res.data.data[0].best_price,
+                bid_price: bid_price 
+              })
+            }
+            that.setData({
+              length: length,
+              imgUrls: imgUrls,
+              cardetail: res.data.data[0],
+              publish_time: publish_time,
+              archives: archives,
+            })
+          }
+        })  
+      },
+    })
   },
   // 点击竞拍车辆
   ClickAuction: function(){
     var that = this;
-    var num = that.data.num;
     that.setData({
       masks: 'masks',
       reveal: 'reveal'
     });
-    var timer = setInterval(function () {
-      num--;
-      that.setData({
-        num: num
-      });
-      if (num == 0) {
-        clearInterval(timer);
-        that.setData({
-          masks: '',
-          reveal: '',
-          num: '3',
-        })
-      }
-    }, 1000);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

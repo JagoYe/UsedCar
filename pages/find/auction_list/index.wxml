@@ -1,7 +1,7 @@
 <!--pages/find/carWash_details/index.wxml-->
 <view class='all'>
   <view class='header'>
-    <image src='../../../img/45.png'></image>
+    <image src='../../../img/1.png'></image>
     <view class='title'><text>云南二手车交易车辆拍卖</text></view>
   </view>
   <view class='search'>
@@ -15,7 +15,7 @@
   <view class='main'>
     <block wx:key='' wx:for='{{cardetails}}' wx:for-item='item'>
       <!-- 洗车服务列表 -->
-      <view class='list' bindtap='clickdetail'>
+      <view class='list' bindtap='clickdetail' data-id='{{item.car_sale.id}}'>
         <view class='listCar center'>
           <view class='left'>
             <view class='brand'>
@@ -23,32 +23,31 @@
               <view class='audi'><text>{{item.brand.style}}</text></view>
             </view>
             <view class='detail'>
-              <text>12款 {{item.buy_time}} {{item.advantage}} Sl手自一体 四驱尊容版</text>
+              <text>{{item.buy_time}}购</text>
             </view>
-            <view class='timeshow bg-color center'><text>{{time}}</text></view>
+            <view class='detail'>
+              <text>{{item.advantage}} {{item.detail}}</text>
+            </view>
+            <view class='timeshow bg-color center'><text>{{item.time}}</text></view>
           </view>
           <view class='middle'>
             <view class='img'>
-              <image src='../../../img/46.png'></image>
+              <image src='{{webSite}}{{item.first_image}}'></image>
             </view>
-            <view class='starting'><text>起价: 24万</text></view>
+            <view class='starting'><text>当前竞拍价: 24万</text></view>
           </view>
           <view class='right'>
             <view class='price'>
-              <view class='classify'><text>涨幅:</text></view>
-              <view class='pricedisplay'>1000元</view>
+              <view class='classify'><text>起价:</text></view>
+              <view class='pricedisplay'>{{item.car_sale.starting_price}}万</view>
             </view>
             <view class='price'>
-              <view class='classify'><text>新车价:</text></view>
-              <view class='pricedisplay'>42万</view>
+              <view class='classify'><text>涨幅:</text></view>
+              <view class='pricedisplay'>{{item.car_sale.amount_of_increase}}元</view>
             </view>
             <view class='price'>
               <view class='classify'><text>车辆评估价:</text></view>
-              <view class='pricedisplay'>35万</view>
-            </view>
-            <view class='price'>
-              <view class='classify'><text>当前竞拍价:</text></view>
-              <view class='pricedisplay'>25.2万</view>
+              <view class='pricedisplay'>{{item.car_sale.evaluate_price}}万</view>
             </view>
           </view>
         </view>

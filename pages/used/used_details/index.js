@@ -80,6 +80,7 @@ Page({
     wx.getStorage({
       key: 'used_details',
       success: function(res) {
+        console.log(res);
         var imgUrls = res.data.images.split(' | ');
         var archives = res.data.advantage.split('、');
         var length = imgUrls.length;

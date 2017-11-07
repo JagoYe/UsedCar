@@ -6,12 +6,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    webSite: app.globalData.webSite
   },
-  clickdetail: function(){
+  //点击跳转到拍车详情页
+  clickdetail: function(e){
     var that = this;
-    wx.navigateTo({
-      url: '/pages/find/auction_detail/index'
+    var carId = e.currentTarget.dataset.id;
+    wx.setStorage({
+      key: 'carId',
+      data: carId,
+      success: function(res){
+        wx.navigateTo({
+          url: '/pages/find/auction_detail/index'
+        })
+      }
     })
   },
   /**
@@ -25,27 +33,35 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
-      data: { status: '0'},
+      data: { status: '1'},
       success:function(res){
         console.log(res);
         res.data.data.forEach(function(val,key){
-          console.log(val);
+          var imageArr = val.images.split(' | ');
+          res.data.data[key]['first_image'] = imageArr[0];
+          var buy_year = val.buy_time.substring(0, 4);
+          var buy_month = val.buy_time.substring(4, 6);
+          res.data.data[key]['buy_time'] = buy_year + '年' + buy_month + '月';
+          that.setData({
+            cardetails: res.data.data
+          })
           setInterval(function () {
+            // val.car_sale.ending_timestamp * 1000
             var timestamp = val.car_sale.ending_timestamp * 1000 - new Date().getTime();//获取剩余时间戳new Date().gitTime():获取当前时间戳
             if (timestamp >= 0) {
-              var times = parseInt(timestamp / 1000);//毫秒转换为秒计算
+              var times = timestamp / 1000;//毫秒转换为秒计算
               var day = parseInt(times / (60 * 60 * 24));//天
               var hour = parseInt((times - day * 24 * 60 * 60) / 3600);//小时
               var minute = parseInt((times - day * 24 * 60 * 60 - hour * 3600) / 60);//分
               var second = parseInt(times - day * 24 * 60 * 60 - hour * 3600 - minute * 60);//秒
               var time = day + '天' + hour + '小时' + minute + '分' + second + '秒';
+              res.data.data[key]['time'] = time;
               that.setData({
-                time: time
+                cardetails: res.data.data
               })
             } else {
               that.setData({
-                time: '拍车结束',
-                cardetails: res.data.data
+                time: '拍车结束'
               })
             }
           }, 1000);
