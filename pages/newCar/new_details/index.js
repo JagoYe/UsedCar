@@ -76,6 +76,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var phone = app.globalData.userInfo.phone;
     //取缓存
     wx.getStorage({
       key: 'newCar_details',
@@ -94,7 +95,7 @@ Page({
           },
           url: app.globalData.webSite + '/Home/Wechat/footprintAdd',
           data: {
-            user_phone: '18787312252',
+            user_phone: phone,
             car_id: res.data.id
           },
           success: function (footprint) {
@@ -109,7 +110,7 @@ Page({
           },
           url: app.globalData.webSite + '/Home/Wechat/collectionSelectByPhone',
           data: {
-            user_phone: '18787312252',
+            user_phone: phone,
           },
           success: function (select) {
             select.data.data.forEach(function (val, key) {
@@ -135,9 +136,10 @@ Page({
       },
     });
   },
-  //请求收藏接口
+  //点击请求收藏接口
   Collection: function () {
     var that = this;
+    var phone = app.globalData.userInfo.phone;
     if (that.data.active == 1) {
       wx.request({
         method: 'POST',
@@ -146,7 +148,7 @@ Page({
         },
         url: app.globalData.webSite + '/Home/Wechat/collectionAdd',
         data: {
-          user_phone: '18787312252',
+          user_phone: phone,
           car_id: that.data.usedDetails.id
         },
         success: function (footprint) {
@@ -182,7 +184,7 @@ Page({
         },
         url: app.globalData.webSite + '/Home/Wechat/collectionDelete',
         data: {
-          user_phone: '18787312252',
+          user_phone: phone,
           car_id: that.data.usedDetails.id
         },
         success: function (res) {

@@ -213,12 +213,12 @@ page{
 }
 /* 时间弹出显示块 */
 .confirm{
-  width: 50%;
+  width: 66%;
   height:310rpx;
   background-color: white;
   position: fixed;
   top: 380rpx;
-  left: 25%;
+  left: 17%;
   border-radius: 12rpx;
   display: none; 
 }

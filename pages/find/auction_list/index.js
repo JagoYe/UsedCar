@@ -37,6 +37,11 @@ Page({
       success:function(res){
         console.log(res);
         res.data.data.forEach(function(val,key){
+          if(val.best_price == ''){
+            res.data.data[key]['best_price'] = val.car_sale.starting_price
+          }else{
+            res.data.data[key]['best_price'] = val.best_price/10000
+          }
           var imageArr = val.images.split(' | ');
           res.data.data[key]['first_image'] = imageArr[0];
           var buy_year = val.buy_time.substring(0, 4);

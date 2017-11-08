@@ -19,6 +19,7 @@ Page({
     var that = this;
     var num = that.data.num;
     var detailCar = e.detail.value;
+    var phone = app.globalData.userInfo.phone;
     // console.log(e.detail.value);
     wx.getUserInfo({
       success: function (user) {
@@ -54,7 +55,7 @@ Page({
                 factory: detailCar.factory,
                 advantage: detailCar.advantage,
                 user_name: nickName,
-                user_phone: '18787312252'
+                user_phone: phone
               },
               success: function (res) {
                 that.setData({

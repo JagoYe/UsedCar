@@ -18,7 +18,7 @@
         <text>{{cardetail.brand.name}} {{cardetail.brand.style}} {{cardetail.detail}}</text>
       </view>
       <view class='lower'>
-        <text>{{cardetail.buy_time}}上牌丨{{cardetail.mileage}}万公里丨{{cardetail.detail}}</text>
+        <text>{{buy_time}}上牌丨{{cardetail.mileage}}万公里丨{{cardetail.detail}}</text>
       </view>
     </view>
     <!-- 二手车参考价 -->
@@ -32,7 +32,7 @@
       <view class='right'>
         <!-- <text>新车总价：{{usedDetails.cost_price}}万</text> -->
         <view class='rose'><text>起价: {{cardetail.car_sale.starting_price}}万\t涨幅: {{cardetail.car_sale.amount_of_increase}}元</text></view>
-        <view class='current'><text>当前竞拍价: {{best_price}}万</text></view>
+        <view class='current'><text>当前竞拍价: {{best_price}}元</text></view>
       </view>
     </view>
   </view>
@@ -131,11 +131,11 @@
       <text>当前竞拍价: {{best_price}}万</text>
     </view>
     <view class='success'>
-      <text>您的竞拍价: {{best_price}} + {{cardetail.car_sale.amount_of_increase/10000}}={{bid_price}}万</text>
+      <text>您的竞拍价: {{best_price}} + {{cardetail.car_sale.amount_of_increase}}={{bid_price}}万</text>
     </view>
     <view class='jump'>
-      <view class='cancel'><text>取消</text></view>
-      <view class='determine bg-color'><text>确定</text></view>
+      <view class='cancel' bindtap='cancel'><text>取消</text></view>
+      <view class='determine bg-color' bindtap='determine'><text>确定</text></view>
     </view>
   </view>
   <!-- 底部 -->
