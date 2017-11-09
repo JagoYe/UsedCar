@@ -7,7 +7,7 @@ Page({
   data: {
     webSite: app.globalData.webSite
   },
-  //选择品牌
+  //按照品牌查询
   bindPickerChange: function (e) {
     var that = this;
     var brand_name = that.data.area[e.detail.value];

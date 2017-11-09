@@ -25,7 +25,7 @@
     <view class='price center'>
       <view class='left'><text>{{usedDetails.price}}万</text></view>
       <view class='right'>
-        <text>新车总价：{{usedDetails.cost_price}}万</text>
+        <text>新车总价：{{usedDetails.cost_price}}万 {{status}}</text>
       </view>
     </view>
   </view>

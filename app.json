@@ -1,6 +1,5 @@
 {
   "pages":[
-    
     "pages/index/index",
     "pages/find/auction_list/index",
     "pages/login/index",

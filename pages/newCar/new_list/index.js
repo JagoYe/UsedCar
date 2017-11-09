@@ -80,7 +80,7 @@ Page({
       ]
     ]
   },
-  //选择品牌
+  //选择品牌搜索框搜索
   bindPickerChange: function (e) {
     var that = this;
     var brand_name = that.data.area[e.detail.value];
@@ -253,17 +253,63 @@ Page({
     wx.getStorage({
       key: 'usedCar',
       success: function (res) {
-        res.data.forEach(function (val, key) {
-          var imageArr = val.images.split(' | ');
-          var buy_year = val.buy_time.substring(0, 4);
-          var buy_month = val.buy_time.substring(4, 6);
-          res.data[key]['buy_year'] = buy_year;
-          res.data[key]['buy_month'] = buy_month;
-          res.data[key]['first_image'] = imageArr[0];
+        //请求拍卖中的接口
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+          data: { status: '1' },
+          success: function (status1) {
+            //请求拍卖已完成的接口
+            wx.request({
+              method: 'POST',
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+              data: { status: '2' },
+              success: function (status2) {
+                // console.log(status1);
+                res.data.forEach(function (val1, key1) {
+                  status1.data.data.forEach(function (val2, key2) {
+                    status2.data.data.forEach(function (val3, key3) {
+                      if (val1.id == val2.id) {
+                        res.data[key1]['status'] = '拍卖中';
+                        var imageArr = val1.images.split(' | ');
+                        var buy_year = val1.buy_time.substring(0, 4);
+                        var buy_month = val1.buy_time.substring(4, 6);
+                        res.data[key1]['buy_year'] = buy_year;
+                        res.data[key1]['buy_month'] = buy_month;
+                        res.data[key1]['first_image'] = imageArr[0];
+                      } else if (val1.id == val3.id) {
+                        // res.data[key1] = ''
+                        // delete res.data[key1];
+                        // res.data.remove(key1);
+                      }
+                    })
+                  })
+                })
+                console.log(res.data);
+                that.setData({
+                  usedCar: res.data
+                })
+              }
+            })
+          }
         });
-        that.setData({
-          usedCar: res.data
-        })
+        // res.data.forEach(function (val, key) {
+        //   var imageArr = val.images.split(' | ');
+        //   var buy_year = val.buy_time.substring(0, 4);
+        //   var buy_month = val.buy_time.substring(4, 6);
+        //   res.data[key]['buy_year'] = buy_year;
+        //   res.data[key]['buy_month'] = buy_month;
+        //   res.data[key]['first_image'] = imageArr[0];
+        // });
+        // that.setData({
+        //   usedCar: res.data
+        // })
       },
     });
     //调用品牌接口

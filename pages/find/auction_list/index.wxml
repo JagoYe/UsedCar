@@ -19,11 +19,12 @@
         <view class='listCar center'>
           <view class='left'>
             <view class='brand'>
-              <view class='brandname'><text>{{item.brand.name}}</text></view>
-              <view class='audi'><text>{{item.brand.style}}</text></view>
+              <text>{{item.brand.name}} {{item.brand.style}}</text>
+              <!-- <view class='brandname'></view>
+              <view class='audi'></view> -->
             </view>
             <view class='detail'>
-              <text>{{item.buy_time}}购</text>
+              <text>{{item.buy_time}} (购)</text>
             </view>
             <view class='detail'>
               <text>{{item.advantage}} {{item.detail}}</text>

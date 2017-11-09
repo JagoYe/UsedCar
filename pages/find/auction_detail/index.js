@@ -97,6 +97,11 @@ Page({
   // 点击竞拍车辆
   ClickAuction: function(){
     var that = this;
+    if (app.globalData.loginStatus == false) {
+      wx.navigateTo({
+        url: '/pages/login/index'
+      })
+    };
     wx.getStorage({
       key: 'carId',
       success: function (carId) {
@@ -129,11 +134,7 @@ Page({
         })
       }
     })
-    if (app.globalData.loginStatus == false) {
-      wx.navigateTo({
-        url: '/pages/login/index'
-      })
-    };
+    
   },
   //点击取消
   cancel: function(){
