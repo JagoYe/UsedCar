@@ -23,8 +23,8 @@
       <picker bindchange="bindPickerChange" value="{{areaIndex}}" range="{{area}}">  
         <view class="picker">
           <text>当前选择 → {{area[areaIndex]}}</text>  
-        </view>  
-      </picker>  
+        </view>
+      </picker>
     </view>
   </view>
   <!-- 按条件查询车辆 -->
@@ -170,7 +170,7 @@
         <view class='right'>
           <view class='details'><text>{{item.brand_name}} {{item.style_name}} {{item.output}} {{item.detail}}</text></view>
           <view class='details color-gray'><text>{{item.city_name}}/{{item.buy_year}}年{{item.buy_month}}月/{{item.mileage}}万公里</text></view>
-          <view class='details'><text>{{item.price}}万</text></view>
+          <view class='details'><text>{{item.price}}万 {{item.status}}</text></view>
         </view>
       </view>
     </view>

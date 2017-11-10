@@ -101,18 +101,62 @@ Page({
         brand_name: brand_name
       },
       success: function (res) {
-        res.data.data.forEach(function (val, key) {
-          var imageArr = val.images.split(' | ');
-          res.data.data[key]['first_image'] = imageArr[0];
-          var buy_year = val.buy_time.substring(0, 4);
-          var buy_month = val.buy_time.substring(4, 6);
-          res.data.data[key]['buy_year'] = buy_year;
-          res.data.data[key]['buy_month'] = buy_month;
+        //请求拍卖中的接口
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+          data: { status: '1' },
+          success: function (status1) {
+            //请求拍卖已完成的接口
+            wx.request({
+              method: 'POST',
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+              data: { status: '2' },
+              success: function (status2) {
+                // console.log(status1);
+                res.data.data.forEach(function (val1, key1) {
+                  status1.data.data.forEach(function (val2, key2) {
+                    status2.data.data.forEach(function (val3, key3) {
+                      var imageArr = val1.images.split(' | ');
+                      var buy_year = val1.buy_time.substring(0, 4);
+                      var buy_month = val1.buy_time.substring(4, 6);
+                      res.data.data[key1]['buy_year'] = buy_year;
+                      res.data.data[key1]['buy_month'] = buy_month;
+                      res.data.data[key1]['first_image'] = imageArr[0];
+                      if (val1.id == val2.id) {
+                        res.data[key1]['status'] = '拍卖中';
+                      } else if (val1.id == val3.id) {
+                        res.data.data.splice(key1, 1);
+                      }
+                    })
+                  })
+                })
+                that.setData({
+                  brand_name: brand_name,
+                  usedCar: res.data.data
+                })
+              }
+            })
+          }
         });
-        that.setData({
-          brand_name: brand_name,
-          usedCar: res.data.data
-        })
+        // res.data.data.forEach(function (val, key) {
+        //   var imageArr = val.images.split(' | ');
+        //   res.data.data[key]['first_image'] = imageArr[0];
+        //   var buy_year = val.buy_time.substring(0, 4);
+        //   var buy_month = val.buy_time.substring(4, 6);
+        //   res.data.data[key]['buy_year'] = buy_year;
+        //   res.data.data[key]['buy_month'] = buy_month;
+        // });
+        // that.setData({
+        //   brand_name: brand_name,
+        //   usedCar: res.data.data
+        // })
       }
     });
     this.setData({
@@ -166,15 +210,49 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carSelectById',
       data: { car_id },
       success: function (res) {
-        wx.setStorage({
-          key: 'newCar_details',
-          data: res.data.data[0],
-          success: function (res1) {
-            wx.navigateTo({
-              url: '../new_details/index',
+        //请求拍卖中的接口
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+          data: { status: '1' },
+          success: function (status) {
+            status.data.data.forEach(function (val, key) {
+              if (val.id == res.data.data[0].id) {
+                wx.setStorage({
+                  key: 'carId',
+                  data: car_id,
+                  success: function (res) {
+                    wx.navigateTo({
+                      url: '/pages/find/auction_detail/index'
+                    })
+                  }
+                })
+              } else {
+                wx.setStorage({
+                  key: 'newCar_details',
+                  data: res.data.data[0],
+                  success: function (res1) {
+                    wx.navigateTo({
+                      url: '../new_details/index',
+                    })
+                  }
+                })
+              }
             })
           }
-        })
+        });
+        // wx.setStorage({
+        //   key: 'newCar_details',
+        //   data: res.data.data[0],
+        //   success: function (res1) {
+        //     wx.navigateTo({
+        //       url: '../new_details/index',
+        //     })
+        //   }
+        // })
       }
     })
   },
@@ -275,23 +353,20 @@ Page({
                 res.data.forEach(function (val1, key1) {
                   status1.data.data.forEach(function (val2, key2) {
                     status2.data.data.forEach(function (val3, key3) {
+                      var imageArr = val1.images.split(' | ');
+                      var buy_year = val1.buy_time.substring(0, 4);
+                      var buy_month = val1.buy_time.substring(4, 6);
+                      res.data[key1]['buy_year'] = buy_year;
+                      res.data[key1]['buy_month'] = buy_month;
+                      res.data[key1]['first_image'] = imageArr[0];
                       if (val1.id == val2.id) {
                         res.data[key1]['status'] = '拍卖中';
-                        var imageArr = val1.images.split(' | ');
-                        var buy_year = val1.buy_time.substring(0, 4);
-                        var buy_month = val1.buy_time.substring(4, 6);
-                        res.data[key1]['buy_year'] = buy_year;
-                        res.data[key1]['buy_month'] = buy_month;
-                        res.data[key1]['first_image'] = imageArr[0];
                       } else if (val1.id == val3.id) {
-                        // res.data[key1] = ''
-                        // delete res.data[key1];
-                        // res.data.remove(key1);
+                        res.data.splice(key1, 1);
                       }
                     })
                   })
                 })
-                console.log(res.data);
                 that.setData({
                   usedCar: res.data
                 })
@@ -407,25 +482,76 @@ Page({
         status: ''
       },
       success: function (res) {
-        res.data.data.forEach(function (val, key) {
-          var imageArr = val.images.split(' | ');
-          res.data.data[key]['first_image'] = imageArr[0];
-          var buy_year = val.buy_time.substring(0, 4);
-          var buy_month = val.buy_time.substring(4, 6);
-          res.data.data[key]['buy_year'] = buy_year;
-          res.data.data[key]['buy_month'] = buy_month;
+        //请求拍卖中的接口
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+          data: { status: '1' },
+          success: function (status1) {
+            //请求拍卖已完成的接口
+            wx.request({
+              method: 'POST',
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+              data: { status: '2' },
+              success: function (status2) {
+                // console.log(status1);
+                res.data.data.forEach(function (val1, key1) {
+                  status1.data.data.forEach(function (val2, key2) {
+                    status2.data.data.forEach(function (val3, key3) {
+                      var imageArr = val1.images.split(' | ');
+                      var buy_year = val1.buy_time.substring(0, 4);
+                      var buy_month = val1.buy_time.substring(4, 6);
+                      res.data.data[key1]['buy_year'] = buy_year;
+                      res.data.data[key1]['buy_month'] = buy_month;
+                      res.data.data[key1]['first_image'] = imageArr[0];
+                      if (val1.id == val2.id) {
+                        res.data[key1]['status'] = '拍卖中';
+                      } else if (val1.id == val3.id) {
+                        res.data.data.splice(key1, 1);
+                      }
+                    })
+                  })
+                })
+                that.setData({
+                  usedCar: res.data.data,
+                  brand_name: '',
+                  price_a: '0',
+                  price_b: '100000',
+                  color: "",
+                  display: false,
+                  searchStyle: '',
+                  searchHandle: '0',
+                  show: ''
+                })
+              }
+            })
+          }
         });
-        that.setData({
-          usedCar: res.data.data,
-          brand_name: '',
-          price_a: '0',
-          price_b: '100000',
-          color: "",
-          display: false,
-          searchStyle: '',
-          searchHandle: '0',
-          show: ''
-        })
+        // res.data.data.forEach(function (val, key) {
+        //   var imageArr = val.images.split(' | ');
+        //   res.data.data[key]['first_image'] = imageArr[0];
+        //   var buy_year = val.buy_time.substring(0, 4);
+        //   var buy_month = val.buy_time.substring(4, 6);
+        //   res.data.data[key]['buy_year'] = buy_year;
+        //   res.data.data[key]['buy_month'] = buy_month;
+        // });
+        // that.setData({
+        //   usedCar: res.data.data,
+        //   brand_name: '',
+        //   price_a: '0',
+        //   price_b: '100000',
+        //   color: "",
+        //   display: false,
+        //   searchStyle: '',
+        //   searchHandle: '0',
+        //   show: ''
+        // })
       }
     });
   },
@@ -459,22 +585,70 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carSelectByPriceVarious',
       data: requestCondition,
       success: function (res) {
-        res.data.data.forEach(function (val, key) {
-          var imageArr = val.images.split(' | ');
-          res.data.data[key]['first_image'] = imageArr[0];
-          var buy_year = val.buy_time.substring(0, 4);
-          var buy_month = val.buy_time.substring(4, 6);
-          res.data.data[key]['buy_year'] = buy_year;
-          res.data.data[key]['buy_month'] = buy_month;
+        //请求拍卖中的接口
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+          data: { status: '1' },
+          success: function (status1) {
+            //请求拍卖已完成的接口
+            wx.request({
+              method: 'POST',
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+              data: { status: '2' },
+              success: function (status2) {
+                // console.log(status1);
+                res.data.data.forEach(function (val1, key1) {
+                  status1.data.data.forEach(function (val2, key2) {
+                    status2.data.data.forEach(function (val3, key3) {
+                      var imageArr = val1.images.split(' | ');
+                      var buy_year = val1.buy_time.substring(0, 4);
+                      var buy_month = val1.buy_time.substring(4, 6);
+                      res.data.data[key1]['buy_year'] = buy_year;
+                      res.data.data[key1]['buy_month'] = buy_month;
+                      res.data.data[key1]['first_image'] = imageArr[0];
+                      if (val1.id == val2.id) {
+                        res.data[key1]['status'] = '拍卖中';
+                      } else if (val1.id == val3.id) {
+                        res.data.data.splice(key1, 1);
+                      }
+                    })
+                  })
+                })
+                that.setData({
+                  usedCar: res.data.data,
+                  color: "",
+                  display: false,
+                  searchStyle: '',
+                  searchHandle: '0',
+                  show: ''
+                })
+              }
+            })
+          }
         });
-        that.setData({
-          usedCar: res.data.data,
-          color: "",
-          display: false,
-          searchStyle: '',
-          searchHandle: '0',
-          show: ''
-        })
+        // res.data.data.forEach(function (val, key) {
+        //   var imageArr = val.images.split(' | ');
+        //   res.data.data[key]['first_image'] = imageArr[0];
+        //   var buy_year = val.buy_time.substring(0, 4);
+        //   var buy_month = val.buy_time.substring(4, 6);
+        //   res.data.data[key]['buy_year'] = buy_year;
+        //   res.data.data[key]['buy_month'] = buy_month;
+        // });
+        // that.setData({
+        //   usedCar: res.data.data,
+        //   color: "",
+        //   display: false,
+        //   searchStyle: '',
+        //   searchHandle: '0',
+        //   show: ''
+        // })
       }
     });
   },
@@ -512,24 +686,74 @@ Page({
               price_b: price_b
             },
             success: function (res) {
-              res.data.data.forEach(function (val, key) {
-                var imageArr = val.images.split(' | ');
-                res.data.data[key]['first_image'] = imageArr[0];
-                var buy_year = val.buy_time.substring(0, 4);
-                var buy_month = val.buy_time.substring(4, 6);
-                res.data.data[key]['buy_year'] = buy_year;
-                res.data.data[key]['buy_month'] = buy_month;
+              //请求拍卖中的接口
+              wx.request({
+                method: 'POST',
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+                data: { status: '1' },
+                success: function (status1) {
+                  //请求拍卖已完成的接口
+                  wx.request({
+                    method: 'POST',
+                    header: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+                    data: { status: '2' },
+                    success: function (status2) {
+                      // console.log(status1);
+                      res.data.data.forEach(function (val1, key1) {
+                        status1.data.data.forEach(function (val2, key2) {
+                          status2.data.data.forEach(function (val3, key3) {
+                            var imageArr = val1.images.split(' | ');
+                            var buy_year = val1.buy_time.substring(0, 4);
+                            var buy_month = val1.buy_time.substring(4, 6);
+                            res.data.data[key1]['buy_year'] = buy_year;
+                            res.data.data[key1]['buy_month'] = buy_month;
+                            res.data.data[key1]['first_image'] = imageArr[0];
+                            if (val1.id == val2.id) {
+                              res.data[key1]['status'] = '拍卖中';
+                            } else if (val1.id == val3.id) {
+                              res.data.data.splice(key1, 1);
+                            }
+                          })
+                        })
+                      })
+                      that.setData({
+                        price_a: price_a,
+                        price_b: price_b,
+                        usedCar: res.data.data,
+                        color: "",
+                        display: false,
+                        searchStyle: '',
+                        searchHandle: '0',
+                        show: ''
+                      })
+                    }
+                  })
+                }
               });
-              that.setData({
-                price_a: price_a,
-                price_b: price_b,
-                usedCar: res.data.data,
-                color: "",
-                display: false,
-                searchStyle: '',
-                searchHandle: '0',
-                show: ''
-              })
+              // res.data.data.forEach(function (val, key) {
+              //   var imageArr = val.images.split(' | ');
+              //   res.data.data[key]['first_image'] = imageArr[0];
+              //   var buy_year = val.buy_time.substring(0, 4);
+              //   var buy_month = val.buy_time.substring(4, 6);
+              //   res.data.data[key]['buy_year'] = buy_year;
+              //   res.data.data[key]['buy_month'] = buy_month;
+              // });
+              // that.setData({
+              //   price_a: price_a,
+              //   price_b: price_b,
+              //   usedCar: res.data.data,
+              //   color: "",
+              //   display: false,
+              //   searchStyle: '',
+              //   searchHandle: '0',
+              //   show: ''
+              // })
             }
           })
         }
@@ -573,20 +797,65 @@ Page({
         brand_name: brand_name
       },
       success: function (res) {
-        console.log(res);
-        res.data.data.forEach(function (val, key) {
-          var imageArr = val.images.split(' | ');
-          res.data.data[key]['first_image'] = imageArr[0];
-          var buy_year = val.buy_time.substring(0, 4);
-          var buy_month = val.buy_time.substring(4, 6);
-          res.data.data[key]['buy_year'] = buy_year;
-          res.data.data[key]['buy_month'] = buy_month;
+        //请求拍卖中的接口
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+          data: { status: '1' },
+          success: function (status1) {
+            //请求拍卖已完成的接口
+            wx.request({
+              method: 'POST',
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+              data: { status: '2' },
+              success: function (status2) {
+                // console.log(status1);
+                res.data.data.forEach(function (val1, key1) {
+                  status1.data.data.forEach(function (val2, key2) {
+                    status2.data.data.forEach(function (val3, key3) {
+                      var imageArr = val1.images.split(' | ');
+                      var buy_year = val1.buy_time.substring(0, 4);
+                      var buy_month = val1.buy_time.substring(4, 6);
+                      res.data.data[key1]['buy_year'] = buy_year;
+                      res.data.data[key1]['buy_month'] = buy_month;
+                      res.data.data[key1]['first_image'] = imageArr[0];
+                      if (val1.id == val2.id) {
+                        res.data[key1]['status'] = '拍卖中';
+                      } else if (val1.id == val3.id) {
+                        res.data.data.splice(key1, 1);
+                      }
+                    })
+                  })
+                })
+                that.setData({
+                  brand_name: brand_name,
+                  popbrand: '',
+                  usedCar: res.data.data
+                })
+              }
+            })
+          }
         });
-        that.setData({
-          brand_name: brand_name,
-          popbrand: '',
-          usedCar: res.data.data
-        })
+        // console.log(res);
+        // res.data.data.forEach(function (val, key) {
+        //   var imageArr = val.images.split(' | ');
+        //   res.data.data[key]['first_image'] = imageArr[0];
+        //   var buy_year = val.buy_time.substring(0, 4);
+        //   var buy_month = val.buy_time.substring(4, 6);
+        //   res.data.data[key]['buy_year'] = buy_year;
+        //   res.data.data[key]['buy_month'] = buy_month;
+        // });
+        // that.setData({
+        //   brand_name: brand_name,
+        //   popbrand: '',
+        //   usedCar: res.data.data
+        // })
       }
     });
   },

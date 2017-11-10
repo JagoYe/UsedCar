@@ -123,17 +123,17 @@ Page({
                 res.data.data.forEach(function (val1, key1) {
                   status1.data.data.forEach(function (val2, key2) {
                     status2.data.data.forEach(function (val3, key3) {
-                      if (val1.id == val2.id) {
-                        res.data.data[key1]['status'] = '拍卖中'
-                      } else if (val1.id == val3.id) {
-                        res.data.data[key1] = ''
-                      }
                       var imageArr = val1.images.split(' | ');
                       var buy_year = val1.buy_time.substring(0, 4);
                       var buy_month = val1.buy_time.substring(4, 6);
                       res.data.data[key1]['buy_year'] = buy_year;
                       res.data.data[key1]['buy_month'] = buy_month;
                       res.data.data[key1]['first_image'] = imageArr[0];
+                      if (val1.id == val2.id) {
+                        res.data.data[key1]['status'] = '拍卖中'
+                      } else if (val1.id == val3.id) {
+                        res.data.data.splice(key1, 1);
+                      }
                     })
                   })
                 })
@@ -210,15 +210,71 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carSelectById',
       data: { car_id},
       success: function(res){
-        wx.setStorage({
-          key: 'used_details',
-          data: res.data.data[0],
-          success: function(res1){
-            wx.navigateTo({
-              url: '../used_details/index',
+        //请求拍卖中的接口
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+          data: { status: '1' },
+          success: function (status) {
+            status.data.data.forEach(function(val,key){
+              if(val.id == res.data.data[0].id){
+                  wx.setStorage({
+                    key: 'carId',
+                    data: car_id,
+                    success: function (res) {
+                      wx.navigateTo({
+                        url: '/pages/find/auction_detail/index'
+                      })
+                    }
+                  })
+              }else{
+                wx.setStorage({
+                  key: 'used_details',
+                  data: res.data.data[0],
+                  success: function (res1) {
+                    wx.navigateTo({
+                      url: '../used_details/index',
+                    })
+                  }
+                })
+              }
             })
           }
-        })
+        });
+        // if (res.data.data[0]['status'] == '拍卖中') {
+        //   console.log('进入');
+        //   wx.setStorage({
+        //     key: 'carId',
+        //     data: car_id,
+        //     success: function (res) {
+        //       wx.navigateTo({
+        //         url: '/pages/find/auction_detail/index'
+        //       })
+        //     }
+        //   })
+        // }else{
+        //   wx.setStorage({
+        //     key: 'used_details',
+        //     data: res.data.data[0],
+        //     success: function (res1) {
+        //       wx.navigateTo({
+        //         url: '/pages/used/used_details/index',
+        //       })
+        //     }
+        //   })
+        // }
+        // wx.setStorage({
+        //   key: 'used_details',
+        //   data: res.data.data[0],
+        //   success: function(res1){
+        //     wx.navigateTo({
+        //       url: '../used_details/index',
+        //     })
+        //   }
+        // })
       }
     })
   },
@@ -318,17 +374,17 @@ Page({
                 res.data.forEach(function(val1,key1){
                   status1.data.data.forEach(function(val2,key2){
                     status2.data.data.forEach(function(val3,key3){
-                      if(val1.id == val2.id){
-                        res.data[key1]['status'] = '拍卖中'
-                      }else if(val1.id == val3.id){
-                        res.data[key1] = ''
-                      }
                       var imageArr = val1.images.split(' | ');
                       var buy_year = val1.buy_time.substring(0, 4);
                       var buy_month = val1.buy_time.substring(4, 6);
                       res.data[key1]['buy_year'] = buy_year;
                       res.data[key1]['buy_month'] = buy_month;
-                      res.data[key1]['first_image'] = imageArr[0];                      
+                      res.data[key1]['first_image'] = imageArr[0];
+                      if(val1.id == val2.id){
+                        res.data[key1]['status'] = '拍卖中'
+                      }else if(val1.id == val3.id){
+                        res.data.splice(key1, 1);
+                      }                      
                     })
                   })
                 })
@@ -469,17 +525,17 @@ Page({
                 res.data.data.forEach(function (val1, key1) {
                   status1.data.data.forEach(function (val2, key2) {
                     status2.data.data.forEach(function (val3, key3) {
-                      if (val1.id == val2.id) {
-                        res.data.data[key1]['status'] = '拍卖中'
-                      } else if (val1.id == val3.id) {
-                        res.data.data[key1] = ''
-                      }
                       var imageArr = val1.images.split(' | ');
                       var buy_year = val1.buy_time.substring(0, 4);
                       var buy_month = val1.buy_time.substring(4, 6);
                       res.data.data[key1]['buy_year'] = buy_year;
                       res.data.data[key1]['buy_month'] = buy_month;
                       res.data.data[key1]['first_image'] = imageArr[0];
+                      if (val1.id == val2.id) {
+                        res.data.data[key1]['status'] = '拍卖中'
+                      } else if (val1.id == val3.id) {
+                        res.data.data.splice(key1, 1);
+                      }
                     })
                   })
                 });
@@ -572,17 +628,17 @@ Page({
                 res.data.data.forEach(function (val1, key1) {
                   status1.data.data.forEach(function (val2, key2) {
                     status2.data.data.forEach(function (val3, key3) {
-                      if (val1.id == val2.id) {
-                        res.data.data[key1]['status'] = '拍卖中'
-                      } else if (val1.id == val3.id) {
-                        res.data.data[key1] = ''
-                      }
                       var imageArr = val1.images.split(' | ');
                       var buy_year = val1.buy_time.substring(0, 4);
                       var buy_month = val1.buy_time.substring(4, 6);
                       res.data.data[key1]['buy_year'] = buy_year;
                       res.data.data[key1]['buy_month'] = buy_month;
                       res.data.data[key1]['first_image'] = imageArr[0];
+                      if (val1.id == val2.id) {
+                        res.data.data[key1]['status'] = '拍卖中'
+                      } else if (val1.id == val3.id) {
+                        res.data.data.splice(key1, 1);
+                      }
                     })
                   })
                 });
@@ -673,17 +729,17 @@ Page({
                       res.data.data.forEach(function (val1, key1) {
                         status1.data.data.forEach(function (val2, key2) {
                           status2.data.data.forEach(function (val3, key3) {
-                            if (val1.id == val2.id) {
-                              res.data.data[key1]['status'] = '拍卖中'
-                            } else if (val1.id == val3.id) {
-                              res.data.data[key1] = ''
-                            }
                             var imageArr = val1.images.split(' | ');
                             var buy_year = val1.buy_time.substring(0, 4);
                             var buy_month = val1.buy_time.substring(4, 6);
                             res.data.data[key1]['buy_year'] = buy_year;
                             res.data.data[key1]['buy_month'] = buy_month;
                             res.data.data[key1]['first_image'] = imageArr[0];
+                            if (val1.id == val2.id) {
+                              res.data.data[key1]['status'] = '拍卖中'
+                            } else if (val1.id == val3.id) {
+                              res.data.data.splice(key1, 1);
+                            }
                           })
                         })
                       });
@@ -784,17 +840,17 @@ Page({
                 res.data.data.forEach(function (val1, key1) {
                   status1.data.data.forEach(function (val2, key2) {
                     status2.data.data.forEach(function (val3, key3) {
-                      if (val1.id == val2.id) {
-                        res.data.data[key1]['status'] = '拍卖中'
-                      } else if (val1.id == val3.id) {
-                        res.data.data[key1] = ''
-                      }
                       var imageArr = val1.images.split(' | ');
                       var buy_year = val1.buy_time.substring(0, 4);
                       var buy_month = val1.buy_time.substring(4, 6);
                       res.data.data[key1]['buy_year'] = buy_year;
                       res.data.data[key1]['buy_month'] = buy_month;
                       res.data.data[key1]['first_image'] = imageArr[0];
+                      if (val1.id == val2.id) {
+                        res.data.data[key1]['status'] = '拍卖中'
+                      } else if (val1.id == val3.id) {
+                        res.data.data.splice(key1, 1);
+                      }
                     })
                   })
                 });

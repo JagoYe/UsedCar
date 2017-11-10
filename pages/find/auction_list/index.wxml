@@ -15,7 +15,7 @@
   <view class='main'>
     <block wx:key='' wx:for='{{cardetails}}' wx:for-item='item'>
       <!-- 洗车服务列表 -->
-      <view class='list' bindtap='clickdetail' data-id='{{item.car_sale.id}}'>
+      <view class='list' bindtap='clickdetail' data-id='{{item.id}}'>
         <view class='listCar center'>
           <view class='left'>
             <view class='brand'>

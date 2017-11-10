@@ -11,10 +11,10 @@ Page({
   //点击跳转到拍车详情页
   clickdetail: function(e){
     var that = this;
-    var carId = e.currentTarget.dataset.id;
+    var car_id = e.currentTarget.dataset.id;
     wx.setStorage({
       key: 'carId',
-      data: carId,
+      data: car_id,
       success: function(res){
         wx.navigateTo({
           url: '/pages/find/auction_detail/index'
