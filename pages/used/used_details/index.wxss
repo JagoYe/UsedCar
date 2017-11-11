@@ -91,9 +91,9 @@ page{
   text-align: center;
 }
 .archivesIcon image{
-  width: 35rpx;
-  height: 30rpx;
-  margin-top: 20rpx;
+  width: 40rpx;
+  height: 35rpx;
+  margin-top: 18rpx;
 }
 .archivesText{
   width: auto;
@@ -120,7 +120,7 @@ page{
   width: 170rpx;
   height: 160rpx;
   float: left;
-  margin-left: 50rpx;
+  margin-left: 62rpx;
 }
 .margin{
   margin: 0;
@@ -181,7 +181,7 @@ page{
   height: 84rpx;
   line-height: 84rpx;
   background-color: white;
-  border-top:solid #a16dee 1rpx;
+  border-top:solid #FFB700 1rpx;
   float: left;
   text-align: center;
   letter-spacing: 3rpx;

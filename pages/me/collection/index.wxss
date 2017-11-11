@@ -87,6 +87,6 @@ page{
   display: none;
 }
 .bgColor{
-  background-color: #a16dee;
+  background-color: #FFB700;
   color: white;
 }

@@ -1,7 +1,7 @@
 <!--pages/find/carWash_details/index.wxml-->
 <view class='all'>
   <view class='header'>
-    <image src='../../../img/1.png'></image>
+    <image src='../../../img/48.png'></image>
     <view class='title'><text>云南二手车交易车辆拍卖</text></view>
   </view>
   <view class='search'>

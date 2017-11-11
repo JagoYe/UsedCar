@@ -13,7 +13,7 @@
           <view class='details color-gray'><text>{{item.city_name}}/{{item.buy_time}}/{{item.mileage}}万公里</text></view>
           <view class='details' style='margin-top:5rpx'>
             <view class='price'><text>当前售价：{{item.price}}万</text></view>
-            <view class='price' style='padding-left:50rpx;box-sizing: border-box;color:#A16DEE'>
+            <view class='price' style='padding-left:50rpx;box-sizing: border-box;color:#FFB700'>
               <text>{{item.status}}</text>
             </view>
           </view>

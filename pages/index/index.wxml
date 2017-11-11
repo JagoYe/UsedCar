@@ -128,7 +128,7 @@
   </view>
   <!-- 查询按钮 -->
   <view class='query center' bindtap='clickSee' data-A='0' data-B='100000'>
-    <button class='bg-color'>查看全部车源</button>
+    <button class='bg-color {{shadow}}'>查看全部车源</button>
   </view>
   <!--收藏-->
   <view class='collection center'>

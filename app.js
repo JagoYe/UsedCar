@@ -17,7 +17,6 @@ App({
               var data = JSON.parse(res.data);
               that.globalData.openId = data.openid;
               that.globalData.sessionKey = data.session_key;
-              // console.log(that);
               //全局添加userInfo
               wx.getUserInfo({
                 success: function (res) {
@@ -63,17 +62,6 @@ App({
         }
       }
     });
-    //持续更新拍卖状态
-    wx.request({
-      method: 'POST',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      url: that.globalData.webSite + '/Home/Wechat/carSaleStatusUpdateAjaxReturn',
-      success: function(res){
-        
-      }
-    })
   },  
   globalData: {
     appid: 'wx4796405728efcfcd',

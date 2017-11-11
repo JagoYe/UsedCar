@@ -90,8 +90,9 @@ Page({
           url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
           data: { status: '1' },
           success: function (status) {
+            console.log(status);
             status.data.data.forEach(function(val,key){
-              if(val.id == res.data.id){
+              if(val.id == res.data[0].id){
                 that.setData({
                   status: '拍卖中'
                 })

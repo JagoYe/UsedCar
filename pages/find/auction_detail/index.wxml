@@ -2,7 +2,7 @@
 <!--整个页面-->
 <view class='whole'>
   <view class='all'>
-    <view style='width: 100%;position: relative;' style='background:red'>
+    <view style='width: 100%;position: relative;'>
       <swiper indicator-dots="{{indicatorDots}}" bindchange='subscript' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:key='' wx:for="{{imgUrls}}">
           <swiper-item>
@@ -44,16 +44,15 @@
         <view class='archivesText'><text>车辆档案</text></view>
       </view>
     </view>
-    <view class='detailsCar'>
-      <view class='middle'>
-        <view class='subset margin'>
+    <view class='middle'>
+        <view class='subset'>
           <view class='img'><image src='../../../img/20.png'></image></view>
           <view class='text'>{{cardetail.mileage}}万公里</view>
           <view class='text'>表现里程</view>
         </view>
         <view class='subset'>
           <view class='img'><image src='../../../img/21.png'></image></view>
-          <view class='text'>{{cardetail.buy_time}}</view>
+          <view class='text'>{{buy_time}}</view>
           <view class='text'>上牌时间</view>
         </view>
         <view class='subset'>
@@ -62,6 +61,7 @@
           <view class='text'>车辆排量</view>
         </view>
       </view>
+    <view class='detailsCar'>
       <!-- 上架时间 -->
       <view class='time'>
         <view class='times'><text>发布时间</text></view>
@@ -100,14 +100,14 @@
   <view class='archives'>
     <view style='border-bottom:gainsboro solid 3rpx'>
       <view class='archivesTop center'>
-        <view class='archivesIcon'><image src='../../../img/24.png'></image></view>
+        <view class='archivesIcon'><image src='../../../img/24.png' style='width:35rpx;height:35rpx'></image></view>
         <view class='archivesText'><text>竞拍流程</text></view>
       </view>
     </view>
     <view class='detailsCar' style='padding-bottom:90rpx'>
       <!-- 电话咨询块 -->
-      <view class='key'><text>1. 7*24小时专业电话咨询服务</text></view>
-      <view class='key'><text>2. 预约专业顾问实地看车</text></view>
+      <view class='key'><text>1. 车辆竞拍页面提供实时竞拍</text></view>
+      <view class='key'><text>2. 拍卖成功后商家会联系实地看车</text></view>
       <view class='key'><text>3. 现场介绍车况、试乘试驾</text></view>
       <view class='key'><text>4. 爱车成交确认</text></view>
       <view class='key'><text>5. 签订《购车协议》</text></view>
@@ -137,6 +137,10 @@
       <view class='cancel' bindtap='cancel'><text>取消</text></view>
       <view class='determine bg-color' bindtap='determine'><text>确定</text></view>
     </view>
+  </view>
+  <view class='confirms {{show}}'>
+    <view class='top'><text>你已成功参加竞拍</text></view>
+    <view class='footer'><text>将在</text><text style='color:#FFB700'> {{num}} </text><text>秒后自动关闭</text></view>
   </view>
   <!-- 底部 -->
   <view class='bottom bg-color' bindtap='ClickAuction'>

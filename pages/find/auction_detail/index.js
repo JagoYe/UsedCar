@@ -11,7 +11,8 @@ Page({
     autoplay: true,
     interval: 2000,
     duration: 1000,
-    subscript: "1"
+    subscript: "1",
+    num: '3'
   },
   //页数显示
   subscript: function (e) {
@@ -41,6 +42,17 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //持续更新拍卖状态
+    wx.request({
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.webSite + '/Home/Admin/carSaleStatusUpdateAjaxReturn',
+      success: function (res) {
+        
+      }
+    });
     if (app.globalData.loginStatus == false) {
       wx.navigateTo({
         url: '/pages/login/index'
@@ -201,6 +213,27 @@ Page({
         wx.getStorage({
           key: 'carId',
           success: function (carId) {
+            that.setData({
+              show: 'show',
+              reveal: ''
+            })
+            var num = that.data.num;
+            var timer = setInterval(function () {
+              num--;
+              that.setData({
+                num: num
+              });
+              if (num == 0) {
+                clearInterval(timer);
+                that.setData({
+                  masks: '',
+                  show: '',
+                  num: '3',
+                })
+              }
+            }, 1000);
+
+
             wx.request({
               method: 'POST',
               header: {
@@ -239,8 +272,6 @@ Page({
                   publish_time: publish_time,
                   archives: archives,
                   buy_time: buy_time,
-                  masks: '',
-                  reveal: ''
                 })
               }
             })

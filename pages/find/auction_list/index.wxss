@@ -29,6 +29,7 @@ page{
   left: 5%;
   font-size: 30rpx;
   color: white;
+  display: none;
 }
 
 /*二手车洗车列表页*/
