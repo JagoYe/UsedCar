@@ -189,7 +189,12 @@ Page({
   clickBrand: function () {
     var that = this;
     that.setData({
-      popbrand: 'popbrand'
+      popbrand: 'popbrand',
+      color: "",
+      display: false,
+      searchStyle: '',
+      searchHandle: '0',
+      show: ''
     })
   },
   /**按条件选择 */
