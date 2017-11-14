@@ -68,7 +68,7 @@ Page({
       masks: ''
     });
     wx.makePhoneCall({
-      phoneNumber: '18787312252'
+      phoneNumber: '13577134567'
     })
   },
   /**

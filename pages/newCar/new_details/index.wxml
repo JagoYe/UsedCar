@@ -126,7 +126,7 @@
     </view>
     <!--定位弹出块-->
     <view class='mobilePhone {{show}}'>
-      <view class='phones center'><text>400-813-0755</text></view>
+      <view class='phones center'><text>13577134567</text></view>
       <view style='width:100%;background:white'><view class='gradient center'></view></view>
       <view class='call center' bindtap='dialDhone'><text>呼叫</text></view>
     </view>

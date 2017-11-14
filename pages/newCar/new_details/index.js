@@ -68,7 +68,7 @@ Page({
       masks: ''
     });
     wx.makePhoneCall({
-      phoneNumber: '18787312252', //仅为示例，并非真实的电话号码
+      phoneNumber: '13577134567', //仅为示例，并非真实的电话号码
     })
   },
   /**
