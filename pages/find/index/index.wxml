@@ -34,7 +34,7 @@
   <!-- 车辆拍卖 -->
   <view class='service' style='display:block'>
     <view style='width:90%;margin-left:10%;'>
-      <view class='carWash' bindtap='clickJump' data-url='../auction_details/index'>
+      <view class='carWash' bindtap='clickJump' data-url='/pages/find/auction_list/index'>
         <view class='carWashimg'><image src='../../../img/36.png' style='width:40rpx;height:40rpx;margin-top:20rpx;'></image></view>
         <view class='carWashtext'><text>车辆拍卖</text></view>
         <view class='carWashicon'><image src='../../../img/18.png'></image></view>

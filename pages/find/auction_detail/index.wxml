@@ -15,17 +15,24 @@
     <!-- 汽车描述 -->
     <view class='depict center'>
       <view class='upper'>
-        <text>{{usedDetails.brand_name}} {{usedDetails.style_name}} {{usedDetails.detail}}</text>
+        <text>{{cardetail.brand.name}} {{cardetail.brand.style}} {{cardetail.detail}}</text>
       </view>
       <view class='lower'>
-        <text>{{buy_year}}年{{buy_month}}月上牌丨{{usedDetails.mileage}}万公里丨{{usedDetails.detail}}</text>
+        <text>{{buy_time}}上牌丨{{cardetail.mileage}}万公里丨{{cardetail.detail}}</text>
       </view>
     </view>
     <!-- 二手车参考价 -->
     <view class='price center'>
-      <view class='left'><text>{{usedDetails.price}}万</text></view>
+      <view class='left'>
+        <view class='assess'><text>车辆评估价:</text></view>
+        <view class='actual'>
+          <text>{{cardetail.car_sale.evaluate_price}}万</text>
+        </view>
+      </view>
       <view class='right'>
-        <text>新车总价：{{usedDetails.cost_price}}万 {{status}}</text>
+        <!-- <text>新车总价：{{usedDetails.cost_price}}万</text> -->
+        <view class='rose'><text>起价: {{cardetail.car_sale.starting_price}}万\t涨幅: {{cardetail.car_sale.amount_of_increase}}元</text></view>
+        <view class='current'><text>当前竞拍价: {{best_price}}元</text></view>
       </view>
     </view>
   </view>
@@ -38,39 +45,39 @@
       </view>
     </view>
     <view class='middle'>
-      <view class='subset'>
-        <view class='img'><image src='../../../img/20.png'></image></view>
-        <view class='text'>{{usedDetails.mileage}}万公里</view>
-        <view class='text'>表现里程</view>
+        <view class='subset'>
+          <view class='img'><image src='../../../img/20.png'></image></view>
+          <view class='text'>{{cardetail.mileage}}万公里</view>
+          <view class='text'>表现里程</view>
+        </view>
+        <view class='subset'>
+          <view class='img'><image src='../../../img/21.png'></image></view>
+          <view class='text'>{{buy_time}}</view>
+          <view class='text'>上牌时间</view>
+        </view>
+        <view class='subset'>
+          <view class='img'><image src='../../../img/22.png'></image></view>
+          <view class='text'>{{cardetail.output}}</view>
+          <view class='text'>车辆排量</view>
+        </view>
       </view>
-      <view class='subset'>
-        <view class='img'><image src='../../../img/21.png'></image></view>
-        <view class='text'>{{buy_year}}年{{buy_month}}月</view>
-        <view class='text'>上牌时间</view>
-      </view>
-      <view class='subset'>
-        <view class='img'><image src='../../../img/22.png'></image></view>
-        <view class='text'>{{usedDetails.output}}</view>
-        <view class='text'>车辆排量</view>
-      </view>
-    </view>
     <view class='detailsCar'>
       <!-- 上架时间 -->
       <view class='time'>
         <view class='times'><text>发布时间</text></view>
-        <view class='date'><text>{{publish_time[0]}}年{{publish_time[1]}}月{{publish_time[2]}}日</text></view>
+        <view class='date'><text>{{publish_time}}</text></view>
       </view>
       <view class='time'>
         <view class='times'><text>车辆颜色</text></view>
-        <view class='date'><text>{{usedDetails.color}}</text></view>
+        <view class='date'><text>{{cardetail.color}}</text></view>
       </view>
       <view class='time'>
         <view class='times'><text>保养情况</text></view>
-        <view class='date'><text>{{usedDetails.situation}}</text></view>
+        <view class='date'><text>{{cardetail.situation}}</text></view>
       </view>
       <view class='time'>
         <view class='times'><text>生产厂商</text></view>
-        <view class='date'><text>{{usedDetails.factory}}</text></view>
+        <view class='date'><text>{{cardetail.factory}}</text></view>
       </view>
     </view>
   </view>
@@ -94,13 +101,13 @@
     <view style='border-bottom:gainsboro solid 3rpx'>
       <view class='archivesTop center'>
         <view class='archivesIcon'><image src='../../../img/24.png' style='width:35rpx;height:35rpx'></image></view>
-        <view class='archivesText'><text>购车流程</text></view>
+        <view class='archivesText'><text>竞拍流程</text></view>
       </view>
     </view>
     <view class='detailsCar' style='padding-bottom:90rpx'>
       <!-- 电话咨询块 -->
-      <view class='key'><text>1. 7*24小时专业电话咨询服务</text></view>
-      <view class='key'><text>2. 预约专业顾问实地看车</text></view>
+      <view class='key'><text>1. 车辆竞拍页面提供实时竞拍</text></view>
+      <view class='key'><text>2. 拍卖成功后商家会联系实地看车</text></view>
       <view class='key'><text>3. 现场介绍车况、试乘试驾</text></view>
       <view class='key'><text>4. 爱车成交确认</text></view>
       <view class='key'><text>5. 签订《购车协议》</text></view>
@@ -109,26 +116,34 @@
   </view>
   <!-- 遮罩层 -->
   <view class='mask {{masks}}'></view>
-  <!-- 收藏弹出提示块 -->
+  <!-- 拍车弹出提示块 -->
   <view class='confirm {{reveal}}'>
     <view class='success'>
-      <text>{{success}}</text>
+      <text>起价: {{cardetail.car_sale.starting_price}}万</text>
+    </view>
+    <view class='success'>
+      <text>涨幅: {{cardetail.car_sale.amount_of_increase}}元</text>
+    </view>
+    <view class='success'>
+      <text>车辆评估价: {{cardetail.car_sale.evaluate_price}}万</text>
+    </view>
+    <view class='success'>
+      <text>当前竞拍价: {{best_price}}万</text>
+    </view>
+    <view class='success'>
+      <text>您的竞拍价: {{best_price}} + {{cardetail.car_sale.amount_of_increase}}={{bid_price}}万</text>
     </view>
     <view class='jump'>
-      <text>将在 {{num}} 秒后自动关闭</text>
+      <view class='cancel' bindtap='cancel'><text>取消</text></view>
+      <view class='determine bg-color' bindtap='determine'><text>确定</text></view>
     </view>
+  </view>
+  <view class='confirms {{show}}'>
+    <view class='top'><text>你已成功参加竞拍</text></view>
+    <view class='footer'><text>将在</text><text style='color:#FFB700'> {{num}} </text><text>秒后自动关闭</text></view>
   </view>
   <!-- 底部 -->
-  <view class='bottom'>
-    <view style='width:100%; height:85rpx;position:absolute;top:0px; z-index:4' >
-      <view class='source' bindtap='Collection'><text>{{collections}}</text></view>
-      <view class='phone bg-color' bindtap='phone' data-display='{{display}}'><text>电话咨询</text></view>
-    </view>
-    <!--定位弹出块-->
-    <view class='mobilePhone {{show}}'>
-      <view class='phones center'><text>13577134567</text></view>
-      <view style='width:100%;background:white'><view class='gradient center'></view></view>
-      <view class='call center' bindtap='dialDhone'><text>呼叫</text></view>
-    </view>
+  <view class='bottom bg-color' bindtap='ClickAuction'>
+    <text>竞拍</text>
   </view>
-</view>    
+</view>

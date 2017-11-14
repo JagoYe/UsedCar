@@ -134,7 +134,6 @@ Page({
               //更新globalData
               app.globalData.loginStatus = true;
               app.globalData.userInfo.phone = res.data.data.phone;
-              app.globalData.userInfo.score = res.data.data.score;
               that.setData({
                 className: 'model1',
                 on: 'on'
@@ -173,7 +172,7 @@ Page({
    */
   onLoad: function (options) {
     wx.getSystemInfo({
-      success: function (res) {
+      success: function (res) {   
         winHeight = res.windowHeight;
         winWidth = res.windowWidth;
       }

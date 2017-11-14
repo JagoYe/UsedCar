@@ -209,19 +209,20 @@ page{
   width: 90%;
   height: 100%;}
 .hotsIcon{
-  width: 10%;
+  width: 7%;
   height: 100%;
   float: left;
   text-align: center;}
 .hotsIcon image{
-  width: 60%;
+  width: 90%;
   height: 58%;
-  margin-top: 16.5rpx;}   
+  margin-top: 16.5rpx;}
 .hotsContent{
   width: auto;
   height: 100%;
   float: left;
-  line-height: 80rpx;}  
+  line-height: 80rpx;
+  margin-left: 10rpx;} 
 /*二手车列表页*/
 .list{
   width: 100%;
@@ -237,7 +238,8 @@ page{
   float: left;}
 .listCar .left image{
   width: 100%;
-  height: 100%;}          
+  height: 100%;
+  border-radius: 12rpx;}          
 .listCar .right{
   width: 68%;
   height: 125rpx;

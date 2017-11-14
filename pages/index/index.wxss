@@ -111,8 +111,8 @@ page{
   margin-top: 5rpx;} 
 .img5{
   width:75rpx;
-  height: 75rpx;
-  margin-top: 5rpx;} 
+  height: 73rpx;
+  margin-top: 6rpx;} 
 .img6{
   width:75rpx;
   height: 75rpx;
@@ -136,14 +136,19 @@ page{
   width: 80%;
   height: 80rpx;
   clear: both;
+  box-shadow: 0rpx 3rpx 4rpx #A39E9D;
+  border-radius:10rpx;
+  transition: all 0.3s ease-in-out; 
 }
 .query button{
   width: 100%;
   letter-spacing: 3rpx;
   line-height: 80rpx;
-  box-shadow: 0rpx 3rpx 4rpx #A39E9D;
   color: white;
   font-size: 28rpx;}
+.shadow{
+  opacity: 0.8;
+}  
 /* 车源收藏*/
 .collection{
   width: 80%;
@@ -209,19 +214,20 @@ page{
   width: 90%;
   height: 100%;}
 .hotsIcon{
-  width: 10%;
+  width: 7%;
   height: 100%;
   float: left;
   text-align: center;}
 .hotsIcon image{
-  width: 60%;
+  width: 90%;
   height: 58%;
   margin-top: 16.5rpx;}   
 .hotsContent{
   width: auto;
   height: 100%;
   float: left;
-  line-height: 80rpx;}  
+  line-height: 80rpx;
+  margin-left: 10rpx;}  
 /*二手车列表页*/
 .list{
   width: 100%;
@@ -237,7 +243,8 @@ page{
   float: left;}
 .listCar .left image{
   width: 100%;
-  height: 100%;}          
+  height: 100%;
+  border-radius: 12rpx;}          
 .listCar .right{
   width: 68%;
   height: 125rpx;

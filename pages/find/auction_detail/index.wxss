@@ -56,21 +56,39 @@ page{
   margin-top: 10rpx;
 }
 .left{
-  width: 20%;
-  height: 60rpx;
-  margin-top: 15rpx;
-  font-size: 50rpx;
-  line-height: 60rpx;
+  width: 25%;
+  height: 90rpx;
   float: left;
   border-right: 2rpx solid black;
 }
+.left .assess{
+  width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.left .actual{
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 50rpx;
+}
 .right{
-  width: 70%;
+  width: 65%;
   height: 100%;
   float: left;
   line-height: 90rpx;
   box-sizing: border-box;
   padding-left: 30rpx;
+}
+.right .rose{
+  width: 100%;
+  height: 45rpx;
+  line-height: 45rpx;
+}
+.right .current{
+  width: 100%;
+  height: 45rpx;
+  line-height: 45rpx;
 }
 /*车辆档案*/
 .archives{
@@ -92,7 +110,7 @@ page{
 }
 .archivesIcon image{
   width: 40rpx;
-  height: 35rpx;
+  height: 36rpx;
   margin-top: 18rpx;
 }
 .archivesText{
@@ -173,60 +191,12 @@ page{
   width: 100%;
   height: 85rpx;
   position: fixed;
-  bottom: 0px; 
-}
-/*车源*/
-.source{
-  width: 30%;
-  height: 84rpx;
-  line-height: 84rpx;
-  background-color: white;
-  border-top:solid #FFB700 1rpx;
-  float: left;
-  text-align: center;
+  bottom: 0px;
   letter-spacing: 3rpx;
-}
-.phone{
-  width: 70%;
-  height: 85rpx;
   line-height: 85rpx;
-  float: left;
   text-align: center;
   color: white;
-  letter-spacing: 3rpx;
 }
- .mobilePhone{
-  width: 100%;
-  height: 171rpx;
-  position: absolute;
-  top: 0px;
-  z-index: 3;
-  transition: all 0.3s ease-in-out;
-}
-.mobilePhone .phones{
-  width: 100%;
-  background-color: white;
-  height: 85rpx;
-  text-align: center;
-  line-height: 85rpx;
-} 
-.mobilePhone .call{
-  width: 100%;
-  background-color: white;
-  height: 85rpx;
-  text-align: center;
-  line-height: 85rpx;
-}
-.gradient{
-  height: 1rpx;
-  width: 80%;
-  background-color: white;
-  background: linear-gradient(to right,white,gray,white);
-}
-.show{
-  top:-168rpx;
-}
-
 /* 遮罩层 */
 .mask{
   width: 0;
@@ -243,28 +213,71 @@ page{
 }
 /* 时间弹出显示块 */
 .confirm{
-  width: 50%;
-  height:300rpx;
+  width: 66%;
+  height:310rpx;
   background-color: white;
   position: fixed;
   top: 380rpx;
-  left: 25%;
+  left: 17%;
+  border-radius: 12rpx;
+  display: none; 
+  transition: all 0.3s ease-in-out;
+}
+.confirms{
+  width: 66%;
+  height:310rpx;
+  background-color: white;
+  position: fixed;
+  z-index: 11;
+  top: 380rpx;
+  left: 17%;
   border-radius: 12rpx;
   display: none;
+  transition: all 0.3s ease-in-out;
+}
+.confirms .top{
+  width: 100%;
+  height: 50rpx;
+  margin-top: 105rpx;
+  line-height: 50rpx;
+  text-align: center;
+}
+.confirms .footer{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
 }
 .reveal{
+  display: block;
+}
+.show{
   display: block;
 }
 .success{
   width: 100%;
   height: 50rpx;
-  text-align: center;
   line-height: 50rpx;
-  margin-top: 100rpx;
+  padding-left:8%;
+  box-sizing: border-box; 
 }
 .jump{
   width: 100%;
   height: 50rpx;
   text-align: center;
   line-height: 50rpx;
+  color: white;
+}
+.jump .cancel{
+  width: 24%;
+  height: 100%;
+  float: left;
+  margin-left: 13%;
+  background-color: orange;
+}
+.jump .determine{
+  width: 24%;
+  height: 100%;
+  float: left;
+  margin-left: 26%;
 }

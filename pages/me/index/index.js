@@ -1,4 +1,5 @@
 // pages/me/index/index.js
+var app = getApp();
 Page({
 
   /**
@@ -7,45 +8,52 @@ Page({
   data: {
   
   },
-  /**点击跳转到修改手机号页面 */
-  phoneUpdate: function(){
-    wx.navigateTo({
-      url: '../phone_update/index',
-    })
+  //验证跳转到对应页面
+  verification: function (e) {
+    //获取url
+    var that = this;
+    var url = e.currentTarget.dataset.url;
+    //登录验证
+    var loginConfirm = app.globalData.loginConfirm;
+    loginConfirm(url);
   },
-  /**点击跳转到收藏 */
-  clickCollection: function(){
-    wx.navigateTo({
-      url: '../collection/index',
-    })
-  },
-  /**点击跳转到信息页 */
-  clickNews: function () {
-    wx.navigateTo({
-      url: '../info/index/index',
-    })
-  },
-  /**点击跳转到足迹页 */
-  clickHistory: function () {
-    wx.navigateTo({
-      url: '../history/index',
-    })
-  },
+  // /**点击跳转到修改手机号页面 */
+  // phoneUpdate: function(){
+  //   wx.navigateTo({
+  //     url: '../phone_update/index',
+  //   })
+  // },
+  // /**点击跳转到收藏 */
+  // clickCollection: function(){
+  //   wx.navigateTo({
+  //     url: '../collection/index',
+  //   })
+  // },
+  // /**点击跳转到信息页 */
+  // clickNews: function () {
+  //   wx.navigateTo({
+  //     url: '../info/index/index',
+  //   })
+  // },
+  // /**点击跳转到足迹页 */
+  // clickHistory: function () {
+  //   wx.navigateTo({
+  //     url: '../history/index',
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
+    if (app.globalData.loginStatus == false) {
+      wx.navigateTo({
+        url: '/pages/login/index'
+      })
+    };
     wx.getUserInfo({
       success: function (res) {
-        var userInfo = res.userInfo
-        var nickName = userInfo.nickName
-        var avatarUrl = userInfo.avatarUrl
-        var gender = userInfo.gender //性别 0：未知、1：男、2：女
-        var province = userInfo.province
-        var city = userInfo.city
-        var country = userInfo.country
-        console.log(res);
+        var avatarUrl = res.userInfo.avatarUrl
         that.setData({
           userImage: avatarUrl,
         });
