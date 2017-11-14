@@ -241,29 +241,41 @@ Page({
           url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
           data: { status: '1' },
           success: function (status) {
-            status.data.data.forEach(function(val,key){
-              if(val.id == res.data.data[0].id){
+            if(status.data.data != ''){
+              status.data.data.forEach(function(val,key){
+                if(val.id == res.data.data[0].id){
+                    wx.setStorage({
+                      key: 'carId',
+                      data: car_id,
+                      success: function (res) {
+                        wx.navigateTo({
+                          url: '/pages/find/auction_detail/index'
+                        })
+                      }
+                    })
+                }else{
                   wx.setStorage({
-                    key: 'carId',
-                    data: car_id,
-                    success: function (res) {
+                    key: 'used_details',
+                    data: res.data.data[0],
+                    success: function (res1) {
                       wx.navigateTo({
-                        url: '/pages/find/auction_detail/index'
+                        url: '../used_details/index',
                       })
                     }
                   })
-              }else{
-                wx.setStorage({
-                  key: 'used_details',
-                  data: res.data.data[0],
-                  success: function (res1) {
-                    wx.navigateTo({
-                      url: '../used_details/index',
-                    })
-                  }
-                })
-              }
-            })
+                }
+              })
+            }else{
+              wx.setStorage({
+                key: 'used_details',
+                data: res.data.data[0],
+                success: function (res1) {
+                  wx.navigateTo({
+                    url: '../used_details/index',
+                  })
+                }
+              })
+            }  
           }
         });
       }

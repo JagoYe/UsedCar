@@ -160,7 +160,7 @@
       <view class='hotsContent'>热门推荐</view>
     </view>
   </view>
-  <!-- 新车列表页 -->
+  <!-- 热门推荐页 -->
   <block wx:key='' wx:for='{{usedCar}}' wx:for-item='item'>
     <view class='list' data-id='{{item.id}}' bindtap='clickJump'>
       <view class='listCar center'>
