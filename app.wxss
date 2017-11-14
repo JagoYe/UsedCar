@@ -7,7 +7,7 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
 
 .color-gray { color: gray; }
 /*居中*/
@@ -15,5 +15,5 @@
   margin: 0px auto;
 }
 .bg-color{
-  background-color: #a16dee;
+  background-color: #FFB700;
 }

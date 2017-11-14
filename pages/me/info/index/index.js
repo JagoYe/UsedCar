@@ -18,6 +18,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var phone = app.globalData.userInfo.phone;
     wx.request({
       method: 'POST',
       header: {
@@ -25,17 +26,18 @@ Page({
       },
       url: app.globalData.webSite + '/Home/Wechat/pendingVehicleSelectByPhone',
       data: {
-        user_phone: '18787312252'
+        user_phone: phone
       },
       success: function(res){
-        console.log(res);
-        res.data.data.forEach(function(val,key){
-          if(res.data.data[key].status == 1){
-            res.data.data[key].status = '审核已通过'
-          }else{
-            res.data.data[key].status = '审核中'
-          }
-        })
+        if(res.data.data != ''){
+          res.data.data.forEach(function (val, key) {
+            if (res.data.data[key].status == 1) {
+              res.data.data[key].status = '审核已通过'
+            } else {
+              res.data.data[key].status = '审核中'
+            }
+          })
+        }
         that.setData({
           publishCar: res.data.data,
         })

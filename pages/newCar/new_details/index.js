@@ -68,7 +68,7 @@ Page({
       masks: ''
     });
     wx.makePhoneCall({
-      phoneNumber: '18787312252', //仅为示例，并非真实的电话号码
+      phoneNumber: '13577134567', //仅为示例，并非真实的电话号码
     })
   },
   /**
@@ -76,10 +76,29 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var phone = app.globalData.userInfo.phone;
     //取缓存
     wx.getStorage({
       key: 'newCar_details',
       success: function (res) {
+        //请求拍卖中的接口
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+          data: { status: '1' },
+          success: function (status) {
+            status.data.data.forEach(function (val, key) {
+              if (val.id == res.data.id) {
+                that.setData({
+                  status: '拍卖中'
+                })
+              }
+            })
+          }
+        });
         var imgUrls = res.data.images.split(' | ');
         var archives = res.data.advantage.split('、');
         var length = imgUrls.length;
@@ -94,7 +113,7 @@ Page({
           },
           url: app.globalData.webSite + '/Home/Wechat/footprintAdd',
           data: {
-            user_phone: '18787312252',
+            user_phone: phone,
             car_id: res.data.id
           },
           success: function (footprint) {
@@ -109,7 +128,7 @@ Page({
           },
           url: app.globalData.webSite + '/Home/Wechat/collectionSelectByPhone',
           data: {
-            user_phone: '18787312252',
+            user_phone: phone,
           },
           success: function (select) {
             select.data.data.forEach(function (val, key) {
@@ -135,9 +154,10 @@ Page({
       },
     });
   },
-  //请求收藏接口
+  //点击请求收藏接口
   Collection: function () {
     var that = this;
+    var phone = app.globalData.userInfo.phone;
     if (that.data.active == 1) {
       wx.request({
         method: 'POST',
@@ -146,7 +166,7 @@ Page({
         },
         url: app.globalData.webSite + '/Home/Wechat/collectionAdd',
         data: {
-          user_phone: '18787312252',
+          user_phone: phone,
           car_id: that.data.usedDetails.id
         },
         success: function (footprint) {
@@ -182,7 +202,7 @@ Page({
         },
         url: app.globalData.webSite + '/Home/Wechat/collectionDelete',
         data: {
-          user_phone: '18787312252',
+          user_phone: phone,
           car_id: that.data.usedDetails.id
         },
         success: function (res) {

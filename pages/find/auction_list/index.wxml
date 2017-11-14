@@ -1,0 +1,58 @@
+<!--pages/find/carWash_details/index.wxml-->
+<view class='all'>
+  <view class='header'>
+    <image src='../../../img/48.png'></image>
+    <view class='title'><text>云南二手车交易车辆拍卖</text></view>
+  </view>
+  <view class='search'>
+    <view class='hotsearch center'>
+      <view class='leftIcon'>
+        <image src='../../../img/14.png'></image>
+      </view>
+      <view class='righttext'><text>热搜拍卖</text></view>
+    </view>
+  </view>
+  <view class='main'>
+    <block wx:key='' wx:for='{{cardetails}}' wx:for-item='item'>
+      <!-- 洗车服务列表 -->
+      <view class='list' bindtap='clickdetail' data-id='{{item.id}}'>
+        <view class='listCar center'>
+          <view class='left'>
+            <view class='brand'>
+              <text>{{item.brand.name}} {{item.brand.style}}</text>
+              <!-- <view class='brandname'></view>
+              <view class='audi'></view> -->
+            </view>
+            <view class='detail'>
+              <text>{{item.buy_time}} (购)</text>
+            </view>
+            <view class='detail'>
+              <text>{{item.advantage}} {{item.detail}}</text>
+            </view>
+            <view class='timeshow bg-color center'><text>{{item.time}}</text></view>
+          </view>
+          <view class='middle'>
+            <view class='img'>
+              <image src='{{webSite}}{{item.first_image}}'></image>
+            </view>
+            <view class='starting'><text>当前竞拍价: {{item.best_price}}万</text></view>
+          </view>
+          <view class='right'>
+            <view class='price'>
+              <view class='classify'><text>起价:</text></view>
+              <view class='pricedisplay'>{{item.car_sale.starting_price}}万</view>
+            </view>
+            <view class='price'>
+              <view class='classify'><text>涨幅:</text></view>
+              <view class='pricedisplay'>{{item.car_sale.amount_of_increase}}元</view>
+            </view>
+            <view class='price'>
+              <view class='classify'><text>车辆评估价:</text></view>
+              <view class='pricedisplay'>{{item.car_sale.evaluate_price}}万</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>  
+</view>

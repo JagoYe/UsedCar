@@ -14,6 +14,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var phone = app.globalData.userInfo.phone;
     wx.request({
       method: 'POST',
       header: {
@@ -21,10 +22,9 @@ Page({
       },
       url: app.globalData.webSite + '/Home/Wechat/footprintSelectByPhone',
       data: {
-        user_phone: '18787312252',
+        user_phone: phone,
       },
       success: function(res){
-        console.log(res);
         res.data.data.forEach(function(val,key){
           var imageArr = val.images.split(' | ');
           res.data.data[key]['first_image'] = imageArr[0];
@@ -49,7 +49,6 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carSelectById',
       data: { car_id },
       success: function (res) {
-        console.log(res);
         if (res.data.data[0].category == '1'){
           wx.setStorage({
             key: 'newCar_details',

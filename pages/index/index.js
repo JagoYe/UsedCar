@@ -7,7 +7,7 @@ Page({
   data: {
     webSite: app.globalData.webSite
   },
-  //选择品牌
+  //按照品牌查询
   bindPickerChange: function (e) {
     var that = this;
     var brand_name = that.data.area[e.detail.value];
@@ -83,6 +83,9 @@ Page({
             status: ''
           },
           success: function (res) {
+            that.setData({
+              shadow: 'shadow'
+            })
             wx.setStorage({
               key: 'usedCar',
               data: res.data.data,
@@ -95,6 +98,12 @@ Page({
           }
         })
       }
+    })
+  },
+  onShow: function(){
+    var that = this;
+    that.setData({
+      shadow: ''
     })
   },
   onLoad: function () {
@@ -159,17 +168,83 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carHotSelectByCategory',
       data: { category: '2'},
       success: function(res){
-        res.data.already.forEach(function(val, key){
-          var imageArr = val.images.split(' | ');
-          res.data.already[key]['first_image'] = imageArr[0];
-          var buy_year = val.buy_time.substring(0, 4);
-          var buy_month = val.buy_time.substring(4, 6);
-          res.data.already[key]['buy_year'] = buy_year;
-          res.data.already[key]['buy_month'] = buy_month;
-        })
-        that.setData({
-          usedCar: res.data.already
-        })
+        //请求拍卖中的接口
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+          data: { status: '1' },
+          success: function (status1) {
+            //请求拍卖已完成的接口
+            wx.request({
+              method: 'POST',
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+              data: { status: '2' },
+              success: function (status2) {
+                if (status1.data.data != '') {
+                  var deleteArr = [];
+                  res.data.already.forEach(function (val1, key1) {
+                    status1.data.data.forEach(function (val2, key2) {
+                      status2.data.data.forEach(function (val3, key3) {
+                        var imageArr = val1.images.split(' | ');
+                        var buy_year = val1.buy_time.substring(0, 4);
+                        var buy_month = val1.buy_time.substring(4, 6);
+                        res.data.already[key1]['buy_year'] = buy_year;
+                        res.data.already[key1]['buy_month'] = buy_month;
+                        res.data.already[key1]['first_image'] = imageArr[0];
+                        if (val1.id == val2.id) {
+                          res.data.already[key1]['status'] = '拍卖中'
+                        } else if (val1.id == val3.id) {
+                          deleteArr.push(val1.id);
+                        }
+                      })
+                    })
+                  });
+                  //delete删除已完成项
+                  res.data.already.forEach(function (val, key) {
+                    deleteArr.forEach(function (val1, key1) {
+                      if (val.id == val1) {
+                        res.data.already.splice(key, 1);
+                      }
+                    });
+                  });
+                } else {
+                  var deleteArr = [];
+                  res.data.already.forEach(function (val1, key1) {
+                    status2.data.data.forEach(function (val2, key2) {
+                      if (val1.id == val2.id) {
+                        deleteArr.push(val1.id);
+                      } else {
+                        var imageArr = val1.images.split(' | ');
+                        var buy_year = val1.buy_time.substring(0, 4);
+                        var buy_month = val1.buy_time.substring(4, 6);
+                        res.data.already[key1]['buy_year'] = buy_year;
+                        res.data.already[key1]['buy_month'] = buy_month;
+                        res.data.already[key1]['first_image'] = imageArr[0];
+                      }
+                    });
+                  });
+                  //delete删除已完成项
+                  res.data.already.forEach(function (val, key) {
+                    deleteArr.forEach(function (val1, key1) {
+                      if (val.id == val1) {
+                        res.data.already.splice(key, 1);
+                      }
+                    });
+                  });
+                }
+                that.setData({
+                  usedCar: res.data.already
+                })
+              }
+            })
+          }
+        });
       }
     })  
   },
@@ -292,7 +367,6 @@ Page({
   clickJump: function (e) {
     var that = this;
     var car_id = e.currentTarget.dataset.id;
-    // var carDetails = e.currentTarget.dataset.item
     wx.request({
       method: 'POST',
       header: {
@@ -301,15 +375,72 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carSelectById',
       data: { car_id },
       success: function (res) {
-        wx.setStorage({
-          key: 'used_details',
-          data: res.data.data[0],
-          success: function (res1) {
-            wx.navigateTo({
-              url: '/pages/used/used_details/index',
-            })
+        //请求拍卖中的接口
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
+          data: { status: '1' },
+          success: function (status) {
+            if (status.data.data != '') {
+              status.data.data.forEach(function(val,key){
+                if(val.id == res.data.data[0].id){
+                  wx.setStorage({
+                    key: 'carId',
+                    data: car_id,
+                    success: function(res){
+                      wx.navigateTo({
+                        url: '/pages/find/auction_detail/index'
+                      })
+                    }
+                  })
+                }else{
+                  wx.setStorage({
+                    key: 'used_details',
+                    data: res.data.data[0],
+                    success: function (res1) {
+                      wx.navigateTo({
+                        url: '/pages/used/used_details/index',
+                      })
+                    }
+                  })
+                }
+              })
+            }else{
+              wx.setStorage({
+                key: 'used_details',
+                data: res.data.data[0],
+                success: function (res1) {
+                  wx.navigateTo({
+                    url: '/pages/used/used_details/index',
+                  })
+                }
+              })
+            }  
           }
-        })
+        });
+        // if(res.data.data[0]['status']){
+        //   wx.setStorage({
+        //     key: 'carId',
+        //     data: car_id,
+        //     success: function(res){
+        //       wx.navigateTo({
+        //         url: '/pages/find/auction_detail/index'
+        //       })
+        //     }
+        //   }) 
+        // }
+        // wx.setStorage({
+        //   key: 'used_details',
+        //   data: res.data.data[0],
+        //   success: function (res1) {
+        //     wx.navigateTo({
+        //       url: '/pages/used/used_details/index',
+        //     })
+        //   }
+        // })
       }
     })
   },

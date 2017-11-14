@@ -13,6 +13,7 @@ Page({
   },
   tabChange: function(e){
     var that = this;
+    var phone = app.globalData.userInfo.phone;
     var index = e.currentTarget.dataset.index;
     var condition = that.data.condition;
     if (index == condition){
@@ -23,7 +24,7 @@ Page({
         },
         url: app.globalData.webSite + '/Home/Wechat/collectionSelectByPhone',
         data: {
-          user_phone: '18787312252',
+          user_phone: phone,
         },
         success: function (res) {
           var usedCar = [];
@@ -59,7 +60,7 @@ Page({
         },
         url: app.globalData.webSite + '/Home/Wechat/collectionSelectByPhone',
         data: {
-          user_phone: '18787312252',
+          user_phone: phone,
         },
         success: function (res) {
           var usedCar = [];
@@ -94,6 +95,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var phone = app.globalData.userInfo.phone;
     wx.request({
       method: 'POST',
       header: {
@@ -101,7 +103,7 @@ Page({
       },
       url: app.globalData.webSite + '/Home/Wechat/collectionSelectByPhone',
       data: {
-        user_phone: '18787312252',
+        user_phone: phone,
       },
       success: function(res){
         var usedCar = [];
@@ -127,6 +129,7 @@ Page({
   //点击删除二手车收藏
   deleteUsedCar: function(e){
     var that = this;
+    var phone = app.globalData.userInfo.phone;
     var car_id = e.currentTarget.dataset.id;
     wx.request({
       method: 'POST',
@@ -135,7 +138,7 @@ Page({
       },
       url: app.globalData.webSite + '/Home/Wechat/collectionDelete',
       data: {
-        user_phone: '18787312252',
+        user_phone: phone,
         car_id: car_id
       },
       success: function (res) {
@@ -158,7 +161,7 @@ Page({
           },
           url: app.globalData.webSite + '/Home/Wechat/collectionSelectByPhone',
           data: {
-            user_phone: '18787312252',
+            user_phone: phone,
           },
           success: function (res) {
             var usedCar = [];
@@ -182,6 +185,7 @@ Page({
   //点击删除新车收藏
   deleteNewCar: function (e) {
     var that = this;
+    var phone = app.globalData.userInfo.phone;
     var car_id = e.currentTarget.dataset.id;
     wx.request({
       method: 'POST',
@@ -190,7 +194,7 @@ Page({
       },
       url: app.globalData.webSite + '/Home/Wechat/collectionDelete',
       data: {
-        user_phone: '18787312252',
+        user_phone: phone,
         car_id: car_id
       },
       success: function (res) {
@@ -213,7 +217,7 @@ Page({
           },
           url: app.globalData.webSite + '/Home/Wechat/collectionSelectByPhone',
           data: {
-            user_phone: '18787312252',
+            user_phone: phone,
           },
           success: function (res) {
             var usedCar = [];
