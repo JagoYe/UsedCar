@@ -143,10 +143,10 @@ page{
   background-color: white;}
   .price .block .entry{width:33.3%; float:left; text-align: center; box-sizing: border-box;}  
   .price .block .entry view { border:1px solid #D2D2D2; width: 70%;height: 50rpx; line-height: 50rpx; box-sizing: border-box; margin: 0 auto;border-radius: 12rpx; }
-  .price .block .entry-ctn { margin-top: 10px; display: inline-block; width: 100%; }
+  .price .block .entry-ctn { margin-top: 10px; display: inline-block; width: 100%; font-size: 25rpx;}
   .price .block .entry-ctn .entry:nth-child(1) view{ margin-left: 0; }
   .price .block .entry-ctn .entry:nth-child(3) view{ margin-right: 0; }
-  .price .block .entry-ctn .entry .BgColor{ background-color: red; } 
+  .price .block .entry-ctn .entry .BgColor{ background-color: #FFB700; } 
 
 
 /* 遮罩层 */
