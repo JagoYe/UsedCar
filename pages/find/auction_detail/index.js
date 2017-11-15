@@ -98,7 +98,8 @@ Page({
               cardetail: res.data.data[0],
               publish_time: publish_time,
               archives: archives,
-              buy_time: buy_time
+              buy_time: buy_time,
+              ending_timestamp: res.data.data[0].car_sale.ending_timestamp * 1000
             })
           }
         })  
@@ -113,33 +114,35 @@ Page({
         url: '/pages/login/index'
       })
     };
-    //请求当前竞拍价接口
-    wx.request({
-      method: 'POST',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      url: app.globalData.webSite + '/Home/Wechat/carSaleOfferSelectByBestPrice',
-      data: { car_sale_id: that.data.cardetail.car_sale.id },
-      success: function (res) {
-        if(res.data.data == ''){
+    if (new Date().getTime() <= that.data.ending_timestamp){
+      //请求当前竞拍价接口
+      wx.request({
+        method: 'POST',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        url: app.globalData.webSite + '/Home/Wechat/carSaleOfferSelectByBestPrice',
+        data: { car_sale_id: that.data.cardetail.car_sale.id },
+        success: function (res) {
+          if (res.data.data == '') {
+            that.setData({
+              best_price: that.data.best_price,
+              bid_price: that.data.bid_price
+            })
+          } else {
+            var bid_price = (parseInt(res.data.data.offer_price) + parseInt(that.data.Rose)) / 10000;
+            that.setData({
+              best_price: res.data.data.offer_price,
+              bid_price: bid_price
+            })
+          }
           that.setData({
-            best_price: that.data.best_price,
-            bid_price: that.data.bid_price
-          })
-        }else{
-          var bid_price = (parseInt(res.data.data.offer_price) + parseInt(that.data.Rose))/10000;
-          that.setData({
-            best_price: res.data.data.offer_price,
-            bid_price: bid_price
-          })
+            masks: 'masks',
+            reveal: 'reveal'
+          });
         }
-        that.setData({
-          masks: 'masks',
-          reveal: 'reveal'
-        });
-      }
-    })
+      })
+    }
   },
   //点击取消
   cancel: function(){
@@ -196,89 +199,89 @@ Page({
   //点击确定
   determine: function(){
     var that = this;
-    wx.request({
-      method: 'POST',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      url: app.globalData.webSite + '/Home/Wechat/carSaleOfferAdd',
-      data: { 
-        car_sale_id: that.data.cardetail.car_sale.id,
-        offer_price: that.data.bid_price * 10000,
-        user_id: '1',
-        user_name: app.globalData.userInfo.nickName,
-        user_phone: app.globalData.userInfo.phone,
+    if (new Date().getTime() <= that.data.ending_timestamp) {
+      wx.request({
+        method: 'POST',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
         },
-      success: function(res){
-        wx.getStorage({
-          key: 'carId',
-          success: function (carId) {
-            that.setData({
-              show: 'show',
-              reveal: ''
-            })
-            var num = that.data.num;
-            var timer = setInterval(function () {
-              num--;
+        url: app.globalData.webSite + '/Home/Wechat/carSaleOfferAdd',
+        data: {
+          car_sale_id: that.data.cardetail.car_sale.id,
+          offer_price: that.data.bid_price * 10000,
+          user_id: '1',
+          user_name: app.globalData.userInfo.nickName,
+          user_phone: app.globalData.userInfo.phone,
+        },
+        success: function (res) {
+          wx.getStorage({
+            key: 'carId',
+            success: function (carId) {
               that.setData({
-                num: num
-              });
-              if (num == 0) {
-                clearInterval(timer);
+                show: 'show',
+                reveal: ''
+              })
+              var num = that.data.num;
+              var timer = setInterval(function () {
+                num--;
                 that.setData({
-                  masks: '',
-                  show: '',
-                  num: '3',
-                })
-              }
-            }, 1000);
-
-
-            wx.request({
-              method: 'POST',
-              header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-              },
-              url: app.globalData.webSite + '/Home/Wechat/carSalePendingById',
-              data: { id: carId.data },
-              success: function (car) {
-                var buy_year = car.data.data[0].buy_time.substring(0, 4);
-                var buy_month = car.data.data[0].buy_time.substring(4, 6);
-                var buy_time = buy_year + '年' + buy_month + '月';
-                var imgUrls = car.data.data[0].images.split(' | ');
-                var length = imgUrls.length;
-                var archives = car.data.data[0].advantage.split('、');
-                var time = car.data.data[0].publish_time.split('/');
-                var publish_time = time[0] + '年' + time[1] + '月' + time[2] + '日';
-                if (car.data.data[0].best_price == '') {
-                  var bid_price = parseFloat(car.data.data[0].car_sale.starting_price) + parseFloat(car.data.data[0].car_sale.amount_of_increase / 10000)
+                  num: num
+                });
+                if (num == 0) {
+                  clearInterval(timer);
                   that.setData({
-                    best_price: car.data.data[0].car_sale.starting_price * 10000,
-                    bid_price: bid_price,
-                    Rose: car.data.data[0].car_sale.amount_of_increase
-                  })
-                } else {
-                  var bid_price = parseFloat(car.data.data[0].best_price/10000) + parseFloat(car.data.data[0].car_sale.amount_of_increase / 10000)
-                  that.setData({
-                    best_price: car.data.data[0].best_price,
-                    bid_price: bid_price,
-                    Rose: car.data.data[0].car_sale.amount_of_increase
+                    masks: '',
+                    show: '',
+                    num: '3',
                   })
                 }
-                that.setData({
-                  length: length,
-                  imgUrls: imgUrls,
-                  cardetail: car.data.data[0],
-                  publish_time: publish_time,
-                  archives: archives,
-                  buy_time: buy_time,
-                })
-              }
-            })
-          },
-        })
-      }
-    })              
+              }, 1000);
+              wx.request({
+                method: 'POST',
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                url: app.globalData.webSite + '/Home/Wechat/carSalePendingById',
+                data: { id: carId.data },
+                success: function (car) {
+                  var buy_year = car.data.data[0].buy_time.substring(0, 4);
+                  var buy_month = car.data.data[0].buy_time.substring(4, 6);
+                  var buy_time = buy_year + '年' + buy_month + '月';
+                  var imgUrls = car.data.data[0].images.split(' | ');
+                  var length = imgUrls.length;
+                  var archives = car.data.data[0].advantage.split('、');
+                  var time = car.data.data[0].publish_time.split('/');
+                  var publish_time = time[0] + '年' + time[1] + '月' + time[2] + '日';
+                  if (car.data.data[0].best_price == '') {
+                    var bid_price = parseFloat(car.data.data[0].car_sale.starting_price) + parseFloat(car.data.data[0].car_sale.amount_of_increase / 10000)
+                    that.setData({
+                      best_price: car.data.data[0].car_sale.starting_price * 10000,
+                      bid_price: bid_price,
+                      Rose: car.data.data[0].car_sale.amount_of_increase
+                    })
+                  } else {
+                    var bid_price = parseFloat(car.data.data[0].best_price / 10000) + parseFloat(car.data.data[0].car_sale.amount_of_increase / 10000)
+                    that.setData({
+                      best_price: car.data.data[0].best_price,
+                      bid_price: bid_price,
+                      Rose: car.data.data[0].car_sale.amount_of_increase
+                    })
+                  }
+                  that.setData({
+                    length: length,
+                    imgUrls: imgUrls,
+                    cardetail: car.data.data[0],
+                    publish_time: publish_time,
+                    archives: archives,
+                    buy_time: buy_time,
+                  })
+                }
+              })
+            },
+          })
+        }
+      })
+    }              
   },
 
   // //请求查询车辆详情
