@@ -64,10 +64,10 @@ App({
     });
   },  
   globalData: {
-    appid: 'wx4796405728efcfcd',
+    appid: '',
     userInfo: null,
     openId: '',
     loginStatus: false,
-    webSite: 'http://www.ynescjy.com'
+    webSite: ''
   }
 })
