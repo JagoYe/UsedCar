@@ -146,4 +146,4 @@
   <view class='bottom bg-color' bindtap='ClickAuction'>
     <text>竞拍</text>
   </view>
-</view>
+</view>                    
