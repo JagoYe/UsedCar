@@ -273,7 +273,6 @@ page{
   height: 100%;
   float: left;
   margin-left: 13%;
-  background-color: orange;
 }
 .jump .determine{
   width: 24%;

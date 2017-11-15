@@ -170,7 +170,7 @@ page{
   width: 10%;
   height: 100%;
   float: left;
-  background-color: black;
+  background-color: #FFB700;
   text-align: center;
   color: white;
   margin-left: 1%;

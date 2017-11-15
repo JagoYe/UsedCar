@@ -30,7 +30,7 @@
               <text>{{item.advantage}} {{item.detail}}</text>
             </view>
             <view class='timeshow center'>
-              <text class='time_stamp'>28天</text>
+              <text class='time_stamp'>{{item.day}}</text>
               <text class='timestamp'>{{item.hourten}}</text>
               <text class='timestamp'>{{item.hourabit}}</text>
               <text class='timestamps'>:</text>

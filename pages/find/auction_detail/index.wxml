@@ -134,7 +134,7 @@
       <text>您的竞拍价: {{best_price}} + {{cardetail.car_sale.amount_of_increase}}={{bid_price}}万</text>
     </view>
     <view class='jump'>
-      <view class='cancel' bindtap='cancel'><text>取消</text></view>
+      <view class='cancel bg-color' bindtap='cancel'><text>取消</text></view>
       <view class='determine bg-color' bindtap='determine'><text>确定</text></view>
     </view>
   </view>
