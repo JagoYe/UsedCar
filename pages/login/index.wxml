@@ -1,6 +1,6 @@
 <!--pages/login/index.wxml-->
 <view class='all'>
-  <image src='../../img/cars.jpg'></image>
+  <image src='../../img/car.png'></image>
   <view class='containerd'>
     <view class='box'>
       <view class='inputs'>
