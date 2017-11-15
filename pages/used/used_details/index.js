@@ -81,25 +81,6 @@ Page({
     wx.getStorage({
       key: 'used_details',
       success: function(res) {
-        //请求拍卖中的接口
-        wx.request({
-          method: 'POST',
-          header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
-          data: { status: '1' },
-          success: function (status) {
-            console.log(status);
-            status.data.data.forEach(function(val,key){
-              if(val.id == res.data[0].id){
-                that.setData({
-                  status: '拍卖中'
-                })
-              }
-            })
-          }
-        });
         var imgUrls = res.data.images.split(' | ');
         var archives = res.data.advantage.split('、');
         var length = imgUrls.length;

@@ -59,11 +59,39 @@ Page({
               var hour = parseInt((times - day * 24 * 60 * 60) / 3600);//小时
               var minute = parseInt((times - day * 24 * 60 * 60 - hour * 3600) / 60);//分
               var second = parseInt(times - day * 24 * 60 * 60 - hour * 3600 - minute * 60);//秒
-              var time = day + '天' + hour + '小时' + minute + '分' + second + '秒';
-              res.data.data[key]['time'] = time;
+              // var time = day + '天' + hour + '小时' + minute + '分' + second + '秒';
+              // res.data.data[key]['time'] = time;
+              hour = String(hour);
+              minute = String(minute);
+              second = String(second);
+              res.data.data[key]['day'] = day + '天';
+              if(hour < 10){
+                hour = '0' + hour;
+                res.data.data[key]['hourten'] = hour.substring(0, 1);
+                res.data.data[key]['hourabit'] = hour.substring(1, 2);
+              }else{
+                res.data.data[key]['hourten'] = hour.substring(0,1);
+                res.data.data[key]['hourabit'] = hour.substring(1, 2);
+              }
+              if (minute < 10) {
+                minute = '0' + minute;
+                res.data.data[key]['minuteten'] = minute.substring(0, 1);
+                res.data.data[key]['minuteabit'] = minute.substring(1, 2);
+              } else {
+                res.data.data[key]['minuteten'] = minute.substring(0, 1);
+                res.data.data[key]['minuteabit'] = minute.substring(1, 2);
+              }
+              if (second < 10) {
+                second = '0' + second;
+                res.data.data[key]['secondten'] = second.substring(0, 1);
+                res.data.data[key]['secondabit'] = second.substring(1, 2);
+              } else {
+                res.data.data[key]['secondten'] = second.substring(0, 1);
+                res.data.data[key]['secondabit'] = second.substring(1, 2);
+              }
               that.setData({
                 cardetails: res.data.data
-              })
+              });
             } else {
               that.setData({
                 time: '拍车结束'

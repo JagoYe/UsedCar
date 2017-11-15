@@ -15,7 +15,7 @@
       </view>
       <!-- 地址 -->
       <view class='area'>
-        <text>{{city}}{{citys[cityIndex]}}</text> 
+        <text>{{city}}{{citys[cityIndex]}}</text>
       </view>
     </picker>
     <!-- 搜索框 -->

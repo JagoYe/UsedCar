@@ -47,7 +47,7 @@ page{
 /*验证码*/
 .containerd .box .inputs .code{
   width: 55%;
-   margin-left: 10%; 
+  margin-left: 10%; 
   float: left;
   height: 80rpx;
   line-height: 80rpx;
@@ -70,7 +70,7 @@ page{
   line-height: 80rpx;
   border-radius: 20rpx;
   color: white;
-  background-color: #3AB3FF;
+  background-color: #FFB700;
   border: 0px;
   box-shadow: 0px 2rpx 1rpx gray;
   font-size: 30rpx;
