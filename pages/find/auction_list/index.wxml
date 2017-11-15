@@ -29,7 +29,17 @@
             <view class='detail'>
               <text>{{item.advantage}} {{item.detail}}</text>
             </view>
-            <view class='timeshow bg-color center'><text>{{item.time}}</text></view>
+            <view class='timeshow center'>
+              <text class='time_stamp'>{{item.day}}</text>
+              <text class='timestamp'>{{item.hourten}}</text>
+              <text class='timestamp'>{{item.hourabit}}</text>
+              <text class='timestamps'>:</text>
+              <text class='timestamp'>{{item.minuteten}}</text>
+              <text class='timestamp'>{{item.minuteabit}}</text>
+              <text class='timestamps'>:</text>
+              <text class='timestamp'>{{item.secondten}}</text>
+              <text class='timestamp'>{{item.secondabit}}</text>
+            </view>
           </view>
           <view class='middle'>
             <view class='img'>

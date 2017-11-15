@@ -115,7 +115,7 @@
       <text>{{success}}</text>
     </view>
     <view class='jump'>
-      <text>将在 {{num}} 秒后自动关闭</text>
+      <text>将在</text><text style='color:#FFB700'> {{num}} </text><text>秒后自动关闭</text>
     </view>
   </view>
   <!-- 底部 -->
