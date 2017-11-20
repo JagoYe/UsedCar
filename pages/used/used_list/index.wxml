@@ -12,13 +12,13 @@
       <view class='area'>
         <text>{{city_name}}{{citys[cityIndex]}}</text>
       </view>
-    </picker> 
+    </picker>
     <!-- 搜索框 -->
     <view class='search'>
       <picker bindchange="bindPickerChange" value="{{areaIndex}}" range="{{area}}">  
         <view class="picker">  
           <text>当前选择 → {{area[areaIndex]}}</text>  
-        </view>  
+        </view> 
       </picker>
     </view>
   </view>

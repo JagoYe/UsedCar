@@ -139,6 +139,7 @@ Page({
                     })
                   });
                   //delete删除已完成项
+                  console.log(res.data.data);
                   res.data.data.forEach(function (val, key) {
                     deleteArr.forEach(function (val1, key1) {
                       if (val.id == val1) {
@@ -398,8 +399,15 @@ Page({
                     })
                   });
                   //delete删除已完成项
-                  res.data.forEach(function (val, key) {
-                    deleteArr.forEach(function (val1, key1) {
+                  // res.data.forEach(function (val, key) {
+                  //   deleteArr.forEach(function (val1, key1) {
+                  //     if (val.id == val1) {
+                  //       res.data.splice(key, 1);
+                  //     }
+                  //   });
+                  // });
+                  deleteArr.forEach(function (val1, key1) {
+                    res.data.forEach(function (val, key) {
                       if (val.id == val1) {
                         res.data.splice(key, 1);
                       }
@@ -422,8 +430,8 @@ Page({
                     });
                   });
                   //delete删除已完成项
-                  res.data.forEach(function (val, key) {
-                    deleteArr.forEach(function (val1, key1) {
+                  deleteArr.forEach(function (val1, key1) {
+                    res.data.forEach(function (val, key) {
                       if (val.id == val1) {
                         res.data.splice(key, 1);
                       }
@@ -581,8 +589,15 @@ Page({
                         })
                       });
                       //delete删除已完成项
-                      res.data.data.forEach(function (val, key) {
-                        deleteArr.forEach(function (val1, key1) {
+                      // res.data.data.forEach(function (val, key) {
+                      //   deleteArr.forEach(function (val1, key1) {
+                      //     if (val.id == val1) {
+                      //       res.data.data.splice(key, 1);
+                      //     }
+                      //   });
+                      // });
+                      deleteArr.forEach(function (val1, key1) {
+                        res.data.data.forEach(function (val, key) {
                           if (val.id == val1) {
                             res.data.data.splice(key, 1);
                           }
@@ -605,8 +620,8 @@ Page({
                         });
                       });
                       //delete删除已完成项
-                      res.data.data.forEach(function (val, key) {
-                        deleteArr.forEach(function (val1, key1) {
+                      deleteArr.forEach(function (val1, key1) {
+                        res.data.data.forEach(function (val, key) {
                           if (val.id == val1) {
                             res.data.data.splice(key, 1);
                           }
@@ -701,8 +716,15 @@ Page({
                     })
                   });
                   //delete删除已完成项
-                  res.data.data.forEach(function (val, key) {
-                    deleteArr.forEach(function (val1, key1) {
+                  // res.data.data.forEach(function (val, key) {
+                  //   deleteArr.forEach(function (val1, key1) {
+                  //     if (val.id == val1) {
+                  //       res.data.data.splice(key, 1);
+                  //     }
+                  //   });
+                  // });
+                  deleteArr.forEach(function (val1, key1) {
+                    res.data.data.forEach(function (val, key) {
                       if (val.id == val1) {
                         res.data.data.splice(key, 1);
                       }
@@ -725,8 +747,8 @@ Page({
                     });
                   });
                   //delete删除已完成项
-                  res.data.data.forEach(function (val, key) {
-                    deleteArr.forEach(function (val1, key1) {
+                  deleteArr.forEach(function (val1, key1) {
+                    res.data.data.forEach(function (val, key) {
                       if (val.id == val1) {
                         res.data.data.splice(key, 1);
                       }
@@ -844,8 +866,8 @@ Page({
                           });
                         });
                         //delete删除已完成项
-                        res.data.data.forEach(function (val, key) {
-                          deleteArr.forEach(function (val1, key1) {
+                        deleteArr.forEach(function (val1, key1) {
+                          res.data.data.forEach(function (val, key) {
                             if (val.id == val1) {
                               res.data.data.splice(key, 1);
                             }

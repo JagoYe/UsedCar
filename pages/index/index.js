@@ -230,8 +230,8 @@ Page({
                     });
                   });
                   //delete删除已完成项
-                  res.data.already.forEach(function (val, key) {
-                    deleteArr.forEach(function (val1, key1) {
+                  deleteArr.forEach(function (val1, key1) {
+                    res.data.already.forEach(function (val, key) {
                       if (val.id == val1) {
                         res.data.already.splice(key, 1);
                       }
