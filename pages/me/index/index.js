@@ -46,6 +46,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.setData({
+      phone:app.globalData.userInfo.phone
+    })
     if (app.globalData.loginStatus == false) {
       wx.navigateTo({
         url: '/pages/login/index'
