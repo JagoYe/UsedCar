@@ -215,28 +215,30 @@ Page({
                   });
                 } else {
                   var deleteArr = [];
-                  res.data.already.forEach(function (val1, key1) {
-                    status2.data.data.forEach(function (val2, key2) {
-                      if (val1.id == val2.id) {
-                        deleteArr.push(val1.id);
-                      } else {
-                        var imageArr = val1.images.split(' | ');
-                        var buy_year = val1.buy_time.substring(0, 4);
-                        var buy_month = val1.buy_time.substring(4, 6);
-                        res.data.already[key1]['buy_year'] = buy_year;
-                        res.data.already[key1]['buy_month'] = buy_month;
-                        res.data.already[key1]['first_image'] = imageArr[0];
-                      }
+                  if (status2.data.data != '' && res.data.code == 200){
+                    res.data.already.forEach(function (val1, key1) {
+                      status2.data.data.forEach(function (val2, key2) {
+                        if (val1.id == val2.id) {
+                          deleteArr.push(val1.id);
+                        } else {
+                          var imageArr = val1.images.split(' | ');
+                          var buy_year = val1.buy_time.substring(0, 4);
+                          var buy_month = val1.buy_time.substring(4, 6);
+                          res.data.already[key1]['buy_year'] = buy_year;
+                          res.data.already[key1]['buy_month'] = buy_month;
+                          res.data.already[key1]['first_image'] = imageArr[0];
+                        }
+                      });
                     });
-                  });
-                  //delete删除已完成项
-                  deleteArr.forEach(function (val1, key1) {
-                    res.data.already.forEach(function (val, key) {
-                      if (val.id == val1) {
-                        res.data.already.splice(key, 1);
-                      }
+                    //delete删除已完成项
+                    deleteArr.forEach(function (val1, key1) {
+                      res.data.already.forEach(function (val, key) {
+                        if (val.id == val1) {
+                          res.data.already.splice(key, 1);
+                        }
+                      });
                     });
-                  });
+                  }
                 }
                 that.setData({
                   usedCar: res.data.already
