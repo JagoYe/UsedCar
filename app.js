@@ -3,6 +3,10 @@ App({
   onLaunch: function () {
     var that = this;
     // 登录
+    wx.showLoading({
+      title: '加载中...',
+      mask: false
+    });
     wx.login({
       success: function (res) {
         if (res.code) {
@@ -35,6 +39,9 @@ App({
                         that.globalData.loginStatus = true;
                         that.globalData.userInfo.score = data.data.score;
                         that.globalData.userInfo.phone = data.data.phone;
+                        wx.hideLoading({
+                          
+                        });
                       }
                       console.log(that);
                     }
