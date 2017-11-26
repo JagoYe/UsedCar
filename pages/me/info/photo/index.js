@@ -17,9 +17,14 @@ Page({
         var imgAreey = [];
         var tempFilePaths = res.tempFilePaths
         wx.uploadFile({
-          url: app.globalData.webSite + '/Upload/wx/', //仅为示例，非真实的接口地址
+          method:'POST',
+          header: {
+            "Content-Type": "multipart/form-data"
+          },
+          // url: app.globalData.webSite + '/Upload/wx/', //仅为示例，非真实的接口地址
+          url: app.globalData.webSite + '/Home/Wechat/wxImageUpload', //仅为示例，非真实的接口地址
           filePath: tempFilePaths[0],
-          name: 'file',
+          name: 'AAAAAAAA',
           formData: {
             'user': 'test'
           },
