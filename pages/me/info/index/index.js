@@ -29,7 +29,7 @@ Page({
         user_phone: phone
       },
       success: function(res){
-        if(res.data.data != ''){
+        if (res.data.data != '' || res.data.data != 'undefined'){
           res.data.data.forEach(function (val, key) {
             if (res.data.data[key].status == 1) {
               res.data.data[key].status = '审核已通过'

@@ -6,7 +6,7 @@
       <image src='{{userImage}}'></image>
     </view>
   </view>
-  <view class='phone center'>18787312252</view>
+  <view class='phone center'>{{phone}}</view>
   <view class='line center'></view>
   <view class='slot center'>
     <view class='left' bindtap='verification' data-url='/pages/me/collection/index'>
