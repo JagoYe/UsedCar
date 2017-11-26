@@ -1,9 +1,11 @@
 <!--pages/me/info/photo/index.wxml-->
 <view class='all center'>
-  <view class='photo'>
-    <image src='../../../../img/40.png'></image>
-    <view class='delete'>x</view>
-  </view>
+  <block wx:key='' wx:for='{{imgAreey}}' wx:for-item='item'>
+    <view class='photo'>
+      <image src='{{item}}'></image>
+      <view class='delete'>x</view>
+    </view>
+  </block>
   <view class='add' bindtap='clickUpload'><text>+</text></view>
 </view>
-<view class='bottom'><text>确定</text></view>
+<view class='bottom bg-color' bindtap='return'><text>确定</text></view>
