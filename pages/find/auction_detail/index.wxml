@@ -128,7 +128,7 @@
       <text>车辆评估价: {{cardetail.car_sale.evaluate_price}}万</text>
     </view>
     <view class='success'>
-      <text>当前竞拍价: {{best_price}}万</text>
+      <text>当前竞拍价: {{best_price}}</text>
     </view>
     <view class='success'>
       <text>您的竞拍价: {{best_price}} + {{cardetail.car_sale.amount_of_increase}}={{bid_price}}万</text>
@@ -146,4 +146,4 @@
   <view class='bottom bg-color' bindtap='ClickAuction'>
     <text>竞拍</text>
   </view>
-</view>                    
+</view>

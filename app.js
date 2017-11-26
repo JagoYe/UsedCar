@@ -68,6 +68,6 @@ App({
     userInfo: null,
     openId: '',
     loginStatus: false,
-    webSite: 'http://www.ynescjy.com'
+    webSite: 'https://www.ynescjy.com'
   }
 })

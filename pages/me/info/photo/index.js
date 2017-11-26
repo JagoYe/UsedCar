@@ -1,4 +1,5 @@
 // pages/me/info/photo/index.js
+var app = getApp();
 Page({
 
   /**
@@ -9,30 +10,39 @@ Page({
   },
  //点击上传照片
   clickUpload: function(){
+    var that = this;
     wx.chooseImage({
       success: function (res) {
         console.log(res);
+        var imgAreey = [];
         var tempFilePaths = res.tempFilePaths
         wx.uploadFile({
-          url: 'http://byu3341290001.my3w.com/Upload/wx/', //仅为示例，非真实的接口地址
+          url: app.globalData.webSite + '/Upload/wx/', //仅为示例，非真实的接口地址
           filePath: tempFilePaths[0],
           name: 'file',
           formData: {
             'user': 'test'
           },
-          success: function (res) {
-            // var data = res.data
-            console.log(res);
+          success: function (success) {
+            imgAreey.push(res.tempFilePaths);
+            that.setData({
+              imgAreey: imgAreey
+            })
+            console.log(success);
           }
         })
       }
     })
   },
+  // 点击确定
+  return:function(){
+    var that = this;
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
   },
 
   /**
