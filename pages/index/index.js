@@ -151,9 +151,11 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/carBrandSelectAll',
       success: function(res){
         var area = [];
-        res.data.forEach(function(val,key){
-          area.push(val.name)
-        });
+        if(res.data !=''){
+          res.data.forEach(function (val, key) {
+            area.push(val.name)
+          });
+        }
         that.setData({
           area: area
         })
@@ -186,7 +188,7 @@ Page({
               url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
               data: { status: '2' },
               success: function (status2) {
-                if (status1.data.data != '') {
+                if (status1.data.data != '' && res.data.already != '') {
                   var deleteArr = [];
                   res.data.already.forEach(function (val1, key1) {
                     status1.data.data.forEach(function (val2, key2) {
