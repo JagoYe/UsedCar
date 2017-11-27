@@ -6,11 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    webSite: app.globalData.webSite
   },
  //点击上传照片
   clickUpload: function(){
     var that = this;
+    var key = Math.random().toString(36).substr(2);
     wx.chooseImage({
       success: function (res) {
         console.log(res);
@@ -21,12 +22,12 @@ Page({
           header: {
             "Content-Type": "multipart/form-data"
           },
-          // url: app.globalData.webSite + '/Upload/wx/', //仅为示例，非真实的接口地址
           url: app.globalData.webSite + '/Home/Wechat/wxImageUpload', //仅为示例，非真实的接口地址
           filePath: tempFilePaths[0],
-          name: 'AAAAAAAA',
+          name: 'ABC',
           formData: {
-            'user': 'test'
+            'user': 'test',
+            'key': key
           },
           success: function (success) {
             imgAreey.push(res.tempFilePaths);
