@@ -1,9 +1,9 @@
 <!--pages/me/info/photo/index.wxml-->
 <view class='all center'>
-  <block wx:key='' wx:for='{{imgAreey}}' wx:for-item='item'>
+  <block wx:key='' wx:for='{{imgArray}}' wx:for-item='item'>
     <view class='photo'>
       <image src='{{item}}'></image>
-      <view class='delete'>x</view>
+      <view class='delete' bindtap='delete' data-index='{{item}}'>x</view>
     </view>
   </block>
   <view class='add' bindtap='clickUpload'><text>+</text></view>

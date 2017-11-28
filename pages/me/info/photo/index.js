@@ -14,41 +14,67 @@ Page({
     var key = Math.random().toString(36).substr(2);
     wx.chooseImage({
       success: function (res) {
-        console.log(res);
-        var imgAreey = [];
-        var tempFilePaths = res.tempFilePaths
-        wx.uploadFile({
-          method:'POST',
-          header: {
-            "Content-Type": "multipart/form-data"
-          },
-          url: app.globalData.webSite + '/Home/Wechat/wxImageUpload', //仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'ABC',
-          formData: {
-            'user': 'test',
-            'key': key
-          },
-          success: function (success) {
-            imgAreey.push(res.tempFilePaths);
-            that.setData({
-              imgAreey: imgAreey
-            })
-            console.log(success);
-          }
+        that.data.imgArray.push(res.tempFilePaths);
+        that.setData({
+          imgArray: that.data.imgArray
         })
+        // wx.uploadFile({
+        //   method:'POST',
+        //   header: {
+        //     "Content-Type": "multipart/form-data"
+        //   },
+        //   url: app.globalData.webSite + '/Home/Wechat/wxImageUpload', //仅为示例，非真实的接口地址
+        //   filePath: tempFilePaths[0],
+        //   name: 'ABC',
+        //   formData: {
+        //     'user': 'test',
+        //     'key': key
+        //   },
+        //   success: function (success) {
+        //     console.log(success);
+        //   }
+        // })
       }
     })
+  },
+  //点击删除
+  delete:function(e){
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    var imgArray = that.data.imgArray
+    if(that.data.imgArray != []){
+      imgArray.forEach(function (val, key) {
+        if(index == val[0]){
+          imgArray.splice(key, 1);
+        }
+      });
+      that.setData({
+        imgArray: imgArray
+      })
+    }
   },
   // 点击确定
   return:function(){
     var that = this;
+    wx.setStorage({
+      key: 'saveimage',
+      data: that.data.imgArray,
+      success: function (res) {
+        wx.navigateBack({
+          delta: 1,
+        })
+      },
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    var imgArray = [];
+    that.setData({
+      imgArray: imgArray
+    });
   },
 
   /**

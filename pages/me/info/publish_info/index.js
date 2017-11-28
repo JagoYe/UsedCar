@@ -20,7 +20,10 @@ Page({
     var num = that.data.num;
     var detailCar = e.detail.value;
     var phone = app.globalData.userInfo.phone;
-    // console.log(e.detail.value);
+    wx.showLoading({
+      title: '信息提交中...',
+      mask: false
+    });
     wx.getUserInfo({
       success: function (user) {
         var nickName = user.userInfo.nickName
@@ -31,7 +34,7 @@ Page({
           detailCar.mileage != '' && detailCar.output != '' &&
           detailCar.detail != '' && detailCar.buy_time != '' &&
           detailCar.color != '' && detailCar.situation != '' && 
-          detailCar.factory != '' && detailCar.advantage != ''){
+          detailCar.factory != '' && detailCar.advantage != '' && that.data.imgArray != ''){
             wx.request({
               method: 'POST',
               header: {
@@ -49,7 +52,7 @@ Page({
                 output: detailCar.output,
                 detail: detailCar.detail,
                 buy_time: detailCar.buy_time,
-                images: 'test',
+                images: '',
                 color: detailCar.color,
                 situation: detailCar.situation,
                 factory: detailCar.factory,
@@ -58,26 +61,50 @@ Page({
                 user_phone: phone
               },
               success: function (res) {
-                that.setData({
-                  show: 'show',
-                  reveal: 'reveal'
-                })
-                var timer = setInterval(function () {
-                  num--;
-                  that.setData({
-                    num: num
-                  });
-                  if (num == 0) {
-                    clearInterval(timer);
-                    that.setData({
-                      show: '',
-                      reveal: ''
-                    });
-                    wx.navigateBack({
-                      delta: 2
-                    });
-                  }
-                }, 1000);
+                if(res.data.code == 200){
+                  that.data.imgArray.forEach(function (val, key) {
+                    wx.uploadFile({
+                      method: 'POST',
+                      header: {
+                        "Content-Type": "multipart/form-data"
+                      },
+                      url: app.globalData.webSite + '/Home/Wechat/pendingVehicleImageAdd', //仅为示例，非真实的接口地址
+                      filePath: val[0],
+                      name: 'single_image',
+                      formData: {
+                        cur_id: res.data.cur_id
+                      },
+                      success: function (success) {
+                        //隐藏加载提示
+                        wx.hideLoading({
+      
+                        });
+                        console.log('11111111111111111111111111111111');
+                        console.log(success);
+                        that.setData({
+                          show: 'show',
+                          reveal: 'reveal'
+                        })
+                        var timer = setInterval(function () {
+                          num--;
+                          that.setData({
+                            num: num
+                          });
+                          if (num == 0) {
+                            clearInterval(timer);
+                            that.setData({
+                              show: '',
+                              reveal: ''
+                            });
+                            wx.navigateBack({
+                              delta: 2
+                            });
+                          }
+                        }, 1000);
+                      }
+                    })
+                  })
+                }
               }
             })
         }
@@ -144,24 +171,6 @@ Page({
       url: '../photo/index',
     })
   },
-  // //确认发布
-  // release: function(e){
-  //   var that = this;
-  //   wx.navigateBack({
-  //     data: 1
-  //   });
-  //   console.log(that.data);
-  //   wx.request({
-  //     method: 'POST',
-  //     header: {
-  //       "Content-Type": "application/x-www-form-urlencoded"
-  //     },
-  //     url: app.globalData.webSite + '/Home/Wechat/pendingVehicleAdd',
-  //     data:{
-
-  //     }
-  //   })  
-  // },
   //  点击日期组件确定事件  
   bindDateChange: function (e) {
     var year = e.detail.value.substring(0,4) + '年';
@@ -175,6 +184,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  
   onLoad: function (options) {
     
   },
@@ -190,7 +200,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    wx.getStorage({
+      key: 'saveimage',
+      success: function(res) {
+        that.setData({
+          imgArray: res.data
+        })
+      },
+    })
   },
 
   /**
