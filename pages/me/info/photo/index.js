@@ -18,7 +18,6 @@ Page({
         that.setData({
           imgArray: that.data.imgArray
         })
-        // var tempFilePaths = res.tempFilePaths
         // wx.uploadFile({
         //   method:'POST',
         //   header: {
@@ -49,18 +48,23 @@ Page({
           imgArray.splice(key, 1);
         }
       });
-      console.log(imgArray);
       that.setData({
         imgArray: imgArray
       })
     }
-    that.setData({
-      imgArray: imgArray
-    })
   },
   // 点击确定
   return:function(){
     var that = this;
+    wx.setStorage({
+      key: 'saveimage',
+      data: that.data.imgArray,
+      success: function (res) {
+        wx.navigateBack({
+          delta: 1,
+        })
+      },
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -70,7 +74,7 @@ Page({
     var imgArray = [];
     that.setData({
       imgArray: imgArray
-    })
+    });
   },
 
   /**

@@ -29,74 +29,74 @@ Page({
       length: e.detail.cursor
     });
   },
-  //输入验证码触发事件，获取input框的值
-  getValidation: function (e) {
-    var that = this;
-    that.setData({
-      check: e.detail.value
-    });
-  },
-  //输入数字验证码触发事件，获取input的值
-  numConfirm: function (e) {
-    var that = this;
-    that.setData({
-      digital: e.detail.value
-    })
-  },
+  // //输入验证码触发事件，获取input框的值
+  // getValidation: function (e) {
+  //   var that = this;
+  //   that.setData({
+  //     check: e.detail.value
+  //   });
+  // },
+  // //输入数字验证码触发事件，获取input的值
+  // numConfirm: function (e) {
+  //   var that = this;
+  //   that.setData({
+  //     digital: e.detail.value
+  //   })
+  // },
   //点击获取验证码
-  prove: function () {
-    var that = this;
-    var prompt;
-    var phone = that.data.phone;
-    if (that.data.length == 11) {
-      wx.request({
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: app.globalData.webSite + '/Home/Admin/sendPhoneMessage',
-        data: {
-          send_model: 'sign_up',
-          phone: phone
-        },
-        method: 'POST',
-        success: function (res) {
-          that.setData({
-            randomNum: res.data.randomNum
-          });
-        }
-      });
-      var numConfirm = '';
-      for (var i = 0; i < 6; i++) {
-        numConfirm += parseInt(Math.random() * 10);
-      };
-      that.setData({
-        numConfirm: numConfirm,
-        prompt: '',
-        showBtn: "none",
-        showBtn1: "codes"
-      });
-      //重新获取验证码定时器
-      var nums = that.data.seconds;
-      var timer = setInterval(function () {
-        nums--;
-        that.setData({
-          seconds: nums
-        });
-        if (nums == 0) {
-          clearInterval(timer);
-          that.setData({
-            showBtn: "codes",
-            showBtn1: "none",
-            seconds: '60'
-          });
-        }
-      }, 1000);
-    } else {
-      that.setData({
-        prompt: '手机号位数不对,无法获取验证码'
-      })
-    }
-  },
+  // prove: function () {
+  //   var that = this;
+  //   var prompt;
+  //   var phone = that.data.phone;
+  //   if (that.data.length == 11) {
+  //     wx.request({
+  //       header: {
+  //         "Content-Type": "application/x-www-form-urlencoded"
+  //       },
+  //       url: app.globalData.webSite + '/Home/Admin/sendPhoneMessage',
+  //       data: {
+  //         send_model: 'sign_up',
+  //         phone: phone
+  //       },
+  //       method: 'POST',
+  //       success: function (res) {
+  //         that.setData({
+  //           randomNum: res.data.randomNum
+  //         });
+  //       }
+  //     });
+  //     var numConfirm = '';
+  //     for (var i = 0; i < 6; i++) {
+  //       numConfirm += parseInt(Math.random() * 10);
+  //     };
+  //     that.setData({
+  //       numConfirm: numConfirm,
+  //       prompt: '',
+  //       showBtn: "none",
+  //       showBtn1: "codes"
+  //     });
+  //     //重新获取验证码定时器
+  //     var nums = that.data.seconds;
+  //     var timer = setInterval(function () {
+  //       nums--;
+  //       that.setData({
+  //         seconds: nums
+  //       });
+  //       if (nums == 0) {
+  //         clearInterval(timer);
+  //         that.setData({
+  //           showBtn: "codes",
+  //           showBtn1: "none",
+  //           seconds: '60'
+  //         });
+  //       }
+  //     }, 1000);
+  //   } else {
+  //     that.setData({
+  //       prompt: '手机号位数不对,无法获取验证码'
+  //     })
+  //   }
+  // },
 
   //点击注册
   confirm: function (e) {
@@ -106,18 +106,18 @@ Page({
     var phone = that.data.phone;//接收电话号码
     var prompt;
     var length = that.data.length;
-    var randomNum = that.data.randomNum;  //短信验证码
-    var check = that.data.check;          //手动输入短信验证码
-    var digital = that.data.digital       //手动输入的数字验证码
-    var numConfirm = that.data.numConfirm //随机生成的数字验证码
+    // var randomNum = that.data.randomNum;  //短信验证码
+    // var check = that.data.check;          //手动输入短信验证码
+    // var digital = that.data.digital       //手动输入的数字验证码
+    // var numConfirm = that.data.numConfirm //随机生成的数字验证码
     //判断手机号位数
     if (length == 11) {
       //判断验证码是否正确
-      if (check == '' || randomNum != check || digital != numConfirm || digital == '') {
-        that.setData({
-          prompt: '手机短信验证码有误或数字验证码有误,请重新输入'
-        });
-      } else {
+      // if (check == '' || randomNum != check || digital != numConfirm || digital == '') {
+      //   that.setData({
+      //     prompt: '手机短信验证码有误或数字验证码有误,请重新输入'
+      //   });
+      // } else {
         wx.request({
           header: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -160,7 +160,7 @@ Page({
           }
         });
         //
-      }
+      // }
     } else {
       that.setData({
         prompt: '手机号位数不对,无法注册'

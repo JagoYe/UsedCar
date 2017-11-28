@@ -21,87 +21,85 @@ Page({
   //输入手机号触发事件
   mobileInput: function (e) {
     var that = this;
-    var phone;
-    var length;
     that.setData({
       phone: e.detail.value,
       length: e.detail.cursor
     });
   },
   //输入验证码触发事件，获取input框的值
-  getValidation: function (e) {
-    var that = this;
-    that.setData({
-      check: e.detail.value
-    });
-  },
-  //输入数字验证码触发事件，获取input值
-  numCheckInput: function (e) {
-    var that = this;
-    that.setData({
-      numCheck: e.detail.value
-    })
-  },
-  //点击获取验证码
-  prove: function () {
-    var that = this;
-    var prompt;
-    var phone = that.data.phone;
-    if (that.data.length == 11) {
-      wx.request({
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: app.globalData.webSite + '/Home/Admin/sendPhoneMessage',
-        data: {
-          send_model: 'sign_up',
-          phone: phone
-        },
-        method: 'POST',
-        success: function (res) {
-          that.setData({
-            randomNum: res.data.randomNum
-          });
-        }
-      });
+  // getValidation: function (e) {
+  //   var that = this;
+  //   that.setData({
+  //     check: e.detail.value
+  //   });
+  // },
+  // //输入数字验证码触发事件，获取input值
+  // numCheckInput: function (e) {
+  //   var that = this;
+  //   that.setData({
+  //     numCheck: e.detail.value
+  //   })
+  // },
+  // //点击获取验证码
+  // prove: function () {
+  //   var that = this;
+  //   var prompt;
+  //   var phone = that.data.phone;
+  //   if (that.data.length == 11) {
+  //     wx.request({
+  //       header: {
+  //         "Content-Type": "application/x-www-form-urlencoded"
+  //       },
+  //       url: app.globalData.webSite + '/Home/Admin/sendPhoneMessage',
+  //       data: {
+  //         send_model: 'sign_up',
+  //         phone: phone
+  //       },
+  //       method: 'POST',
+  //       success: function (res) {
+  //         that.setData({
+  //           randomNum: res.data.randomNum
+  //         });
+  //       }
+  //     });
 
-      var check_code = '';
-      for (var i = 0; i < 6; i++) {
-        check_code += parseInt(Math.random() * 10);
-      };
-      that.setData({
-        prompt: '',
-        hid: true,
-        flag: false,
-        check_code: check_code
-      });
-      //重新获取验证码定时器
-      var nums = that.data.seconds;
-      var timer = setInterval(function () {
-        nums--;
-        that.setData({
-          seconds: nums
-        });
-        if (nums == 0) {
-          clearInterval(timer);
-          that.setData({
-            seconds: '60',
-            flag: true,
-            hid: false
-          });
-        }
-      }, 1000);
-    } else {
-      wx.showModal({
-        content: '您所填的手机号有误，请从新输入',
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      })
-    }
-  },
+  //     var check_code = '';
+  //     for (var i = 0; i < 6; i++) {
+  //       check_code += parseInt(Math.random() * 10);
+  //     };
+  //     that.setData({
+  //       prompt: '',
+  //       hid: true,
+  //       flag: false,
+  //       check_code: check_code
+  //     });
+  //     //重新获取验证码定时器
+  //     var nums = that.data.seconds;
+  //     var timer = setInterval(function () {
+  //       nums--;
+  //       that.setData({
+  //         seconds: nums
+  //       });
+  //       if (nums == 0) {
+  //         clearInterval(timer);
+  //         that.setData({
+  //           seconds: '60',
+  //           flag: true,
+  //           hid: false
+  //         });
+  //       }
+  //     }, 1000);
+  //   } else {
+  //     wx.showModal({
+  //       content: '您所填的手机号有误，请从新输入',
+  //       success: function (res) {
+  //         if (res.confirm) {
+  //           console.log('用户点击确定')
+  //         }
+  //       }
+  //     })
+  //   }
+  // },
   //修改手机号
   confirm: function (e) {
     var that = this;
@@ -109,14 +107,15 @@ Page({
     var numCheck = that.data.numCheck;//手动输入的数字验证码
     var check_code = that.data.check_code;//随机生成的数字验证码
     var randomNum = that.data.randomNum;//接口返回短信验证码
-    if (check == '' || check != randomNum || numCheck != check_code || numCheck == '') {
-      wx.showModal({
-        content: '您输入的手机短信验证码或数字验证码有误，请从新输入',
-        success: function (res) {
+    // if (check == '' || check != randomNum || numCheck != check_code || numCheck == '') {
+    //   wx.showModal({
+    //     content: '您输入的手机短信验证码或数字验证码有误，请从新输入',
+    //     success: function (res) {
 
-        }
-      })
-    } else {
+    //     }
+    //   })
+    // } else {
+    if(that.data.length == 11){
       wx.request({
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -148,7 +147,15 @@ Page({
           }, 1000);
         }
       })
+    }else{
+      wx.showModal({
+        content: '您输入的手机号码位数不对，请从新输入',
+        success: function (res) {
+
+        }
+      })
     }
+    // }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -156,7 +163,6 @@ Page({
   onLoad: function (options) {
     wx.getSystemInfo({
       success: function (res) {
-        console.log(res)
         winHeight = res.windowHeight;
         winWidth = res.windowWidth;
       }

@@ -19,6 +19,10 @@ Page({
   onLoad: function (options) {
     var that = this;
     var phone = app.globalData.userInfo.phone;
+    wx.showLoading({
+      title: '加载中...',
+      mask: false
+    });
     wx.request({
       method: 'POST',
       header: {
@@ -30,6 +34,13 @@ Page({
       },
       success: function(res){
         if (res.data.code == 200){
+          wx.hideLoading({
+
+          });
+          res.data.data.forEach(function(val,key){
+            var imageArr = val.images.split(' | ');
+            res.data.data[key]['first_image'] = imageArr[0]  
+          })    
           res.data.data.forEach(function (val, key) {
             if (res.data.data[key].status == 1) {
               res.data.data[key].status = '审核已通过'
@@ -37,10 +48,10 @@ Page({
               res.data.data[key].status = '审核中'
             }
           })
+          that.setData({
+            publishCar: res.data.data,
+          })
         }
-        that.setData({
-          publishCar: res.data.data,
-        })
       }
     })
   },
