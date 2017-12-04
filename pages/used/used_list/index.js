@@ -149,27 +149,37 @@ Page({
                   });
                 } else {
                   var deleteArr = [];
-                  res.data.data.forEach(function (val1, key1) {
-                    status2.data.data.forEach(function (val2, key2) {
-                      if (val1.id == val2.id) {
-                        deleteArr.push(val1.id);
-                      } else {
-                        var imageArr = val1.images.split(' | ');
-                        var buy_year = val1.buy_time.substring(0, 4);
-                        var buy_month = val1.buy_time.substring(4, 6);
-                        res.data.data[key1]['buy_year'] = buy_year;
-                        res.data.data[key1]['buy_month'] = buy_month;
-                        res.data.data[key1]['first_image'] = imageArr[0];
-                      }
+                  if(status2.data.data != ''){
+                    res.data.data.forEach(function (val1, key1) {
+                      status2.data.data.forEach(function (val2, key2) {
+                        if (val1.id == val2.id) {
+                          deleteArr.push(val1.id);
+                        } else {
+                          var imageArr = val1.images.split(' | ');
+                          var buy_year = val1.buy_time.substring(0, 4);
+                          var buy_month = val1.buy_time.substring(4, 6);
+                          res.data.data[key1]['buy_year'] = buy_year;
+                          res.data.data[key1]['buy_month'] = buy_month;
+                          res.data.data[key1]['first_image'] = imageArr[0];
+                        }
+                      });
                     });
-                  });
-                  //delete删除已完成项
+                    //delete删除已完成项
+                    res.data.data.forEach(function (val, key) {
+                      deleteArr.forEach(function (val1, key1) {
+                        if (val.id == val1) {
+                          res.data.data.splice(key, 1);
+                        }
+                      });
+                    });
+                  }
                   res.data.data.forEach(function (val, key) {
-                    deleteArr.forEach(function (val1, key1) {
-                      if (val.id == val1) {
-                        res.data.data.splice(key, 1);
-                      }
-                    });
+                    var imageArr = val.images.split(' | ');
+                    var buy_year = val.buy_time.substring(0, 4);
+                    var buy_month = val.buy_time.substring(4, 6);
+                    res.data.data[key]['buy_year'] = buy_year;
+                    res.data.data[key]['buy_month'] = buy_month;
+                    res.data.data[key]['first_image'] = imageArr[0];
                   });
                 }
                 that.setData({
@@ -379,6 +389,7 @@ Page({
               url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
               data: { status: '2' },
               success: function (status2) {
+                console.log(status2);
                 if (status1.data.data != '') {
                   var deleteArr = [];
                   res.data.forEach(function (val1, key1) {
@@ -415,27 +426,39 @@ Page({
                   });
                 } else {
                   var deleteArr = [];
-                  res.data.forEach(function (val1, key1) {
-                    status2.data.data.forEach(function (val2, key2) {
-                      if (val1.id == val2.id) {
-                        deleteArr.push(val1.id);
-                      } else {
-                        var imageArr = val1.images.split(' | ');
-                        var buy_year = val1.buy_time.substring(0, 4);
-                        var buy_month = val1.buy_time.substring(4, 6);
-                        res.data[key1]['buy_year'] = buy_year;
-                        res.data[key1]['buy_month'] = buy_month;
-                        res.data[key1]['first_image'] = imageArr[0];
-                      }
+                  if (status2.data.data != ''){
+                    res.data.forEach(function (val1, key1) {
+                      status2.data.data.forEach(function (val2, key2) {
+                        if (val1.id == val2.id) {
+                          deleteArr.push(val1.id);
+                        } else {
+                          var imageArr = val1.images.split(' | ');
+                          var buy_year = val1.buy_time.substring(0, 4);
+                          var buy_month = val1.buy_time.substring(4, 6);
+                          res.data[key1]['buy_year'] = buy_year;
+                          res.data[key1]['buy_month'] = buy_month;
+                          res.data[key1]['first_image'] = imageArr[0];
+                          console.log(res.data);
+                        }
+                      });
                     });
-                  });
-                  //delete删除已完成项
-                  deleteArr.forEach(function (val1, key1) {
-                    res.data.forEach(function (val, key) {
-                      if (val.id == val1) {
-                        res.data.splice(key, 1);
-                      }
+                    //delete删除已完成项
+                    deleteArr.forEach(function (val1, key1) {
+                      res.data.forEach(function (val, key) {
+                        if (val.id == val1) {
+                          res.data.splice(key, 1);
+                        }
+                      });
                     });
+                  }
+                  res.data.forEach(function(val,key){
+                    var imageArr = val.images.split(' | ');
+                    var buy_year = val.buy_time.substring(0, 4);
+                    var buy_month = val.buy_time.substring(4, 6);
+                    res.data[key]['buy_year'] = buy_year;
+                    res.data[key]['buy_month'] = buy_month;
+                    res.data[key]['first_image'] = imageArr[0];
+                    console.log(res.data);
                   });
                 }
                 that.setData({
@@ -605,27 +628,37 @@ Page({
                       });
                     } else {
                       var deleteArr = [];
-                      res.data.data.forEach(function (val1, key1) {
-                        status2.data.data.forEach(function (val2, key2) {
-                          if (val1.id == val2.id) {
-                            deleteArr.push(val1.id);
-                          } else {
-                            var imageArr = val1.images.split(' | ');
-                            var buy_year = val1.buy_time.substring(0, 4);
-                            var buy_month = val1.buy_time.substring(4, 6);
-                            res.data.data[key1]['buy_year'] = buy_year;
-                            res.data.data[key1]['buy_month'] = buy_month;
-                            res.data.data[key1]['first_image'] = imageArr[0];
-                          }
+                      if(status2.data.data != ''){
+                        res.data.data.forEach(function (val1, key1) {
+                          status2.data.data.forEach(function (val2, key2) {
+                            if (val1.id == val2.id) {
+                              deleteArr.push(val1.id);
+                            } else {
+                              var imageArr = val1.images.split(' | ');
+                              var buy_year = val1.buy_time.substring(0, 4);
+                              var buy_month = val1.buy_time.substring(4, 6);
+                              res.data.data[key1]['buy_year'] = buy_year;
+                              res.data.data[key1]['buy_month'] = buy_month;
+                              res.data.data[key1]['first_image'] = imageArr[0];
+                            }
+                          });
                         });
-                      });
-                      //delete删除已完成项
-                      deleteArr.forEach(function (val1, key1) {
-                        res.data.data.forEach(function (val, key) {
-                          if (val.id == val1) {
-                            res.data.data.splice(key, 1);
-                          }
+                        //delete删除已完成项
+                        deleteArr.forEach(function (val1, key1) {
+                          res.data.data.forEach(function (val, key) {
+                            if (val.id == val1) {
+                              res.data.data.splice(key, 1);
+                            }
+                          });
                         });
+                      }
+                      res.data.data.forEach(function (val, key) {
+                        var imageArr = val.images.split(' | ');
+                        var buy_year = val.buy_time.substring(0, 4);
+                        var buy_month = val.buy_time.substring(4, 6);
+                        res.data.data[key]['buy_year'] = buy_year;
+                        res.data.data[key]['buy_month'] = buy_month;
+                        res.data.data[key]['first_image'] = imageArr[0];
                       });
                     }
                     that.setData({
@@ -732,27 +765,37 @@ Page({
                   });
                 }else{
                   var deleteArr = [];
-                  res.data.data.forEach(function (val1, key1) {
-                    status2.data.data.forEach(function (val2, key2) {
-                      if (val1.id == val2.id) {
-                        deleteArr.push(val1.id);
-                      }else {
-                        var imageArr = val1.images.split(' | ');
-                        var buy_year = val1.buy_time.substring(0, 4);
-                        var buy_month = val1.buy_time.substring(4, 6);
-                        res.data.data[key1]['buy_year'] = buy_year;
-                        res.data.data[key1]['buy_month'] = buy_month;
-                        res.data.data[key1]['first_image'] = imageArr[0];
-                      }
+                  if(status2.data.data != ''){
+                    res.data.data.forEach(function (val1, key1) {
+                      status2.data.data.forEach(function (val2, key2) {
+                        if (val1.id == val2.id) {
+                          deleteArr.push(val1.id);
+                        } else {
+                          var imageArr = val1.images.split(' | ');
+                          var buy_year = val1.buy_time.substring(0, 4);
+                          var buy_month = val1.buy_time.substring(4, 6);
+                          res.data.data[key1]['buy_year'] = buy_year;
+                          res.data.data[key1]['buy_month'] = buy_month;
+                          res.data.data[key1]['first_image'] = imageArr[0];
+                        }
+                      });
                     });
-                  });
-                  //delete删除已完成项
-                  deleteArr.forEach(function (val1, key1) {
-                    res.data.data.forEach(function (val, key) {
-                      if (val.id == val1) {
-                        res.data.data.splice(key, 1);
-                      }
+                    //delete删除已完成项
+                    deleteArr.forEach(function (val1, key1) {
+                      res.data.data.forEach(function (val, key) {
+                        if (val.id == val1) {
+                          res.data.data.splice(key, 1);
+                        }
+                      });
                     });
+                  }
+                  res.data.data.forEach(function (val, key) {
+                    var imageArr = val.images.split(' | ');
+                    var buy_year = val.buy_time.substring(0, 4);
+                    var buy_month = val.buy_time.substring(4, 6);
+                    res.data.data[key]['buy_year'] = buy_year;
+                    res.data.data[key]['buy_month'] = buy_month;
+                    res.data.data[key]['first_image'] = imageArr[0];
                   });
                 }
                 that.setData({
@@ -851,27 +894,37 @@ Page({
                         });
                       } else {
                         var deleteArr = [];
-                        res.data.data.forEach(function (val1, key1) {
-                          status2.data.data.forEach(function (val2, key2) {
-                            if (val1.id == val2.id) {
-                              deleteArr.push(val1.id);
-                            } else {
-                              var imageArr = val1.images.split(' | ');
-                              var buy_year = val1.buy_time.substring(0, 4);
-                              var buy_month = val1.buy_time.substring(4, 6);
-                              res.data.data[key1]['buy_year'] = buy_year;
-                              res.data.data[key1]['buy_month'] = buy_month;
-                              res.data.data[key1]['first_image'] = imageArr[0];
-                            }
+                        if(status2.data.data != ''){
+                          res.data.data.forEach(function (val1, key1) {
+                            status2.data.data.forEach(function (val2, key2) {
+                              if (val1.id == val2.id) {
+                                deleteArr.push(val1.id);
+                              } else {
+                                var imageArr = val1.images.split(' | ');
+                                var buy_year = val1.buy_time.substring(0, 4);
+                                var buy_month = val1.buy_time.substring(4, 6);
+                                res.data.data[key1]['buy_year'] = buy_year;
+                                res.data.data[key1]['buy_month'] = buy_month;
+                                res.data.data[key1]['first_image'] = imageArr[0];
+                              }
+                            });
                           });
-                        });
-                        //delete删除已完成项
-                        deleteArr.forEach(function (val1, key1) {
-                          res.data.data.forEach(function (val, key) {
-                            if (val.id == val1) {
-                              res.data.data.splice(key, 1);
-                            }
+                          //delete删除已完成项
+                          deleteArr.forEach(function (val1, key1) {
+                            res.data.data.forEach(function (val, key) {
+                              if (val.id == val1) {
+                                res.data.data.splice(key, 1);
+                              }
+                            });
                           });
+                        }
+                        res.data.data.forEach(function (val, key) {
+                          var imageArr = val.images.split(' | ');
+                          var buy_year = val.buy_time.substring(0, 4);
+                          var buy_month = val.buy_time.substring(4, 6);
+                          res.data.data[key]['buy_year'] = buy_year;
+                          res.data.data[key]['buy_month'] = buy_month;
+                          res.data.data[key]['first_image'] = imageArr[0];
                         });
                       }
                       that.setData({
@@ -978,27 +1031,37 @@ Page({
                   });
                 } else {
                   var deleteArr = [];
-                  res.data.data.forEach(function (val1, key1) {
-                    status2.data.data.forEach(function (val2, key2) {
-                      if (val1.id == val2.id) {
-                        deleteArr.push(val1.id);
-                      } else {
-                        var imageArr = val1.images.split(' | ');
-                        var buy_year = val1.buy_time.substring(0, 4);
-                        var buy_month = val1.buy_time.substring(4, 6);
-                        res.data.data[key1]['buy_year'] = buy_year;
-                        res.data.data[key1]['buy_month'] = buy_month;
-                        res.data.data[key1]['first_image'] = imageArr[0];
-                      }
+                  if(status2.data.data != ''){
+                    res.data.data.forEach(function (val1, key1) {
+                      status2.data.data.forEach(function (val2, key2) {
+                        if (val1.id == val2.id) {
+                          deleteArr.push(val1.id);
+                        } else {
+                          var imageArr = val1.images.split(' | ');
+                          var buy_year = val1.buy_time.substring(0, 4);
+                          var buy_month = val1.buy_time.substring(4, 6);
+                          res.data.data[key1]['buy_year'] = buy_year;
+                          res.data.data[key1]['buy_month'] = buy_month;
+                          res.data.data[key1]['first_image'] = imageArr[0];
+                        }
+                      });
                     });
-                  });
-                  //delete删除已完成项
+                    //delete删除已完成项
+                    res.data.data.forEach(function (val, key) {
+                      deleteArr.forEach(function (val1, key1) {
+                        if (val.id == val1) {
+                          res.data.data.splice(key, 1);
+                        }
+                      });
+                    });
+                  }
                   res.data.data.forEach(function (val, key) {
-                    deleteArr.forEach(function (val1, key1) {
-                      if (val.id == val1) {
-                        res.data.data.splice(key, 1);
-                      }
-                    });
+                    var imageArr = val.images.split(' | ');
+                    var buy_year = val.buy_time.substring(0, 4);
+                    var buy_month = val.buy_time.substring(4, 6);
+                    res.data.data[key]['buy_year'] = buy_year;
+                    res.data.data[key]['buy_month'] = buy_month;
+                    res.data.data[key]['first_image'] = imageArr[0];
                   });
                 }
                 that.setData({
