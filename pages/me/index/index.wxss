@@ -107,3 +107,11 @@ page{
   box-sizing: border-box;
   background-color: #00BFFF;
 }
+
+.ad{
+  /* width: 80%; */
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-top: 3%;
+  text-align: center;
+}

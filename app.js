@@ -63,7 +63,6 @@ App({
               });
             }
           });
-
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)
         }

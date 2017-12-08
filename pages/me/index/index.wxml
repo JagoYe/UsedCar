@@ -26,3 +26,9 @@
 <view class='but center' bindtap='verification' data-url='/pages/me/phone_update/index'>
     <button>更换手机号</button>
 </view>
+<view class='ad center'>
+  <text>技术开发服务商: 昆明点度科技有限公司</text>
+</view>
+<view class='ad center' style='margin:0;height:20rpx;line-height:20rpx'>
+  <text>Kunming point of degree</text>
+</view>
