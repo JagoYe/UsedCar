@@ -63,7 +63,6 @@ App({
               });
             }
           });
-
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)
         }
@@ -71,10 +70,10 @@ App({
     });
   },  
   globalData: {
-    appid: '',
+    appid: 'wx4796405728efcfcd',
     userInfo: null,
     openId: '',
     loginStatus: false,
-    webSite: ''
+    webSite: 'https://www.ynescjy.com'
   }
 })
