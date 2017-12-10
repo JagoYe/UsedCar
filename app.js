@@ -7,6 +7,16 @@ App({
       title: '加载中...',
       mask: false
     });
+    wx.request({
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: that.globalData.webSite + '/Home/Wechat/websitePageViewAdd',
+      success: function (res) {
+        console.log(res);
+      }
+    })
     wx.login({
       success: function (res) {
         if (res.code) {
