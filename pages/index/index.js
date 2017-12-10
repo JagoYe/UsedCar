@@ -232,14 +232,14 @@ Page({
                       status2.data.data.forEach(function (val2, key2) {
                         if (val1.id == val2.id) {
                           deleteArr.push(val1.id);
-                        } else {
+                        } //else {
                           // var imageArr = val1.images.split(' | ');
                           // var buy_year = val1.buy_time.substring(0, 4);
                           // var buy_month = val1.buy_time.substring(4, 6);
                           // res.data.already[key1]['buy_year'] = buy_year;
                           // res.data.already[key1]['buy_month'] = buy_month;
                           // res.data.already[key1]['first_image'] = imageArr[0];
-                        }
+                        //}
                       });
                     });
                     //delete删除已完成项
