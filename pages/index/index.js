@@ -188,17 +188,27 @@ Page({
               url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
               data: { status: '2' },
               success: function (status2) {
+                if (res.data.already != ''){
+                  res.data.already.forEach(function (val, key) {
+                    var imageArr = val.images.split(' | ');
+                    var buy_year = val.buy_time.substring(0, 4);
+                    var buy_month = val.buy_time.substring(4, 6);
+                    res.data.already[key]['buy_year'] = buy_year;
+                    res.data.already[key]['buy_month'] = buy_month;
+                    res.data.already[key]['first_image'] = imageArr[0];
+                  })
+                }
                 if (status1.data.data != '' && res.data.already != '') {
                   var deleteArr = [];
                   res.data.already.forEach(function (val1, key1) {
                     status1.data.data.forEach(function (val2, key2) {
                       status2.data.data.forEach(function (val3, key3) {
-                        var imageArr = val1.images.split(' | ');
-                        var buy_year = val1.buy_time.substring(0, 4);
-                        var buy_month = val1.buy_time.substring(4, 6);
-                        res.data.already[key1]['buy_year'] = buy_year;
-                        res.data.already[key1]['buy_month'] = buy_month;
-                        res.data.already[key1]['first_image'] = imageArr[0];
+                        // var imageArr = val1.images.split(' | ');
+                        // var buy_year = val1.buy_time.substring(0, 4);
+                        // var buy_month = val1.buy_time.substring(4, 6);
+                        // res.data.already[key1]['buy_year'] = buy_year;
+                        // res.data.already[key1]['buy_month'] = buy_month;
+                        // res.data.already[key1]['first_image'] = imageArr[0];
                         if (val1.id == val2.id) {
                           res.data.already[key1]['status'] = '拍卖中'
                         } else if (val1.id == val3.id) {
@@ -223,12 +233,12 @@ Page({
                         if (val1.id == val2.id) {
                           deleteArr.push(val1.id);
                         } else {
-                          var imageArr = val1.images.split(' | ');
-                          var buy_year = val1.buy_time.substring(0, 4);
-                          var buy_month = val1.buy_time.substring(4, 6);
-                          res.data.already[key1]['buy_year'] = buy_year;
-                          res.data.already[key1]['buy_month'] = buy_month;
-                          res.data.already[key1]['first_image'] = imageArr[0];
+                          // var imageArr = val1.images.split(' | ');
+                          // var buy_year = val1.buy_time.substring(0, 4);
+                          // var buy_month = val1.buy_time.substring(4, 6);
+                          // res.data.already[key1]['buy_year'] = buy_year;
+                          // res.data.already[key1]['buy_month'] = buy_month;
+                          // res.data.already[key1]['first_image'] = imageArr[0];
                         }
                       });
                     });
