@@ -140,78 +140,84 @@ Page({
   Collection: function () {
     var that = this;
     var phone = app.globalData.userInfo.phone;
-    if (that.data.active == 1) {
-      wx.request({
-        method: 'POST',
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: app.globalData.webSite + '/Home/Wechat/collectionAdd',
-        data: {
-          user_phone: phone,
-          car_id: that.data.usedDetails.id
-        },
-        success: function (footprint) {
-          that.setData({
-            masks: 'masks',
-            reveal: 'reveal',
-            success: '收藏成功'
-          });
-          var num = that.data.num;
-          var timer = setInterval(function () {
-            num--;
-            that.setData({
-              num: num
-            });
-            if (num == 0) {
-              clearInterval(timer);
-              that.setData({
-                masks: '',
-                reveal: '',
-                num: '3',
-                active: 0,
-                collections: '已收藏'
-              })
-            }
-          }, 1000);
-        }
+    if (app.globalData.loginStatus == false) {
+      wx.navigateTo({
+        url: '/pages/login/index'
       })
-    } else {
-      wx.request({
-        method: 'POST',
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        url: app.globalData.webSite + '/Home/Wechat/collectionDelete',
-        data: {
-          user_phone: phone,
-          car_id: that.data.usedDetails.id
-        },
-        success: function (res) {
-          that.setData({
-            masks: 'masks',
-            reveal: 'reveal',
-            success: '取消收藏'
-          });
-          var num = that.data.num;
-          var timer = setInterval(function () {
-            num--;
+    }else{
+      if (that.data.active == 1) {
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/collectionAdd',
+          data: {
+            user_phone: phone,
+            car_id: that.data.usedDetails.id
+          },
+          success: function (footprint) {
             that.setData({
-              num: num
+              masks: 'masks',
+              reveal: 'reveal',
+              success: '收藏成功'
             });
-            if (num == 0) {
-              clearInterval(timer);
+            var num = that.data.num;
+            var timer = setInterval(function () {
+              num--;
               that.setData({
-                masks: '',
-                reveal: '',
-                num: '3',
-                active: 1,
-                collections: '收藏车源'
-              })
-            }
-          }, 1000);
-        }
-      })
+                num: num
+              });
+              if (num == 0) {
+                clearInterval(timer);
+                that.setData({
+                  masks: '',
+                  reveal: '',
+                  num: '3',
+                  active: 0,
+                  collections: '已收藏'
+                })
+              }
+            }, 1000);
+          }
+        })
+      } else {
+        wx.request({
+          method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          url: app.globalData.webSite + '/Home/Wechat/collectionDelete',
+          data: {
+            user_phone: phone,
+            car_id: that.data.usedDetails.id
+          },
+          success: function (res) {
+            that.setData({
+              masks: 'masks',
+              reveal: 'reveal',
+              success: '取消收藏'
+            });
+            var num = that.data.num;
+            var timer = setInterval(function () {
+              num--;
+              that.setData({
+                num: num
+              });
+              if (num == 0) {
+                clearInterval(timer);
+                that.setData({
+                  masks: '',
+                  reveal: '',
+                  num: '3',
+                  active: 1,
+                  collections: '收藏车源'
+                })
+              }
+            }, 1000);
+          }
+        })
+      }
     }
   },
   /**
