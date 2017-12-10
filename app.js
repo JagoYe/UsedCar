@@ -14,7 +14,7 @@ App({
       },
       url: that.globalData.webSite + '/Home/Wechat/websitePageViewAdd',
       success: function (res) {
-        console.log(res);
+    
       }
     })
     wx.login({
@@ -34,6 +34,9 @@ App({
               //全局添加userInfo
               wx.getUserInfo({
                 success: function (res) {
+                  wx.hideLoading({
+
+                  });
                   that.globalData.userInfo = res.userInfo;
                   //登录状态验证
                   wx.request({
@@ -49,9 +52,6 @@ App({
                         that.globalData.loginStatus = true;
                         that.globalData.userInfo.score = data.data.score;
                         that.globalData.userInfo.phone = data.data.phone;
-                        wx.hideLoading({
-                          
-                        });
                       }
                       console.log(that);
                     }
