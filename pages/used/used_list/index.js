@@ -139,7 +139,6 @@ Page({
                     })
                   });
                   //delete删除已完成项
-                  console.log(res.data.data);
                   res.data.data.forEach(function (val, key) {
                     deleteArr.forEach(function (val1, key1) {
                       if (val.id == val1) {
@@ -389,7 +388,6 @@ Page({
               url: app.globalData.webSite + '/Home/Wechat/carSalePendingByStatus',
               data: { status: '2' },
               success: function (status2) {
-                console.log(status2);
                 if (status1.data.data != '') {
                   var deleteArr = [];
                   res.data.forEach(function (val1, key1) {
@@ -438,7 +436,6 @@ Page({
                           res.data[key1]['buy_year'] = buy_year;
                           res.data[key1]['buy_month'] = buy_month;
                           res.data[key1]['first_image'] = imageArr[0];
-                          console.log(res.data);
                         }
                       });
                     });
@@ -458,7 +455,6 @@ Page({
                     res.data[key]['buy_year'] = buy_year;
                     res.data[key]['buy_month'] = buy_month;
                     res.data[key]['first_image'] = imageArr[0];
-                    console.log(res.data);
                   });
                 }
                 that.setData({
