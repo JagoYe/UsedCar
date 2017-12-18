@@ -56,7 +56,9 @@ page{
   margin-top: 10rpx;
 }
 .left{
-  width: 20%;
+  width: auto;
+  color: #FFB700;
+  padding-right: 30rpx;
   height: 60rpx;
   margin-top: 15rpx;
   font-size: 50rpx;
@@ -65,7 +67,7 @@ page{
   border-right: 2rpx solid black;
 }
 .right{
-  width: 70%;
+  width: auto;
   height: 100%;
   float: left;
   line-height: 90rpx;
